@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Ppt Progress Summary"
+  short_description: "Help with Maroc Ppt Progress Summary tasks"
+  default_prompt: "Use $maroc-ppt-progress-summary to handle this maroc ppt progress summary task."

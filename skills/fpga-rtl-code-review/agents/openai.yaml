@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fpga Rtl Code Review"
+  short_description: "Help with Fpga Rtl Code Review tasks"
+  default_prompt: "Use $fpga-rtl-code-review to handle this fpga rtl code review task."

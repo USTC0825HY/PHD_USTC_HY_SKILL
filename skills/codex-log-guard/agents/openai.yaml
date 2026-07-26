@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Log Guard"
+  short_description: "Audit and mitigate excessive Codex SQLite log writes"
+  default_prompt: "Use $codex-log-guard to check Codex disk-write activity and safely apply or remove selective SQLite log filtering."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Register Command Parser"
+  short_description: "Help with Maroc Fpga Register Command Parser tasks"
+  default_prompt: "Use $maroc-fpga-register-command-parser to handle this maroc fpga register command parser task."

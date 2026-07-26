@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Brainstorming"
+  short_description: "Facilitates evidence-aware scientific ideation with independent…"
+  default_prompt: "Use $scientific-brainstorming to complete the relevant task."

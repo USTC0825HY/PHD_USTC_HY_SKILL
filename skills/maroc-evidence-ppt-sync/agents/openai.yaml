@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Evidence Ppt Sync"
+  short_description: "Help with Maroc Evidence Ppt Sync tasks"
+  default_prompt: "Use $maroc-evidence-ppt-sync to handle this maroc evidence ppt sync task."

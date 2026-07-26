@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hypothesis Generation"
+  short_description: "Formulate evidence-bounded scientific questions, candidate hypo…"
+  default_prompt: "Use $hypothesis-generation to complete the relevant task."

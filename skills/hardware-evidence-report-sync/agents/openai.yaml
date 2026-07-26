@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hardware Evidence Report Sync"
+  short_description: "Help with Hardware Evidence Report Sync tasks"
+  default_prompt: "Use $hardware-evidence-report-sync to handle this hardware evidence report sync task."

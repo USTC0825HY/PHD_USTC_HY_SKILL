@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Ppt"
+  short_description: "Help with Maroc Ppt tasks"
+  default_prompt: "Use $maroc-ppt to handle this maroc ppt task."

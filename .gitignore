@@ -1,0 +1,45 @@
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+config.toml
+credentials.*
+secrets.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# JavaScript and build output
+node_modules/
+dist/
+build/
+coverage/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime output
+*.log
+*.tmp
+*.bak
+tmp/
+temp/
+output/
+outputs/
+
+# Local materialization state
+.codex-local/
+.cc-switch-local/

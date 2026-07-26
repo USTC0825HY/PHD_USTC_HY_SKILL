@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fpga Ila Debug"
+  short_description: "Help with Fpga Ila Debug tasks"
+  default_prompt: "Use $fpga-ila-debug to handle this fpga ila debug task."

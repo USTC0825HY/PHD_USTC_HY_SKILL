@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Obsidian Md Writing"
+  short_description: "Help with Maroc Obsidian Md Writing tasks"
+  default_prompt: "Use $maroc-obsidian-md-writing to handle this maroc obsidian md writing task."

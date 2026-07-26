@@ -1,0 +1,4 @@
+interface:
+  display_name: "FPGA Architecture Visualizer"
+  short_description: "Visualize FPGA hierarchy FSMs clocks and CDC"
+  default_prompt: "Use $gf-viz to render a concise architecture view from this .fpga-map directory."

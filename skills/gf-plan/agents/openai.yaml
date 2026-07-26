@@ -1,0 +1,4 @@
+interface:
+  display_name: "FPGA Design Planner"
+  short_description: "Plan decision-complete FPGA RTL subsystems"
+  default_prompt: "Use $gf-plan to produce a decision-complete FPGA architecture and verification plan for this feature."

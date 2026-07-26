@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guizang PPT Skill"
+  short_description: "生成\"电子杂志 × 电子墨水\"风格的横向翻页网页 PPT（单 HTML 文件），含 WebGL 流体背景、衬线标题 + 非衬线…"
+  default_prompt: "Use $guizang-ppt-skill to complete the relevant task."

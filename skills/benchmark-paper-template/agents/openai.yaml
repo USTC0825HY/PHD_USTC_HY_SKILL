@@ -1,0 +1,4 @@
+interface:
+  display_name: "Benchmark Paper Template"
+  short_description: "Structures Benchmark and Evaluation papers using the five-pilla…"
+  default_prompt: "Use $benchmark-paper-template to complete the relevant task."

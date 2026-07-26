@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Development"
+  short_description: "Help with Maroc Fpga Development tasks"
+  default_prompt: "Use $maroc-fpga-development to handle this maroc fpga development task."

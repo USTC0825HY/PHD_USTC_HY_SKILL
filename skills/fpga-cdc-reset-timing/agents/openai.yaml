@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fpga Cdc Reset Timing"
+  short_description: "Help with Fpga Cdc Reset Timing tasks"
+  default_prompt: "Use $fpga-cdc-reset-timing to handle this fpga cdc reset timing task."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT Master"
+  short_description: "AI-driven multi-format SVG content generation system. Converts…"
+  default_prompt: "Use $ppt-master to complete the relevant task."

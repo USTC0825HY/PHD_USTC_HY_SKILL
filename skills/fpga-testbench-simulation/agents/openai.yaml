@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fpga Testbench Simulation"
+  short_description: "Help with Fpga Testbench Simulation tasks"
+  default_prompt: "Use $fpga-testbench-simulation to handle this fpga testbench simulation task."

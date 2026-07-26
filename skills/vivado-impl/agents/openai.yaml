@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vivado Implementation"
+  short_description: "Optimize Vivado placement routing and timing"
+  default_prompt: "Use $vivado-impl to diagnose implementation QoR and select Vivado 2022.2-compatible directives."

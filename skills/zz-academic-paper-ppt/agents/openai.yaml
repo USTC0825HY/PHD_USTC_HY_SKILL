@@ -1,0 +1,4 @@
+interface:
+  display_name: "ZZ Academic Paper PPT"
+  short_description: "Personal workflow for Chinese academic PPT revision"
+  default_prompt: "Use $zz-academic-paper-ppt to revise an academic paper presentation with natural Chinese wording, clear slide logic, and protected manual edits."

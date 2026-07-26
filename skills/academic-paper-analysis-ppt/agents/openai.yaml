@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Paper Analysis PPT"
+  short_description: "Academic paper analysis PPT workflow"
+  default_prompt: "Use $academic-paper-analysis-ppt to handle this MAROC hardware development task."

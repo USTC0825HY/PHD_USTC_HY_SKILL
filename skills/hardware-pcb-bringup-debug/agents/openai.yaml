@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hardware Pcb Bringup Debug"
+  short_description: "Help with Hardware Pcb Bringup Debug tasks"
+  default_prompt: "Use $hardware-pcb-bringup-debug to handle this hardware pcb bringup debug task."

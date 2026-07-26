@@ -1,0 +1,6 @@
+interface:
+  display_name: "Academic Paper Presentation"
+  short_description: "Create and QA Chinese academic PPTX talks from papers"
+  default_prompt: "Use $academic-paper-presentation to create a concise Chinese academic PPTX from a paper and its experiment artifacts."
+policy:
+  allow_implicit_invocation: true

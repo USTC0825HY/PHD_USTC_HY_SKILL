@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Ppt Debug Report"
+  short_description: "Help with Maroc Ppt Debug Report tasks"
+  default_prompt: "Use $maroc-ppt-debug-report to handle this maroc ppt debug report task."

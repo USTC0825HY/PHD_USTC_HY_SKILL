@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laser Test Report Standard"
+  short_description: "Apply the ultra-stable-laser DOCX template"
+  default_prompt: "Use $laser-electrical-test-report-standard with $laser-test-report-writing for the ultra-stable-laser DOCX contract, and require an audited $laser-electrical-data-analysis evidence bundle before inserting recalculated numerical results."

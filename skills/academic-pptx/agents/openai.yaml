@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Pptx"
+  short_description: "Use this skill whenever the user wants to create or improve a p…"
+  default_prompt: "Use $academic-pptx to complete the relevant task."

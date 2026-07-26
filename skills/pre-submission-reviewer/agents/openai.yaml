@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pre Submission Reviewer"
+  short_description: "Runs a pre-submission review of a technical paper across five d…"
+  default_prompt: "Use $pre-submission-reviewer to complete the relevant task."

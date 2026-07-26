@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "source": {
+    "format": "orcad-pstxnet",
+    "netlist_file": "C:/path/to/pstxnet.dat",
+    "schematic_file": "C:/path/to/board.dsn"
+  },
+  "fpga": {
+    "cfgbvs": "VCCO",
+    "config_voltage": 3.3,
+    "part": "xc7a35tcsg324-1",
+    "refdes": "U1"
+  },
+  "ports": [
+    {
+      "bank": 35,
+      "bank_vcco": 3.3,
+      "direction": "input",
+      "drive": null,
+      "evidence": {
+        "component": "U1",
+        "datasheet": "oscillator datasheet section",
+        "schematic_page": "page 3",
+        "source_ref": "pstxnet.dat:120"
+      },
+      "fpga_pin": "E3",
+      "iostandard": "LVCMOS33",
+      "net_name": "SYS_CLK",
+      "pulltype": "NONE",
+      "role": "clock",
+      "rtl_port": "sys_clk",
+      "slew": null,
+      "status": "verified",
+      "waiver_reason": null
+    }
+  ],
+  "timing": []
+}

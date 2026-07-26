@@ -1,0 +1,4 @@
+interface:
+  display_name: "SDG6052X Host Driver"
+  short_description: "Reuse SDG6052X VISA/SCPI host integration patterns"
+  default_prompt: "Use $sdg6052x-host-driver to integrate an SDG6052X signal generator module into this host application."

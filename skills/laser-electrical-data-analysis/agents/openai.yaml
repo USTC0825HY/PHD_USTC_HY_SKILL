@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laser Electrical Data Analysis"
+  short_description: "PSD, ASD, calibration, and noise workflow"
+  default_prompt: "Use $laser-electrical-data-analysis to analyze Laser electrical test data and produce a traceable evidence bundle."

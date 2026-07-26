@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xilinx Suite"
+  short_description: "Xilinx 全工具链综合助手，覆盖从零到一的完整 FPGA/MPSoC 工程构建，包括： - Vivado：硬件设计、Blo…"
+  default_prompt: "Use $xilinx-suite to complete the relevant task."

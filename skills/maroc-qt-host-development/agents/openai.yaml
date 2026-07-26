@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Qt Host Development"
+  short_description: "Help with Maroc Qt Host Development tasks"
+  default_prompt: "Use $maroc-qt-host-development to handle this maroc qt host development task."

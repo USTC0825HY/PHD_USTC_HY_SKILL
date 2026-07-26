@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laser Schematic Screenshot Repair"
+  short_description: "Repair blurry Laser schematic crops and highlights"
+  default_prompt: "Use $laser-schematic-screenshot-repair to recut clear local schematic screenshots from the latest Laser/PDH PDFs and verify red-box placement."

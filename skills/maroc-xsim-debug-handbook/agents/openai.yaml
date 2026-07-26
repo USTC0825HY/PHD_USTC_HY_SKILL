@@ -1,0 +1,6 @@
+interface:
+  display_name: "MAROC XSim Debug"
+  short_description: "MAROC工程XSim调试、C17/IFCLK时钟bring-up、Vivado工程重建与手册写作方法"
+  default_prompt: "Use $maroc-xsim-debug-handbook to debug a MAROC XSim run, recover the repo-specific Vivado/bitstream/ILA flow for first board bring-up, handle C17/i_clk to o_cy_ifclk clock-chain issues, or write a MAROC simulation/bring-up handbook."
+policy:
+  allow_implicit_invocation: true

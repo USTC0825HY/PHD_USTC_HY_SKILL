@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qt Cpp Host Development"
+  short_description: "Help with Qt Cpp Host Development tasks"
+  default_prompt: "Use $qt-cpp-host-development to handle this qt cpp host development task."

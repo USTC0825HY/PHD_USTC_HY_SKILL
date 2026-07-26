@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rtl Schematic Xdc Alignment"
+  short_description: "Help with Rtl Schematic Xdc Alignment tasks"
+  default_prompt: "Use $rtl-schematic-xdc-alignment to handle this rtl schematic xdc alignment task."

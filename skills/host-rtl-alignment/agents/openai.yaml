@@ -1,0 +1,4 @@
+interface:
+  display_name: "Host Rtl Alignment"
+  short_description: "Help with Host Rtl Alignment tasks"
+  default_prompt: "Use $host-rtl-alignment to handle this host rtl alignment task."

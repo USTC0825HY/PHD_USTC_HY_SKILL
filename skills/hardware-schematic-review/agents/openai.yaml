@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hardware Schematic Review"
+  short_description: "Help with Hardware Schematic Review tasks"
+  default_prompt: "Use $hardware-schematic-review to handle this hardware schematic review task."

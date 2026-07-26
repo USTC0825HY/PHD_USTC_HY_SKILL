@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Ppt Group Meeting"
+  short_description: "Help with Maroc Ppt Group Meeting tasks"
+  default_prompt: "Use $maroc-ppt-group-meeting to handle this maroc ppt group meeting task."

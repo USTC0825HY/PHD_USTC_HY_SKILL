@@ -1,0 +1,54 @@
+[
+  {
+    "source": "cc_switch/academic-pptx-skill/.git",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "cc_switch/auto-visio-helper/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/fpga-orcad-xdc-pipeline/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/gf-architect/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "cc_switch/guizang-ppt-skill/.git",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/laser-electrical-data-analysis/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/laser-electrical-test-report-standard/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/laser-pdh-obsidian-md-writing/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/laser-test-report-writing/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "cc_switch/PPTMaker-skill/node_modules",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/ppt-master/scripts/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "codex_local/ppt-master/scripts/svg_to_pptx/__pycache__",
+    "reason": "ignored_directory"
+  },
+  {
+    "source": "cc_switch/slides/scripts/__pycache__",
+    "reason": "ignored_directory"
+  }
+]

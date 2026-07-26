@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figure Designer"
+  short_description: "Advises on the design of the three core figures in a technical…"
+  default_prompt: "Use $figure-designer to complete the relevant task."

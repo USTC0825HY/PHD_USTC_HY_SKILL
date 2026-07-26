@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hardware Datasheet to Schematic"
+  short_description: "Help with Hardware Datasheet to Schematic tasks"
+  default_prompt: "Use $hardware-datasheet-to-schematic to handle this hardware datasheet to schematic task."

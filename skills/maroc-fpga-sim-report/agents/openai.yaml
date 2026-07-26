@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc FPGA Sim Report"
+  short_description: "生成 MAROC FPGA 仿真联合测试报告（中文、可审计、可复盘），适用于 TOP 联调、command+slowcontr…"
+  default_prompt: "Use $maroc-fpga-sim-report to complete the relevant task."

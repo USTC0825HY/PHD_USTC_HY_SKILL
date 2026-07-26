@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Rtl Code Review"
+  short_description: "Help with Maroc Fpga Rtl Code Review tasks"
+  default_prompt: "Use $maroc-fpga-rtl-code-review to handle this maroc fpga rtl code review task."

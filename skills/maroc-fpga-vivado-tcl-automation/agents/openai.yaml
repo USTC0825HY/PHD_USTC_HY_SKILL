@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Vivado Tcl Automation"
+  short_description: "Help with Maroc Fpga Vivado Tcl Automation tasks"
+  default_prompt: "Use $maroc-fpga-vivado-tcl-automation to handle this maroc fpga vivado tcl automation task."

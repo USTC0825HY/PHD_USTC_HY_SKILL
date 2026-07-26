@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laser Test Report Writing"
+  short_description: "Final-edit and audit laser electrical test reports"
+  default_prompt: "Use $laser-test-report-writing to final-edit a Chinese laser electrical test report, preserve measured evidence and layout, synchronize conclusions, remove AI-style prose, and run the mode-aware DOCX audit."

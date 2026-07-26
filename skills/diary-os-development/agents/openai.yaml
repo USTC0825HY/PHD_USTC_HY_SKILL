@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diary OS Development"
+  short_description: "Develop the Diary OS standalone app."
+  default_prompt: "Use $diary-os-development to work on the Obsidian Diary OS standalone app."

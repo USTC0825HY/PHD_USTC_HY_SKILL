@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Rtl Schematic Xdc Alignment"
+  short_description: "Help with Maroc Rtl Schematic Xdc Alignment tasks"
+  default_prompt: "Use $maroc-rtl-schematic-xdc-alignment to handle this maroc rtl schematic xdc alignment task."

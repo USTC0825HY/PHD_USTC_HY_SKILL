@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Research Workflow"
+  short_description: "Guides AI-assisted research across three sub-flows, Vibe Coding…"
+  default_prompt: "Use $vibe-research-workflow to complete the relevant task."

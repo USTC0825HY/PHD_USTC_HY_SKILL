@@ -1,0 +1,8 @@
+{
+  "validator": "skill-creator/scripts/quick_validate.py",
+  "python_utf8": true,
+  "checked": 95,
+  "passed": 95,
+  "failed": 0,
+  "failures": []
+}

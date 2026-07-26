@@ -1,0 +1,6 @@
+interface:
+  display_name: "Academic Paper Writing"
+  short_description: "Write and QA editable Chinese academic LaTeX/PDF reports"
+  default_prompt: "Use $academic-paper-writing to turn experiment artifacts into an editable Chinese academic paper and compiled PDF."
+policy:
+  allow_implicit_invocation: true

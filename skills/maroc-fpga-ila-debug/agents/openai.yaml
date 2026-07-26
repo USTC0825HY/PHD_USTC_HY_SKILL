@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Ila Debug"
+  short_description: "Help with Maroc Fpga Ila Debug tasks"
+  default_prompt: "Use $maroc-fpga-ila-debug to handle this maroc fpga ila debug task."

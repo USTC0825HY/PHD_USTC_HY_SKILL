@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hardware Dev Router"
+  short_description: "Help with Hardware Dev Router tasks"
+  default_prompt: "Use $hardware-dev-router to handle this hardware dev router task."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Cdc Reset Timing"
+  short_description: "Help with Maroc Fpga Cdc Reset Timing tasks"
+  default_prompt: "Use $maroc-fpga-cdc-reset-timing to handle this maroc fpga cdc reset timing task."

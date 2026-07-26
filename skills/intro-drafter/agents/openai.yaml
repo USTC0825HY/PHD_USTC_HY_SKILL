@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intro Drafter"
+  short_description: "Drafts a 6-paragraph Introduction outline for a technical paper…"
+  default_prompt: "Use $intro-drafter to complete the relevant task."

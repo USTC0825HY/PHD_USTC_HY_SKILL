@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Fpga Testbench Simulation"
+  short_description: "Help with Maroc Fpga Testbench Simulation tasks"
+  default_prompt: "Use $maroc-fpga-testbench-simulation to handle this maroc fpga testbench simulation task."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Novelty Assessment"
+  short_description: "Assess research idea novelty through systematic literature sear…"
+  default_prompt: "Use $novelty-assessment to complete the relevant task."

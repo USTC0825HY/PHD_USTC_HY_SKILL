@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tech Paper Template"
+  short_description: "Structures a technical paper's full logical skeleton using a th…"
+  default_prompt: "Use $tech-paper-template to complete the relevant task."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notes Governance Sop"
+  short_description: "Organize Obsidian note folders into stable multi-level taxonomy…"
+  default_prompt: "Use $notes-governance-sop to complete the relevant task."

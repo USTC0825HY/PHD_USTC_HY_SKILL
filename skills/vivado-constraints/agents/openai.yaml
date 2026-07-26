@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vivado Constraints"
+  short_description: "Design and audit Vivado XDC constraints safely"
+  default_prompt: "Use $vivado-constraints to review this XDC against RTL, schematic evidence, and Vivado 2022.2."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Hardware Dev Router"
+  short_description: "Help with Maroc Hardware Dev Router tasks"
+  default_prompt: "Use $maroc-hardware-dev-router to handle this maroc hardware dev router task."

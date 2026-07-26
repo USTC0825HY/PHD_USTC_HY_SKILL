@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aut Sci PPT"
+  short_description: "Use when converting academic paper PDFs or structured text into…"
+  default_prompt: "Use $aut-sci-ppt to complete the relevant task."

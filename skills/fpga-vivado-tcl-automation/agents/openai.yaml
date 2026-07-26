@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fpga Vivado Tcl Automation"
+  short_description: "Help with Fpga Vivado Tcl Automation tasks"
+  default_prompt: "Use $fpga-vivado-tcl-automation to handle this fpga vivado tcl automation task."

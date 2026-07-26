@@ -1,0 +1,4 @@
+interface:
+  display_name: "Idea Evaluator"
+  short_description: "Evaluates a preliminary research idea against a five-dimension…"
+  default_prompt: "Use $idea-evaluator to complete the relevant task."

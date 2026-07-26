@@ -1,0 +1,4 @@
+interface:
+  display_name: "FPGA RTL Architect"
+  short_description: "Map RTL hierarchy clocks resets and CDC"
+  default_prompt: "Use $gf-architect to map this Verilog/SystemVerilog repository and produce the .fpga-map evidence bundle."

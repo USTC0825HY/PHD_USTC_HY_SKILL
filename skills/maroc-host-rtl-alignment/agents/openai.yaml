@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maroc Host Rtl Alignment"
+  short_description: "Help with Maroc Host Rtl Alignment tasks"
+  default_prompt: "Use $maroc-host-rtl-alignment to handle this maroc host rtl alignment task."
