@@ -1,0 +1,4 @@
+interface:
+  display_name: "matlab-review-code"
+  short_description: "matlab-review-code skill"
+  default_prompt: "Use $matlab-review-code to help with this task."

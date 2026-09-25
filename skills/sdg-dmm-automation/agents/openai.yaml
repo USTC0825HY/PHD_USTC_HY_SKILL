@@ -1,0 +1,6 @@
+interface:
+  display_name: "SDG与高精度万用表自动化"
+  short_description: "开发双型号SDG与SDM/34470A驱动、幅度偏置回读和安全自动化"
+  default_prompt: "Use $sdg-dmm-automation to diagnose SDG6052X/SDG6032X-E and precision DMM automation safely."
+policy:
+  allow_implicit_invocation: true

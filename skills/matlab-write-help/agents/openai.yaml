@@ -1,0 +1,4 @@
+interface:
+  display_name: "matlab-write-help"
+  short_description: "matlab-write-help skill"
+  default_prompt: "Use $matlab-write-help to help with this task."

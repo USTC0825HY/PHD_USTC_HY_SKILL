@@ -1,0 +1,81 @@
+schema: fpga-board-signal-chain-closure/v2
+inputs:
+  boards_file: C:/staging/board_registry.json
+  xpr: C:/fpga/project/project.xpr
+  xdc: C:/fpga/constraints/top.xdc
+  rtl: null
+  fpga_refdes: D1
+boards:
+  - id: SZSD
+    name: FPGA controller
+    role: controller
+    selected_evidence_set: szsd-current
+  - id: BASE
+    name: shared base/backplane
+    role: interconnect
+    selected_evidence_set: base-current
+  - id: POWER_SOURCE
+    name: power source board
+    role: power_source
+    selected_evidence_set: null
+  - id: FUNCTION_A
+    name: function board
+    role: function
+    selected_evidence_set: null
+evidence_sets:
+  - id: szsd-current
+    board_id: SZSD
+    pst_dir: C:/evidence/SZSD/allegro
+    dsn: C:/evidence/SZSD/main.dsn
+    pdf: null
+    schdoc: []
+    selected: true
+  - id: base-current
+    board_id: BASE
+    pst_dir: C:/evidence/base/allegro
+    dsn: C:/evidence/base/base.dsn
+    pdf: C:/evidence/base/base.pdf
+    schdoc: []
+    selected: true
+edges:
+  - id: SZSD_TO_BASE_CONTROL
+    from: SZSD
+    to: BASE
+    type: fpga_control
+    connector_mapping_evidence: []
+    status: 跨板待确认
+  - id: BASE_TO_FUNCTION_A_CONTROL
+    from: BASE
+    to: FUNCTION_A
+    type: fpga_control
+    connector_mapping_evidence: []
+    status: 跨板待确认
+chains:
+  - id: CONTROL_001
+    kind: fpga_control
+    function: 必需控制
+    priority: critical
+    path: [SZSD, BASE, FUNCTION_A]
+    segments: []
+    rtl_port: 未确认
+    rtl_direction: output
+    package_pin: 未确认
+    iostandard: 未确认
+    vivado_status: RTL/XDC静态核查完成，Vivado应用状态未复核
+    evidence_level: E0 输入不完整
+    status: 资料不完整，无法继续
+  - id: POWER_001
+    kind: power_rail
+    function: 电源分配
+    priority: critical
+    path: [POWER_SOURCE, BASE, FUNCTION_A]
+    segments: []
+    rail: 未确认
+    nominal_voltage: 未确认
+    return_ground: 未确认
+    rtl_xdc: 不适用
+    evidence_level: E0 输入不完整
+    status: 资料不完整，无法继续
+conflicts: []
+unclosed_points: []
+physical_checks: []

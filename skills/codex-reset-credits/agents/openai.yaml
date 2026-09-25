@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Reset Credits"
+  short_description: "Query Codex banked reset credits and expiration times."
+  default_prompt: "Use $codex-reset-credits. Check my Codex reset credits and expiration times."

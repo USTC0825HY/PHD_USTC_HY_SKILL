@@ -1,0 +1,4 @@
+interface:
+  display_name: "matlab-testing"
+  short_description: "matlab-testing skill"
+  default_prompt: "Use $matlab-testing to help with this task."

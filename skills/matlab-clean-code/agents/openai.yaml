@@ -1,0 +1,4 @@
+interface:
+  display_name: "MATLAB Clean Code"
+  short_description: "Write clear, modern MATLAB code with useful comments."
+  default_prompt: "Use $matlab-clean-code to write or refactor MATLAB code with clear structure and concise comments."

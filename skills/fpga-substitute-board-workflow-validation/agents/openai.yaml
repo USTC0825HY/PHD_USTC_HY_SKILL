@@ -1,0 +1,6 @@
+interface:
+  display_name: "SDG双型号与Vivado联合采集"
+  short_description: "手动配置或YAML、全点预采、新板接入与SDG到ILA证据链"
+  default_prompt: "使用 $fpga-substitute-board-workflow-validation 配置SDG6052X/SDG6032X-E与2208/9245/677新板联合采集。"
+policy:
+  allow_implicit_invocation: true

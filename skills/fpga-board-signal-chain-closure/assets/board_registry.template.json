@@ -1,0 +1,23 @@
+{
+  "schema": "fpga-board-signal-chain-closure/board-registry-v2",
+  "boards": [
+    {"id": "SZSD", "name": "FPGA controller", "role": "controller", "selected_evidence_set": "szsd-current"},
+    {"id": "BASE", "name": "shared base/backplane", "role": "interconnect", "selected_evidence_set": "base-current"},
+    {"id": "FUNCTION_A", "name": "function board", "role": "function", "selected_evidence_set": "function-a-current"}
+  ],
+  "evidence_sets": [
+    {"id": "szsd-current", "board_id": "SZSD", "pst_dir": "C:/evidence/SZSD/allegro", "dsn": "C:/evidence/SZSD/main.dsn", "selected": true},
+    {"id": "base-current", "board_id": "BASE", "pst_dir": "C:/evidence/BASE/allegro", "dsn": "C:/evidence/BASE/base.dsn", "selected": true},
+    {"id": "function-a-current", "board_id": "FUNCTION_A", "pdf": "C:/evidence/FUNCTION_A/device-pin-evidence.pdf", "selected": true}
+  ],
+  "edges": [
+    {"id": "SZSD_BASE", "from": "SZSD", "to": "BASE", "type": "fpga_control", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_FUNCTION_A", "from": "BASE", "to": "FUNCTION_A", "type": "fpga_control", "connector_mapping_evidence": [], "status": "跨板待确认"}
+  ],
+  "chains": [
+    {"id": "CONTROL_001", "kind": "fpga_control", "priority": "critical", "path": ["SZSD", "BASE", "FUNCTION_A"], "segments": []}
+  ],
+  "conflicts": [],
+  "unclosed_points": [],
+  "physical_checks": []
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "research-defense-ppt"
+  short_description: "research-defense-ppt skill"
+  default_prompt: "Use $research-defense-ppt to help with this task."

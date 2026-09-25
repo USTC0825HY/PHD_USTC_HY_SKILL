@@ -1,0 +1,4 @@
+interface:
+  display_name: "laser-cw-operation-manual-writing"
+  short_description: "laser-cw-operation-manual-writing skill"
+  default_prompt: "Use $laser-cw-operation-manual-writing to help with this task."
