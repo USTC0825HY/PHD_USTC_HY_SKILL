@@ -93,7 +93,7 @@
     },
     {
       "name": "aspnet-core",
-      "category": "通用个人技能",
+      "category": "软件与应用开发",
       "description": "Build, review, refactor, or architect ASP.NET Core web applications using current official guidance for .NET web development. Use when working on Blazor Web Apps, Razor Pages, MVC, Minimal APIs, controller-based Web APIs, SignalR, gRPC, middleware, dependency injection, configuration, authentication, authorization, testing, performance, deployment, or ASP.NET Core upgrades.",
       "canonical_path": "skills/aspnet-core",
       "nested_under": "",
@@ -113,7 +113,7 @@
     },
     {
       "name": "audit-optimize-windows-performance",
-      "category": "通用个人技能",
+      "category": "安全与系统维护",
       "description": "Audit, diagnose, plan, execute, and verify evidence-based Windows performance optimizations with explicit approval codes, reversible changes, UAC-safe elevation, and capability checks. Use for slow Windows PCs, excessive startup/background processes, memory/CPU/disk bottlenecks, power-plan tuning, Hyper-V/VBS tradeoffs, duplicate proxy/VPN stacks, service cleanup, driver or BIOS review, and before/after performance validation.",
       "canonical_path": "skills/audit-optimize-windows-performance",
       "nested_under": "",
@@ -198,7 +198,7 @@
     },
     {
       "name": "business-trip-reimbursement-organizer",
-      "category": "通用个人技能",
+      "category": "文档/PDF/表格办公",
       "description": "Organize, rename, audit, and reconcile business-trip reimbursement materials such as approvals, rail or air tickets, hotel invoices, insurance, and payment evidence. Use when files must be grouped by trip, checked for completeness, or independently totaled; do not use for accounting policy advice unrelated to the supplied materials.",
       "canonical_path": "skills/business-trip-reimbursement-organizer",
       "nested_under": "",
@@ -218,7 +218,7 @@
     },
     {
       "name": "chatgpt-apps",
-      "category": "通用个人技能",
+      "category": "软件与应用开发",
       "description": "Build, scaffold, refactor, and troubleshoot ChatGPT Apps SDK applications that combine an MCP server and widget UI. Use when Codex needs to design tools, register UI resources, wire the MCP Apps bridge or ChatGPT compatibility APIs, apply Apps SDK metadata or CSP or domain settings, or produce a docs-aligned project scaffold. Prefer a docs-first workflow by invoking the openai-docs skill or OpenAI developer docs MCP tools before generating code.",
       "canonical_path": "skills/chatgpt-apps",
       "nested_under": "",
@@ -238,7 +238,7 @@
     },
     {
       "name": "cloudflare-deploy",
-      "category": "通用个人技能",
+      "category": "云部署与 Git 工作流",
       "description": "Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related platform services. Use when the user asks to deploy, host, publish, or set up a project on Cloudflare.",
       "canonical_path": "skills/cloudflare-deploy",
       "nested_under": "",
@@ -258,7 +258,7 @@
     },
     {
       "name": "codex-log-guard",
-      "category": "Skill/插件元管理",
+      "category": "Codex/Skill 元管理",
       "description": "Audit and mitigate excessive SQLite log writes from Codex Desktop or Codex CLI. Use when users report high SSD writes, rapid logs_2.sqlite or WAL churn, disk stalls, large Codex log databases, or ask to apply, verify, or remove selective low-value log filtering on Windows, macOS, or Linux.",
       "canonical_path": "skills/codex-log-guard",
       "nested_under": "",
@@ -278,7 +278,7 @@
     },
     {
       "name": "codex-reset-credits",
-      "category": "通用个人技能",
+      "category": "Codex/Skill 元管理",
       "description": "Query Codex banked reset credits from the local Codex Desktop login state and report available reset count plus expiration times. Use when the user asks to check Codex reset credits, reset opportunities, reset chances, reset count, rate-limit reset credits, or expiration times; also use when the user provides a codex-reset-credits-skill or codex-reset-credits runbook link and asks Codex to query the result directly.",
       "canonical_path": "skills/codex-reset-credits",
       "nested_under": "",
@@ -298,7 +298,7 @@
     },
     {
       "name": "cw-dac-host-development",
-      "category": "Laser与硬件测试",
+      "category": "Laser/PDH 与精密测量",
       "description": "Develop, diagnose, test and release the linearity_automation Tk host for CW DAC, generic VIO/ILA and SDG joint capture. Use for shared Vivado sessions, large LTX/programming timeouts, GUI workers, cancellation, evidence recovery and packaging.",
       "canonical_path": "skills/cw-dac-host-development",
       "nested_under": "",
@@ -318,7 +318,7 @@
     },
     {
       "name": "develop-web-game",
-      "category": "通用个人技能",
+      "category": "软件与应用开发",
       "description": "Use when Codex is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text.",
       "canonical_path": "skills/develop-web-game",
       "nested_under": "",
@@ -447,7 +447,7 @@
     },
     {
       "name": "fpga-board-signal-chain-closure",
-      "category": "Laser与硬件测试",
+      "category": "FPGA/RTL/EDA 与硬件",
       "description": "Trace and close typed signal, clock, return, and power paths across an FPGA controller, a shared base/backplane, and any number of function boards while keeping physical boards, evidence-set versions, connector edges, RTL/XDC, and Vivado evidence separate.",
       "canonical_path": "skills/fpga-board-signal-chain-closure",
       "nested_under": "",
@@ -575,7 +575,7 @@
     },
     {
       "name": "fpga-substitute-board-workflow-validation",
-      "category": "Laser与硬件测试",
+      "category": "Laser/PDH 与精密测量",
       "description": "Configure and validate SDG6052X or SDG6032X-E joint frequency/amplitude capture with Vivado ILA, manual GUI or YAML, full-point preflight and CSV/SQLite/manifest evidence. Use for YB2208, AD9245, AD677, ADC128, MAROC, SPIROC and substitute-board workflow tests.",
       "canonical_path": "skills/fpga-substitute-board-workflow-validation",
       "nested_under": "",
@@ -699,7 +699,7 @@
     },
     {
       "name": "gh-address-comments",
-      "category": "通用个人技能",
+      "category": "云部署与 Git 工作流",
       "description": "Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in.",
       "canonical_path": "skills/gh-address-comments",
       "nested_under": "",
@@ -719,7 +719,7 @@
     },
     {
       "name": "gh-fix-ci",
-      "category": "通用个人技能",
+      "category": "云部署与 Git 工作流",
       "description": "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval. Treat external providers (for example Buildkite) as out of scope and report only the details URL.",
       "canonical_path": "skills/gh-fix-ci",
       "nested_under": "",
@@ -1016,7 +1016,7 @@
     },
     {
       "name": "jupyter-notebook",
-      "category": "通用个人技能",
+      "category": "学术研究与论文",
       "description": "Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.",
       "canonical_path": "skills/jupyter-notebook",
       "nested_under": "",
@@ -1036,7 +1036,7 @@
     },
     {
       "name": "laser-cw-operation-manual-writing",
-      "category": "Laser与硬件测试",
+      "category": "Laser/PDH 与精密测量",
       "description": "Create or revise concise Chinese Word operation manuals for 513/CW/GS devices and board-control projects, including interface maps, VIO settings, ILA capture and stop steps. Preserve the chosen Chinese styles, use Times New Roman for Latin text, and center all table content. Use for operation manuals, not formal test reports or RTL changes.",
       "canonical_path": "skills/laser-cw-operation-manual-writing",
       "nested_under": "",
@@ -1056,7 +1056,7 @@
     },
     {
       "name": "laser-cw-qualification-test-development",
-      "category": "Laser与硬件测试",
+      "category": "Laser/PDH 与精密测量",
       "description": "Develop, audit, or document the current ultra-stable-laser 513/CW qualification-test Vivado project using its authoritative XPR/XDC, project board registry, AD677/DDS constraints, and the generic multi-board signal-chain closure workflow.",
       "canonical_path": "skills/laser-cw-qualification-test-development",
       "nested_under": "",
@@ -1120,7 +1120,7 @@
     },
     {
       "name": "laser-indicator-visio-style",
-      "category": "Laser与硬件测试",
+      "category": "Laser/PDH 与精密测量",
       "description": "Format, revise, and QA editable Microsoft Visio (.vsdx) indicator-test procedure pages in the user's approved light, compact style. Use for YB2208, DA9726, and related laser qualification-test Visio flows when creating pages, standardizing an existing deck, correcting layout or typography, or exporting per-indicator PNG review images.",
       "canonical_path": "skills/laser-indicator-visio-style",
       "nested_under": "",
@@ -1224,7 +1224,7 @@
     },
     {
       "name": "maroc-evidence-ppt-sync",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for hardware evidence-to-PPT synchronization. Use when turning MAROC RTL diffs, XSim reports, ILA CSV/screenshots, Obsidian notes, schematic evidence, host logs, or board-test results into MAROC PPT claims, slide outlines, evidence tables, or screenshot placeholders. Use hardware-evidence-report-sync for the generic method.",
       "canonical_path": "skills/maroc-evidence-ppt-sync",
       "nested_under": "",
@@ -1244,7 +1244,7 @@
     },
     {
       "name": "maroc-fpga-cdc-reset-timing",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for FPGA CDC, reset, and timing closure. Use for MAROC usb_ifclk to system-clock crossings, async FIFO use, reset sequencing, clock generation, XDC clocks, timing reports, C17/IFCLK smoke issues, and timing-closure risk reviews. Use fpga-cdc-reset-timing for the generic method.",
       "canonical_path": "skills/maroc-fpga-cdc-reset-timing",
       "nested_under": "",
@@ -1266,7 +1266,7 @@
     },
     {
       "name": "maroc-fpga-development",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "Legacy compatibility router for historical MAROC USB/FPGA development requests. Use when a user invokes the old MAROC FPGA skill name, or when a request mentions MAROC RTL, USB, configuration chain, ILA, XSim, board bring-up, host protocol, Obsidian notes, or PPT but does not specify a newer leaf skill. This is a MAROC application adapter over the generic hardware-dev-router family.",
       "canonical_path": "skills/maroc-fpga-development",
       "nested_under": "",
@@ -1286,7 +1286,7 @@
     },
     {
       "name": "maroc-fpga-ila-debug",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for FPGA ILA debug. Use for MAROC Vivado Hardware Manager captures, config-chain ILA, trigger/upload ILA, TransmitOn/Ctest/ADC debug, read-probe captures, bit/ltx matching, CSV export, and board evidence packaging. Use fpga-ila-debug for the generic method.",
       "canonical_path": "skills/maroc-fpga-ila-debug",
       "nested_under": "",
@@ -1308,7 +1308,7 @@
     },
     {
       "name": "maroc-fpga-register-command-parser",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for FPGA register-map and command-parser workflow. Use for MAROC 829bit slow-control fields, raw_104B, legacy_104B, packet_250B, FE/EE framing, AA20/direct commands, parser state machines, command_MAROC compatibility, register_mapping.txt, and host/RTL protocol alignment. Use fpga-register-command-parser for the generic method.",
       "canonical_path": "skills/maroc-fpga-register-command-parser",
       "nested_under": "",
@@ -1330,7 +1330,7 @@
     },
     {
       "name": "maroc-fpga-rtl-code-review",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for FPGA RTL code review. Use when reviewing MAROC Verilog modules such as TOP_MAROC.v, CY_driver_new.v, maroc_usb_packet_parser.v, SlowControl_MAROC.v, command_MAROC.v, auto_mode_MAROC.v, data_socket_MAROC.v, and read-probe logic. Use fpga-rtl-code-review for the generic method.",
       "canonical_path": "skills/maroc-fpga-rtl-code-review",
       "nested_under": "",
@@ -1350,7 +1350,7 @@
     },
     {
       "name": "maroc-fpga-sim-report",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "生成 MAROC FPGA 仿真联合测试报告（中文、可审计、可复盘），适用于 TOP 联调、command+slowcontrol、slowcontrol 模块级报告；当用户要求“仿真测试手册/联合仿真报告/测试矩阵/case-by-case/签核结论/Mermaid流程图”时使用。",
       "canonical_path": "skills/maroc-fpga-sim-report",
       "nested_under": "",
@@ -1373,7 +1373,7 @@
     },
     {
       "name": "maroc-fpga-testbench-simulation",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for FPGA testbench, XSim, fixture, and simulation-report workflow. Use for MAROC tb_top_maroc_command_usb, parser, slow-control, cy-driver, ADC/readout simulations, host export replay, case matrices, waveform grouping, PASS/FAIL rules, and Markdown simulation reports. Use fpga-testbench-simulation for the generic method.",
       "canonical_path": "skills/maroc-fpga-testbench-simulation",
       "nested_under": "",
@@ -1395,7 +1395,7 @@
     },
     {
       "name": "maroc-fpga-vivado-tcl-automation",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for Vivado Tcl automation. Use for recreating MAROC_PRJ, building MAROC bitstreams, generating/checking MAROC ILA IP, applying MAROC XDC, setting simsets, configuring memory autoload, preparing XSim GUI flows, and packaging repeatable Tcl/PowerShell commands. Use fpga-vivado-tcl-automation for the generic method.",
       "canonical_path": "skills/maroc-fpga-vivado-tcl-automation",
       "nested_under": "",
@@ -1417,7 +1417,7 @@
     },
     {
       "name": "maroc-hardware-dev-router",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC application adapter for the generic hardware-development skill family and MAROC asset map. Use when a request mentions MAROC, MAROC3A, QT_MUON, TOP_MAROC, 829bit, packet_250, MAROC RTL, MAROC XDC/schematic, MAROC Obsidian notes, MAROC board bring-up, MAROC PPT reporting, or MAROC reusable assets/templates/scripts/examples. For generic hardware workflows, route through hardware-dev-router first.",
       "canonical_path": "skills/maroc-hardware-dev-router",
       "nested_under": "",
@@ -1437,7 +1437,7 @@
     },
     {
       "name": "maroc-host-rtl-alignment",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for host-to-RTL alignment. Use when QT_MUON exports, register_mapping.txt, bits_829, raw_104B, packet_250, USB byte order, MAROC RTL fixtures, parser testbenches, and XSim replay must match exactly. Use host-rtl-alignment for the generic method.",
       "canonical_path": "skills/maroc-host-rtl-alignment",
       "nested_under": "",
@@ -1457,7 +1457,7 @@
     },
     {
       "name": "maroc-obsidian-md-writing",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC Obsidian Markdown writing and governance workflow. Use for creating, revising, classifying, or auditing MAROC process notes, navigation pages, architecture docs, protocol/configuration notes, simulation reports, board-debug logs, repair records, tool guides, stage summaries, and PPT companion Markdown.",
       "canonical_path": "skills/maroc-obsidian-md-writing",
       "nested_under": "",
@@ -1479,7 +1479,7 @@
     },
     {
       "name": "maroc-ppt",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "Use when creating, revising, or QA-ing MAROC project PowerPoint presentations for Chinese lab meetings or research progress reports, especially decks based on MAROC configuration-chain, FPGA/USB bring-up, ILA evidence, register behavior tests, TransmitOn/Ctest/ADC timing, read-register/probe driver work, OUT_Q/OUT_FS slow/fast shaper observation, Obsidian process notes, and technical waveform/diagram drawing. Applies the user's preferred MAROC slide structure, typography, wording discipline, evidence boundaries, template style, native PowerPoint sections, and reproducible high-quality plotting rules.",
       "canonical_path": "skills/maroc-ppt",
       "nested_under": "",
@@ -1499,7 +1499,7 @@
     },
     {
       "name": "maroc-ppt-debug-report",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC debug-problem PPT workflow. Use for presentations focused on one technical failure or bring-up blocker, including phenomenon, root cause, RTL/host/hardware fix, XSim/ILA/board evidence, remaining boundary, and next debug action.",
       "canonical_path": "skills/maroc-ppt-debug-report",
       "nested_under": "",
@@ -1521,7 +1521,7 @@
     },
     {
       "name": "maroc-ppt-group-meeting",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC group-meeting PPT workflow. Use for Chinese lab meeting reports that need a clear research-progress narrative, concise background, recent debug results, evidence screenshots, decisions needed, and follow-up plan.",
       "canonical_path": "skills/maroc-ppt-group-meeting",
       "nested_under": "",
@@ -1543,7 +1543,7 @@
     },
     {
       "name": "maroc-ppt-progress-summary",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC overall progress PPT workflow. Use for stage-summary decks covering recent work, completed verification, current status, risks, next plan, and cross-domain evidence across FPGA, host, hardware, Obsidian notes, and experiments.",
       "canonical_path": "skills/maroc-ppt-progress-summary",
       "nested_under": "",
@@ -1565,7 +1565,7 @@
     },
     {
       "name": "maroc-qt-host-development",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC-specific Qt host development workflow. Use for QT_MUON C++/Qt code when the task involves MAROC3A configuration export, DeviceConfig, MarocConfigurationManager, maroc3a_model, MarocUiParameterBinder, FpgaCommandBuilder direct commands, CyAPI UsbDeviceClient, UsbPayloadTransform, read-probe automation, MAROC host CTest targets, or host/RTL protocol alignment. For generic Qt/C++ architecture, worker threading, fake backends, CMake, or device-client patterns, use qt-cpp-host-development first.",
       "canonical_path": "skills/maroc-qt-host-development",
       "nested_under": "",
@@ -1587,7 +1587,7 @@
     },
     {
       "name": "maroc-rtl-schematic-xdc-alignment",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "MAROC adapter for RTL-schematic-XDC alignment. Use when MAROC FPGA ports, XDC constraints, schematic nets, PCB connectors, IO standards, clock pins, debug pins, and board bring-up observations must be cross-checked. Use rtl-schematic-xdc-alignment for the generic method.",
       "canonical_path": "skills/maroc-rtl-schematic-xdc-alignment",
       "nested_under": "",
@@ -1607,7 +1607,7 @@
     },
     {
       "name": "maroc-xsim-debug-handbook",
-      "category": "FPGA/RTL/EDA 与硬件",
+      "category": "MAROC 项目适配",
       "description": "总结 MAROC USB 工程里已验证的 XSim 调试方法、波形分类、Vivado Tcl/PS1/Python 脚本入口，以及首轮板上 bring-up 所需的 Vivado 工程重建、bitstream/ILA 生成、C17/i_clk 时钟链路调试、PLL/ODDR 生成 o_cy_ifclk、smoke override 策略；当用户要求调试 `tb_cy_driver_new_xsim`、`sim_parser`、`sim_sc829`、`top`，排查 C17 单端误接差分 N 端、IFCLK/PLL/BUFG/ODDR、整理波形窗口、修复 XSim 编译/路径问题、导出 `o_sc_dout` 逐bit比对，或恢复当前仓库的上板工程基础设施并把经验沉淀成手册/流程图/skill 时使用。",
       "canonical_path": "skills/maroc-xsim-debug-handbook",
       "nested_under": "",
@@ -1629,7 +1629,7 @@
     },
     {
       "name": "matlab-clean-code",
-      "category": "通用个人技能",
+      "category": "MATLAB",
       "description": "Write, refactor, review, and document MATLAB .m code with clean structure, descriptive names, concise useful comments, clear units, and modern MATLAB patterns. Use for MATLAB scripts, functions, plotting code, scientific data analysis, signal processing workflows, PSD/ASD analysis, experimental scripts, and requests that ask for elegant, readable, maintainable, or well-commented MATLAB code.",
       "canonical_path": "skills/matlab-clean-code",
       "nested_under": "",
@@ -1649,7 +1649,7 @@
     },
     {
       "name": "matlab-modernize-code",
-      "category": "通用个人技能",
+      "category": "MATLAB",
       "description": ">",
       "canonical_path": "skills/matlab-modernize-code",
       "nested_under": "",
@@ -1669,7 +1669,7 @@
     },
     {
       "name": "matlab-review-code",
-      "category": "通用个人技能",
+      "category": "MATLAB",
       "description": "Review MATLAB code for quality, performance, maintainability, and adherence to MathWorks coding standards. Uses check_matlab_code and matlab_coding_guidelines. Use when reviewing code, checking style, finding code smells, assessing quality, or preparing code for handoff or publication.",
       "canonical_path": "skills/matlab-review-code",
       "nested_under": "",
@@ -1689,7 +1689,7 @@
     },
     {
       "name": "matlab-testing",
-      "category": "通用个人技能",
+      "category": "MATLAB",
       "description": "Generate and run MATLAB unit tests using matlab.unittest and matlab.uitest. Parameterized tests, fixtures, mocking, coverage analysis, CI/CD with buildtool, app testing with gestures. Use when creating tests, writing test classes, running test suites, checking coverage, testing apps, or validating MATLAB code.",
       "canonical_path": "skills/matlab-testing",
       "nested_under": "",
@@ -1709,7 +1709,7 @@
     },
     {
       "name": "matlab-validate-function-arguments",
-      "category": "通用个人技能",
+      "category": "MATLAB",
       "description": ">",
       "canonical_path": "skills/matlab-validate-function-arguments",
       "nested_under": "",
@@ -1729,7 +1729,7 @@
     },
     {
       "name": "matlab-write-help",
-      "category": "通用个人技能",
+      "category": "MATLAB",
       "description": "Generate or improve MATLAB help text (documentation comments) for a function, class, or script file following MathWorks standards (H1 line, syntax paragraphs, See Also, 75-char lines). Read BEFORE writing MATLAB help — default patterns (Inputs:/Outputs: lists, block comments, uppercase See Also) produce non-conforming output. Use when writing, rewriting, fixing, or reviewing MATLAB help comments or function documentation.",
       "canonical_path": "skills/matlab-write-help",
       "nested_under": "",
@@ -1749,7 +1749,7 @@
     },
     {
       "name": "netlify-deploy",
-      "category": "通用个人技能",
+      "category": "云部署与 Git 工作流",
       "description": "Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys.",
       "canonical_path": "skills/netlify-deploy",
       "nested_under": "",
@@ -1815,7 +1815,7 @@
     },
     {
       "name": "openai-docs",
-      "category": "Skill/插件元管理",
+      "category": "Codex/Skill 元管理",
       "description": "Use when the user asks how to build with OpenAI products or APIs and needs up-to-date official documentation with citations, help choosing the latest model for a use case, or explicit GPT-5.4 upgrade and prompt-upgrade guidance; prioritize OpenAI docs MCP tools, use bundled references only as helper context, and restrict any fallback browsing to official OpenAI domains.",
       "canonical_path": "skills/openai-docs",
       "nested_under": "",
@@ -1895,7 +1895,7 @@
     },
     {
       "name": "playwright-interactive",
-      "category": "通用个人技能",
+      "category": "浏览器与自动化",
       "description": "Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging.",
       "canonical_path": "skills/playwright-interactive",
       "nested_under": "",
@@ -2053,7 +2053,7 @@
     },
     {
       "name": "ppt-personal-intro",
-      "category": "Skill/插件元管理",
+      "category": "Codex/Skill 元管理",
       "description": "面向个人介绍、自我介绍、嘉宾简介和作品集场景生成结构化 PPT，强调身份定位、经历主线、代表项目和可记忆结尾。",
       "canonical_path": "skills/ppt-maker/subskills/personal-intro",
       "nested_under": "ppt-maker",
@@ -2191,7 +2191,7 @@
     },
     {
       "name": "render-deploy",
-      "category": "通用个人技能",
+      "category": "云部署与 Git 工作流",
       "description": "Deploy applications to Render by analyzing codebases, generating render.yaml Blueprints, and providing Dashboard deeplinks. Use when the user wants to deploy, host, publish, or set up their application on Render's cloud platform.",
       "canonical_path": "skills/render-deploy",
       "nested_under": "",
@@ -2211,7 +2211,7 @@
     },
     {
       "name": "research-defense-ppt",
-      "category": "通用个人技能",
+      "category": "演示文稿与视觉表达",
       "description": "Structure, refine, or review scientific presentation decks and defense scripts, especially Chinese graduate research/transfer-PhD PPTs. Use when the task is to organize or optimize a research talk around a clear narrative such as background -> requirements -> scheme -> design -> testing -> optimization -> iteration, adapt explanations to mixed physics/electronics audiences, or turn technical slides into natural oral scripts.",
       "canonical_path": "skills/research-defense-ppt",
       "nested_under": "",
@@ -2299,7 +2299,7 @@
     },
     {
       "name": "screenshot",
-      "category": "通用个人技能",
+      "category": "图像与媒体",
       "description": "Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed.",
       "canonical_path": "skills/screenshot",
       "nested_under": "",
@@ -2319,7 +2319,7 @@
     },
     {
       "name": "sdg-dmm-automation",
-      "category": "Laser与硬件测试",
+      "category": "Laser/PDH 与精密测量",
       "description": "Develop, test and diagnose PyVISA/SCPI automation for SIGLENT SDG6052X and SDG6032X-E, SIGLENT SDM4065A and Keysight 34470A. Use for DC/sine sweeps, DAC simulation, Vpp/Vrms/dBm readback, load/offset safety, BUS-triggered measurement, VISA discovery and evidence-preserving shutdown.",
       "canonical_path": "skills/sdg-dmm-automation",
       "nested_under": "",
@@ -2359,7 +2359,7 @@
     },
     {
       "name": "security-best-practices",
-      "category": "通用个人技能",
+      "category": "安全与系统维护",
       "description": "Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Trigger only for supported languages (python, javascript/typescript, go). Do not trigger for general code review, debugging, or non-security tasks.",
       "canonical_path": "skills/security-best-practices",
       "nested_under": "",
@@ -2379,7 +2379,7 @@
     },
     {
       "name": "security-ownership-map",
-      "category": "通用个人技能",
+      "category": "安全与系统维护",
       "description": "Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user explicitly wants a security-oriented ownership or bus-factor analysis grounded in git history (for example: orphaned sensitive code, security maintainers, CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters). Do not trigger for general maintainer lists or non-security ownership questions.",
       "canonical_path": "skills/security-ownership-map",
       "nested_under": "",
@@ -2399,7 +2399,7 @@
     },
     {
       "name": "security-threat-model",
-      "category": "通用个人技能",
+      "category": "安全与系统维护",
       "description": "Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model. Trigger only when the user explicitly asks to threat model a codebase or path, enumerate threats/abuse paths, or perform AppSec threat modeling. Do not trigger for general architecture summaries, code review, or non-security design work.",
       "canonical_path": "skills/security-threat-model",
       "nested_under": "",
@@ -2461,7 +2461,7 @@
     },
     {
       "name": "speech",
-      "category": "通用个人技能",
+      "category": "图像与媒体",
       "description": "Use when the user asks for text-to-speech narration or voiceover, accessibility reads, audio prompts, or batch speech generation via the OpenAI Audio API; run the bundled CLI (`scripts/text_to_speech.py`) with built-in voices and require `OPENAI_API_KEY` for live calls. Custom voice creation is out of scope.",
       "canonical_path": "skills/speech",
       "nested_under": "",
@@ -2547,7 +2547,7 @@
     },
     {
       "name": "transcribe",
-      "category": "通用个人技能",
+      "category": "图像与媒体",
       "description": "Transcribe audio files to text with optional diarization and known-speaker hints. Use when a user asks to transcribe speech from audio/video, extract text from recordings, or label speakers in interviews or meetings.",
       "canonical_path": "skills/transcribe",
       "nested_under": "",
@@ -2678,7 +2678,7 @@
     },
     {
       "name": "winui-app",
-      "category": "通用个人技能",
+      "category": "软件与应用开发",
       "description": "Bootstrap, develop, and design modern WinUI 3 desktop applications with C# and the Windows App SDK using official Microsoft guidance, WinUI Gallery patterns, Windows App SDK samples, and CommunityToolkit components. Use when creating a brand new app, preparing a machine for WinUI, reviewing, refactoring, planning, troubleshooting, environment-checking, or setting up WinUI 3 XAML, controls, navigation, windowing, theming, accessibility, responsiveness, performance, deployment, or related Windows app design and development work.",
       "canonical_path": "skills/winui-app",
       "nested_under": "",
@@ -2721,7 +2721,7 @@
     },
     {
       "name": "yeet",
-      "category": "通用个人技能",
+      "category": "云部署与 Git 工作流",
       "description": "Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using the GitHub CLI (`gh`).",
       "canonical_path": "skills/yeet",
       "nested_under": "",
