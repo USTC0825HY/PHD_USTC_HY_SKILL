@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows 性能审计与优化"
+  short_description: "以证据和回滚为核心的 Windows 性能分析与分批优化"
+  default_prompt: "使用 $audit-optimize-windows-performance 审计这台 Windows 电脑并提出需批准的可回滚优化方案。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "513 CW qualification test"
+  short_description: "Audit 513 FPGA pins and cross-board control chains"
+  default_prompt: "Use $laser-cw-qualification-test-development to audit the current 513 project and trace an FPGA control or return signal through SZSD, the backplane, and a child board."

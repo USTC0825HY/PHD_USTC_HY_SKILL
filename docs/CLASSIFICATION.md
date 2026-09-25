@@ -1,34 +1,24 @@
 # Skill 分类规范
 
-分类面向“能力主体”，而不是按安装来源划分。一个 Skill 只能有一个主分类，跨领域能力
-通过标签和依赖关系表达，避免统计时重复计数。
+分类按主要功能确定，每个逻辑 Skill 只属于一个主类。跨领域任务在分类页说明组合关系。
 
-| 主分类 | 数量 | 范围 |
+| 主分类 | 数量 | 用途 |
 |---|---:|---|
-| FPGA/RTL/EDA 与硬件 | 43 | RTL、CDC、时序、Vivado、仿真、原理图、PCB、主机联调 |
-| 学术研究与论文 | 16 | 选题、文献、论文结构、审稿、科研工作流 |
-| 演示文稿与视觉表达 | 14 | PPT 生成、学术汇报、项目汇报、图形与 Visio |
-| 文档/PDF/表格办公 | 6 | Word、PDF、Excel 与通用文档产物 |
-| Laser/PDH 与精密测量 | 5 | 激光稳频、电学测试、PDH 知识与报告 |
-| 图像与媒体 | 4 | 图像生成、照片处理、媒体资产 |
-| 知识库与 Obsidian | 3 | Markdown 笔记、知识库治理 |
-| Skill/插件元管理 | 3 | Skill 创建、安装和插件组织 |
-| 浏览器与自动化 | 1 | 浏览器任务与自动化执行 |
+| [FPGA/RTL/EDA 与硬件](categories/fpga-hardware/README.md) | 25 | 处理通用 RTL、Vivado、板级连接、调试及证据闭环。 |
+| [MAROC 项目适配](categories/maroc/README.md) | 19 | 把通用硬件与文档流程应用到 MAROC 工程。 |
+| [Laser/PDH 与精密测量](categories/laser-pdh/README.md) | 11 | 覆盖 Laser/PDH 电测、CW 板卡、仪器协同和操作报告。 |
+| [学术研究与论文](categories/research/README.md) | 17 | 支持选题、文献、研究设计、论文结构和投稿检查。 |
+| [演示文稿与视觉表达](categories/presentations/README.md) | 15 | 制作与检查学术汇报、项目演示和可编辑图示。 |
+| [文档/PDF/表格办公](categories/documents/README.md) | 7 | 制作、检查和整理 Word、PDF、表格及办公资料。 |
+| [图像与媒体](categories/media/README.md) | 7 | 处理图像、截图、照片、语音、转写及媒体产物。 |
+| [知识库与 Obsidian](categories/knowledge-base/README.md) | 3 | 维护笔记结构、Obsidian 内容与独立知识工具。 |
+| [Codex/Skill 元管理](categories/codex-skill-management/README.md) | 4 | 管理 Codex 运行状态、技能创建及相关辅助工具。 |
+| [浏览器与自动化](categories/browser-automation/README.md) | 2 | 通过可观察的浏览器会话执行或调试页面任务。 |
+| [MATLAB](categories/matlab/README.md) | 6 | 编写、审查、测试和迁移 MATLAB 代码。 |
+| [软件与应用开发](categories/app-development/README.md) | 4 | 实现 ASP.NET、ChatGPT App、网页游戏和 WinUI 应用。 |
+| [云部署与 Git 工作流](categories/cloud-git/README.md) | 6 | 处理站点部署、GitHub 审查与 CI 故障。 |
+| [安全与系统维护](categories/security-system/README.md) | 4 | 分析软件安全风险和 Windows 系统性能。 |
 
-## 分层模型
+合计 **130 个逻辑 Skill**、**123 个顶层目录**。分类与数量以 `registry/skills.json` 为准。
 
-同一分类内部按以下四层维护：
-
-1. **通用能力层**：不依赖具体项目，例如 `fpga-rtl-code-review`。
-2. **工具链层**：围绕 Vivado、Qt、OrCAD 等工具提供稳定流程。
-3. **项目适配层**：例如 `maroc-*`，只保存项目特有约束并复用通用能力。
-4. **交付层**：把分析结果转成 PPT、报告、图表或知识库条目。
-
-项目适配层应保持“薄”：如果与通用 Skill 存在大段相同正文，应把共同内容上移，
-适配层只留下触发条件、项目路径约定、证据源和交付格式。
-
-## 嵌套 Skill
-
-`ppt-maker` 的 7 个场景子 Skill 保持在 `skills/ppt-maker/subskills/` 下。它们在注册表中
-仍作为独立逻辑 Skill 计数，但不额外复制为顶层目录。这样既保留原始路由关系，也避免
-父子目录出现两份漂移副本。
+通用 FPGA／硬件能力与 MAROC 项目适配分开；Laser/PDH 分类包含 CW 上位机及仪器自动化。`ppt-maker` 的 7 个子 Skill 保留原路径，按各自用途分类，随父技能装载。

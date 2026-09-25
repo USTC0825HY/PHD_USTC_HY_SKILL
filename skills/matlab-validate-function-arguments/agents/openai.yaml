@@ -1,0 +1,4 @@
+interface:
+  display_name: "matlab-validate-function-arguments"
+  short_description: "matlab-validate-function-arguments skill"
+  default_prompt: "Use $matlab-validate-function-arguments to help with this task."

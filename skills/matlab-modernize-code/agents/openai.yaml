@@ -1,0 +1,4 @@
+interface:
+  display_name: "matlab-modernize-code"
+  short_description: "matlab-modernize-code skill"
+  default_prompt: "Use $matlab-modernize-code to help with this task."
