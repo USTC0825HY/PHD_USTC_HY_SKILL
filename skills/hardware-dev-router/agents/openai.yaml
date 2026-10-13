@@ -1,4 +1,4 @@
 interface:
   display_name: "Hardware Dev Router"
-  short_description: "Help with Hardware Dev Router tasks"
-  default_prompt: "Use $hardware-dev-router to handle this hardware dev router task."
+  short_description: "Route cross-domain hardware work and evidence boundaries"
+  default_prompt: "Use $hardware-dev-router to select focused skills for this cross-domain hardware task and identify the evidence needed."

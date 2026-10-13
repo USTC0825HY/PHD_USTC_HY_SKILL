@@ -1,84 +1,26 @@
 ---
 name: idea-generation
-description: Generate novel research ideas with iterative refinement and novelty checking against literature. Score ideas on Interestingness, Feasibility, and Novelty. Use when brainstorming research directions or validating idea novelty.
+description: Develop research questions, hypotheses and feasible experiment proposals from supplied evidence and constraints. Use for research brainstorming and refinement; distinguish unverified ideas from literature-supported differences, and use novelty-assessment for a focused overlap check when available.
 metadata:
   argument-hint: "[research-area]"
 ---
 
 # Idea Generation
 
-Generate and refine novel research ideas with literature-backed novelty assessment.
-
-## Input
-
-- `$0` — Research area, task description, or existing codebase context
-- `$1` — Optional: additional context (e.g., "for NeurIPS", constraints)
-
-## Scripts
-
-### Novelty check against Semantic Scholar
-```bash
-python ~/.claude/skills/idea-generation/scripts/novelty_check.py \
-  --idea "Adaptive attention head pruning via gradient-guided importance" \
-  --max-rounds 5
-```
-
-Performs iterative literature search to assess if an idea is novel.
-
-## References
-
-- Ideation prompts (generation, reflection, novelty): `~/.claude/skills/idea-generation/references/ideation-prompts.md`
+Turn an observed problem into candidate questions, testable hypotheses and a feasible next experiment. Keep the user's scientific domain and available resources central; a generic ML example is not the project specification.
 
 ## Workflow
 
-### Step 1: Generate Ideas
-Given a research area and optional code/paper context:
-1. Generate 3-5 diverse research ideas
-2. For each idea, provide: Name, Title, Experiment plan, and ratings
-3. Use the ideation prompt templates from references
+1. Establish the problem, known evidence, current limitations, available data/equipment and intended decision. Use known context before asking for information. Distinguish a supplied observation from a proposed explanation.
+2. Produce as many distinct candidates as the task needs. For each, state the question, proposed mechanism, what could disprove it, a comparison/baseline and the smallest useful experiment.
+3. Refine candidates using feasibility and evidence gaps. Do not require a fixed reflection count, invent measurements, assume extra compute/equipment, or promise a top-venue outcome.
+4. For candidates being recommended for commitment, inspect relevant literature with actually available tools. Search exact methods, synonyms, alternatives and recent work, then verify primary sources. If `novelty-assessment` is available, use it for a focused comparison; do not recursively request another generation cycle unless the user needs alternatives.
+5. Recommend the candidate(s) whose next experiment best resolves the user's question. State uncertainty and resource needs. Brainstorming may remain exploratory when search is unavailable; label it as unverified rather than presenting it as established novelty.
 
-### Step 2: Iterative Refinement (up to 5 rounds per idea)
-For each idea:
-1. Critically evaluate quality, novelty, and feasibility
-2. Refine the idea while preserving its core spirit
-3. Stop when converged ("I am done") or max rounds reached
+## Evidence and optional helper
 
-### Step 3: Novelty Assessment
-For each promising idea:
-1. Run `novelty_check.py` or manually search Semantic Scholar / arXiv
-2. Use the novelty checking prompts from references
-3. Multi-round search: generate queries, review results, decide
-4. Binary decision: Novel / Not Novel with justification
+The standard-library [scripts/novelty_check.py](scripts/novelty_check.py) collects Semantic Scholar candidates. It does **not** decide novelty, read full papers or establish similarity from citations. It is optional; prefer current search tools when they better fit the task.
 
-### Step 4: Rank and Select
-- Score each idea on three dimensions (1-10): Interestingness, Feasibility, Novelty
-- Be cautious and realistic on ratings
-- Select the top idea(s) for development
+Before using the helper or consuming its JSON, read [references/search-evidence.md](references/search-evidence.md). Resolve paths from this skill's actual installed directory. No other provider's home directory or absent skill is a dependency. A configured API key may be used but must never be printed or requested in chat. Do not install services simply to satisfy a template.
 
-## Output Format
-
-```json
-{
-  "Name": "adaptive_attention_pruning",
-  "Title": "Adaptive Attention Head Pruning via Gradient-Guided Importance Scoring",
-  "Experiment": "Detailed implementation plan...",
-  "Interestingness": 8,
-  "Feasibility": 7,
-  "Novelty": 9,
-  "novel": true,
-  "most_similar_papers": ["paper1", "paper2"]
-}
-```
-
-## Rules
-
-- Ideas must be feasible with available resources (no requiring new datasets or massive compute)
-- Do not overfit ideas to a specific dataset or model — aim for wider significance
-- Be a harsh critic for novelty — ensure sufficient contribution for a conference paper
-- Each idea should stem from a simple, elegant question or hypothesis
-- Always check novelty before committing to an idea
-
-## Related Skills
-- Upstream: [literature-search](../literature-search/), [deep-research](../deep-research/)
-- Downstream: [research-planning](../research-planning/), [experiment-design](../experiment-design/)
-- See also: [novelty-assessment](../novelty-assessment/)
+Read [references/ideation-prompts.md](references/ideation-prompts.md) for comparison prompts or structured proposals. Default to clear prose suitable for the user. If ratings are useful, label them as qualitative judgments with reasons; `Novelty` is `null` when evidence cannot support it. Use evidence states `overlap_found`, `potential_difference` and `insufficient_evidence`, not a mandatory novelty boolean.

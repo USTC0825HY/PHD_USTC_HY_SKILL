@@ -6,6 +6,8 @@ Use this reference for a final editorial pass, de-AI cleanup, conclusion synchro
 
 - Treat final review as a surgical revision. Preserve the source, level-1 chapter structure, measured values, tables, formulas, images, styles, and conclusion-affecting limitations.
 - Create a separate output unless replacement is explicitly authorized. Record the source path, SHA-256, size, modification time, and Word lock state.
+- Use the latest user-edited DOCX as the base. Do not return to an older generated copy after the user has changed wording or layout.
+- Maintain an authorized-change list before editing. Compare the output against the source and reject any unrelated content or formatting change, including table widths, fills, font colors, row heights, page breaks, and figure placement.
 - Do not invent an instrument model, reference plane, board-end voltage, termination, cable loss, loaded control word, calibration state, or unrecorded test condition.
 - Do not convert `未测试` to `暂不能判定`, or a numerical comparison to `满足`, without the required coverage and measurement-chain information.
 
@@ -36,7 +38,7 @@ Keep most paragraphs to two through four sentences. Replace abstract audit langu
 
 - When a table already lists every channel value, state only the range, maximum, minimum, channel spread, failed points, anomalies, and effect on the conclusion.
 - Compress repeated channel paragraphs into a horizontal comparison. Keep a per-channel sentence only for a channel-specific anomaly or exclusion.
-- After a figure, state the most important numerical result, the anomaly, and its effect on the conclusion. Do not repeat the legend or all table values.
+- In the result explanation before subsection-end figures, state the most important numerical result, the anomaly, and its effect on the conclusion. Do not repeat the legend or all table values.
 - Remove broad references such as `见表 9～表 13 及图 4～图 6`. Cite only an adjacent figure or table when the reference helps the reader.
 - Make each report self-contained. Replace `具体流程同另一份报告` with the minimum complete connection, acquisition, processing, and conversion method.
 
@@ -72,7 +74,7 @@ Apply these rules:
 - Keep formal conclusion cells limited to the four formal states, with the `无独立指标` exception above. Put anomaly details in `备注`, not in the conclusion cell.
 - Do not use `—` for an unknown conclusion. Use `未记录`, `无独立指标`, or the appropriate formal state in the correct field.
 - Keep units in headers where practical. Avoid AI/review headings such as `核心结果`, `正式状态`, or `证据`; prefer `测试结果`, `数据条件`, `结论`, and `备注`.
-- Keep figure/table numbering continuous. Remove stale TOC entries and wrong broad cross-references, then refresh fields on the output copy.
+- Check figure/table numbering and references in scope. Preserve existing numbering during local edits; a full renumber or TOC rebuild requires that scope.
 - Preserve native Office Math, drawings, embedded objects, and existing images. Do not flatten them during text cleanup.
 
 ## Render And Delivery Check

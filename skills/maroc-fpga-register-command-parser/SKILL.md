@@ -19,6 +19,6 @@ Use `maroc-host-rtl-alignment` for Qt export replay and `maroc-fpga-testbench-si
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC register, command, packet, and fixture routing.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` and `source-refs/maroc-qt-host-assets.md` to cross-locate parser RTL, fixture files, Qt exporters, and payload transforms.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/host_rtl_alignment_table.md` when documenting field-to-packet-to-parser alignment.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC register, command, packet, and fixture routing.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` and `source-refs/maroc-qt-host-assets.md` to cross-locate parser RTL, fixture files, Qt exporters, and payload transforms.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/host_rtl_alignment_table.md` when documenting field-to-packet-to-parser alignment.

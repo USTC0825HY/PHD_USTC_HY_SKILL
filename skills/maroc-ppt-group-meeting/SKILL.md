@@ -20,6 +20,6 @@ Prefer readable projector pages over dense debug logs. Use `$maroc-ppt` for styl
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-ppt-assets.md` to find group-meeting decks, reusable build scripts, previews, and QA reports.
-- Start new group-meeting decks from `C:/Users/Administrator/.codex/hardware-assets/templates/ppt/MAROC科研汇报模板_20260519.pptx` when no newer project template is specified.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/ppt_md_companion_template.md` when pairing a deck with an Obsidian companion note.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-ppt-assets.md` to find group-meeting decks, reusable build scripts, previews, and QA reports.
+- Start new group-meeting decks from `<CODEX_HOME>/hardware-assets/templates/ppt/MAROC科研汇报模板_20260519.pptx` when no newer project template is specified.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/ppt_md_companion_template.md` when pairing a deck with an Obsidian companion note.

@@ -12,9 +12,9 @@ Use `assets/超稳激光电控箱测试报告标准模板.docx` as the style sou
 6. The visible quick styles are `一级标题`, `二级标题`, and `三级标题`. They use Microsoft YaHei at 15/12/12 pt, are bold, have Word outline levels 1/2/3, use the spacing in `style_contract.py`, and enable pagination protection.
 7. All three styles share the automatic `1.`/`1.1`/`1.1.1` list at 510/226 twip left/hanging indents.
 8. Ordinary numbered lists use an independent definition and cannot advance section numbering. When a legacy file reused the heading definition, preserve the visible list labels while detaching it from the section list.
-9. Table and figure captions use `图表题注` plus `SEQ 表` or `SEQ 图` fields.
+9. Table and figure captions use `图表题注` plus `SEQ 表` or `SEQ 图` fields. Figure captions display `图{SEQ 图}` with no intervening space; evidence IDs and source filenames remain in the manifest/traceability appendix.
 10. Normal body text, captions, tables, images, and report information use the dedicated styles in `report-standard.md`.
-11. Tables use `报告表格样式`, `DDEBF7` header fill, white body fill, and `808080` 0.5 pt single borders. Cells use 85 twip vertical and 102 twip horizontal margins. Only formal values in a `结论` column receive the four restrained status fills. Cell paragraphs use `表格表头` or `表格文字`, have explicit zero point and character-unit indents, center the table object and all content, fit within the body width, repeat the header row, and prevent data-row splitting.
+11. Tables use `报告表格样式`, dark-blue `1F4E79` header fill, bold white `FFFFFF` header text, white body fill, and `808080` 0.5 pt single borders. Cells use 85 twip vertical and 102 twip horizontal margins. Only formal values in a `结论` column receive the four restrained status fills. Cell paragraphs use `表格表头` or `表格文字`, have explicit zero point and character-unit indents, center the table object and all content, fit within the body width, repeat the header row, and prevent data-row splitting.
 12. Image-anchor paragraphs use `图片`, have zero point and character-unit paragraph indents, and remain centered whether the image is in body text or a layout table.
 13. Formula paragraphs contain Pandoc-generated professional OMML from LaTeX; the template ASD formula contains a real subscript and radical structure.
 

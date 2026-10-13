@@ -1,5 +1,6 @@
 interface:
-  display_name: "PDF Skill"
-  short_description: "Create, edit, and review PDFs"
+  display_name: "PDF Workspace Adapter"
+  short_description: "Apply project paths and PDF runtime or fallback routing"
   icon_large: "./assets/pdf.png"
-  default_prompt: "Use $pdf to create, edit, or review this PDF and summarize the key output or changes."
+  default_prompt: "Use $pdf to handle this PDF with the project output rules and the\
+    \ available PDF runtime."

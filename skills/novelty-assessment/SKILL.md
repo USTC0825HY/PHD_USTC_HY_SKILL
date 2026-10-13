@@ -1,94 +1,35 @@
 ---
 name: novelty-assessment
-description: Assess research idea novelty through systematic literature search. Multi-round search-evaluate loops with harsh critic persona. Binary novel/not-novel decision with justification. Use before committing to a research direction.
+description: Assess a research idea against traceable literature evidence, identify substantive overlap and possible differences, and report coverage limits. Use for novelty checks before selecting or developing a research direction; this is not a patentability opinion or automatic novelty verdict.
 metadata:
   argument-hint: "[idea]"
 ---
 
 # Novelty Assessment
 
-Rigorously assess whether a research idea is novel through systematic literature search.
-
-## Input
-
-- `$0` — Research idea description, title, or JSON file
-
-## Scripts
-
-### Automated novelty check
-```bash
-python ~/.claude/skills/idea-generation/scripts/novelty_check.py \
-  --idea "Your research idea description" \
-  --max-rounds 10 --output novelty_report.json
-```
-
-### Literature search
-```bash
-python ~/.claude/skills/deep-research/scripts/search_semantic_scholar.py \
-  --query "relevant search query" --max-results 10
-```
-
-## References
-
-- Assessment prompts and criteria: `~/.claude/skills/novelty-assessment/references/assessment-prompts.md`
+Establish what the available literature supports about the proposed contribution. Separate similarity in topic from overlap in the actual claim, method, assumptions and evaluation.
 
 ## Workflow
 
-### Step 1: Understand the Idea
-- Identify the core contribution
-- List the key technical components
-- Determine the research area and subfield
+1. State the proposed claim and its scope; separate supplied facts, assumptions and the change being proposed. Respect the user's research area, resources and requested depth.
+2. Discover search/browsing tools actually available in this session. Search the specific method, synonyms, alternative solutions to the same problem and relevant recent work. Use the requested date range; a date filter cannot replace foundational work. Iterate to resolve material gaps, not to reach a fixed round or paper count.
+3. Open primary papers or official publication pages. Record whether evidence comes from metadata, an abstract or the relevant full-text sections. Do not present snippets as full-paper review. Verify titles, dates and identifiers from the source.
+4. Compare the nearest relevant works claim by claim: what overlaps, what differs, and what evidence would test the difference. Citation counts are not relevance scores. Prioritize papers by the contribution under examination.
+5. Report one of the evidence states below, with brief reasons, supporting sources, limitations and a next verification step. Keep factual overlap separate from contribution value or publication prospects.
 
-### Step 2: Multi-Round Literature Search (up to 10 rounds)
-For each round:
-1. Generate a targeted search query
-2. Search Semantic Scholar / arXiv / OpenAlex
-3. Review top-10 results with abstracts
-4. Assess overlap with the idea
-5. Decide: need more searching, or ready to decide
+| assessment | Meaning |
+|---|---|
+| overlap_found | Read evidence shows substantive overlap with the claimed contribution; identify the overlap and any residual difference. |
+| potential_difference | A specific difference appears plausible within the searched/read scope; it still needs verification. |
+| insufficient_evidence | Search or reading is missing, failed, too limited or inconclusive. |
 
-### Step 3: Make Decision
-- **Novel**: After sufficient searching, no paper significantly overlaps
-- **Not Novel**: Found a paper that significantly overlaps
+No matching result does not prove novelty. Do not infer a publishable contribution from a score or assume a result is new because it combines familiar components.
 
-### Step 4: Position the Idea
-If novel, identify:
-- Most similar existing papers (for Related Work)
-- How the idea differs from each
-- The specific gap this idea fills
+## Evidence and tools
 
-## Harsh Critic Persona
+- Keep a compact query/source/time record, stable paper identifiers or URLs, reading depth, comparison and unsearched areas. Add more detail when the decision depends on it; no fixed output template is required.
+- If an API helper is useful, locate the **actual available** `idea-generation` skill and its `scripts/novelty_check.py`; read its `references/search-evidence.md` before use. Do not guess another installation root or require that skill to exist.
+- The helper only collects candidates. Inspect `search_status`, per-query failures and coverage limitations before using its output. Its `assessment` stays `insufficient_evidence` until a separate evidence-based review is performed.
+- If online tools are unavailable or prohibited, work only from supplied/local documents and label the scope and missing verification. Do not claim a live search, install a search service or demand an API key as a prerequisite to useful work.
 
-```
-Be a harsh critic for novelty. Ensure there is a sufficient contribution
-for a new conference or workshop paper. A trivial extension of existing
-work is NOT novel. The idea must offer a meaningfully different approach,
-formulation, or insight.
-```
-
-## Output Format
-
-```json
-{
-  "decision": "novel" | "not_novel",
-  "confidence": "high" | "medium" | "low",
-  "justification": "After searching X rounds...",
-  "most_similar_papers": [
-    {"title": "...", "year": 2024, "overlap": "..."}
-  ],
-  "differentiation": "Our idea differs because..."
-}
-```
-
-## Rules
-
-- Minimum 3 search rounds before declaring novel
-- Try to recall exact paper names for targeted queries
-- A paper idea is NOT novel if it's a trivial extension
-- Consider both methodology novelty AND application novelty
-- Check for concurrent/recent arXiv submissions
-
-## Related Skills
-- Upstream: [literature-search](../literature-search/), [deep-research](../deep-research/)
-- Downstream: [idea-generation](../idea-generation/), [research-planning](../research-planning/)
-- See also: [related-work-writing](../related-work-writing/)
+Read [references/assessment-prompts.md](references/assessment-prompts.md) for a detailed comparison or structured output. Use `idea-generation` only when new or revised ideas are requested and the skill is available; do not recursively bounce between the two skills.

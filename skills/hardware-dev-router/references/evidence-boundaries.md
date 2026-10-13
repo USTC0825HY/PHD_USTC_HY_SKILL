@@ -15,7 +15,7 @@ Use these boundaries whenever a task makes a technical claim.
 
 ## Required Claim Language
 
-- Configuration-chain success requires host intent, transport, parser/bridge, serializer/register write, and pin/internal-state evidence.
+- Configuration-chain success follows the actual transport: packet paths need framing/parser/register evidence; VIO/JTAG paths need the Tcl/probe contract, matching BIT/LTX and internal readback. Neither proves downstream pins or analog output without the corresponding evidence.
 - Acquisition or readout success requires trigger/control, capture/readout, framing, transport, and host-side receive evidence.
 - Analog claims require oscilloscope or ADC/readout evidence tied to the same configuration and test condition.
 - Constraint/schematic alignment requires RTL port, constraint pin, schematic net, board connector/component, voltage standard, and clock/timing role.

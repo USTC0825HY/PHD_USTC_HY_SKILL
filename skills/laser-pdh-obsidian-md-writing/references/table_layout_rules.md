@@ -63,4 +63,4 @@
 
 ## CSS 配合
 
-`C:/01_obsidian/ustc_hy/.obsidian/snippets/laser-pdh-study.css` 应让 `.laser-pdh-note table` 支持横向滚动，单元格正常换行，代码、路径、网络名不被强制拆开。修改表格排版后运行审计脚本，查看 `TABLE_*` 计数和原有 CSS/截图/Mermaid/LaTeX 检查。
+`<obsidian_vault_root>/.obsidian/snippets/laser-pdh-study.css` 应让 `.laser-pdh-note table` 支持横向滚动，单元格正常换行，代码、路径、网络名不被强制拆开。修改表格排版后运行审计脚本，查看 `TABLE_*` 计数和原有 CSS/截图/Mermaid/LaTeX 检查。

@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "installed_files_in_git_index": 738,
+  "expected": 738,
+  "missing": [],
+  "note": "All current non-cache source files included; Git text newline normalization remains active."
+}

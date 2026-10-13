@@ -1,4 +1,4 @@
 interface:
-  display_name: "Rtl Schematic Xdc Alignment"
-  short_description: "Help with Rtl Schematic Xdc Alignment tasks"
-  default_prompt: "Use $rtl-schematic-xdc-alignment to handle this rtl schematic xdc alignment task."
+  display_name: "RTL XDC Schematic Alignment"
+  short_description: "Audit FPGA ports, XDC pins, PST nets, and control chains"
+  default_prompt: "Use $rtl-schematic-xdc-alignment to audit an FPGA port from RTL and XDC through the carrier-board PST and any documented backplane path."

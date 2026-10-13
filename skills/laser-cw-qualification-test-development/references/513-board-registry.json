@@ -1,0 +1,141 @@
+{
+  "schema": "fpga-board-signal-chain-closure/board-registry-v2",
+  "boards": [
+    {"id": "SZSD", "name": "数字锁定主控板", "role": "controller", "selected_evidence_set": "szsd-public-dsn-pst"},
+    {"id": "BASE", "name": "超稳底板", "role": "interconnect", "selected_evidence_set": "base-public-complete"},
+    {"id": "POWER", "name": "电源模块板", "role": "power_source", "selected_evidence_set": "power-public-complete"},
+    {"id": "YCQD", "name": "延迟驱动板", "role": "function", "selected_evidence_set": "ycqd-public-complete"},
+    {"id": "PZ", "name": "频综板", "role": "frequency_synthesis", "selected_evidence_set": "pz-review-pdf"},
+    {"id": "LASER_DRIVE", "name": "激光驱动板", "role": "laser_drive", "selected_evidence_set": null},
+    {"id": "TEMP_CONTROL", "name": "温控板", "role": "temperature_control", "selected_evidence_set": "temp-review-pdf"},
+    {"id": "LOCK_DRIVE", "name": "超稳锁定驱动板", "role": "lock_drive", "selected_evidence_set": "lock-drive-altium"},
+    {"id": "ERROR_DETECT", "name": "误差检测板", "role": "error_detection", "selected_evidence_set": "error-detect-dsn"},
+    {"id": "OTHER_LOADS", "name": "其他电源或信号负载", "role": "other", "selected_evidence_set": null}
+  ],
+  "evidence_sets": [
+    {
+      "id": "szsd-public-dsn-pst",
+      "board_id": "SZSD",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/1.SZSD/SZSD-202401770C-JXG20260516(公开)",
+      "pst_dir": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/1.SZSD/SZSD-202401770C-JXG20260516(公开)/allegro_wang",
+      "dsn": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/1.SZSD/SZSD-202401770C-JXG20260516(公开)/202401770C-JXG.DSN",
+      "selected": true,
+      "source_class": "public-primary"
+    },
+    {
+      "id": "szsd-cw-public-pdf-pst",
+      "board_id": "SZSD",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/CW-202401770C-J-XG（公开）",
+      "pst_dir": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/CW-202401770C-J-XG（公开）/allergo_513",
+      "pdf": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/CW-202401770C-J-XG（公开）/CW-202401770C-J-XG.pdf",
+      "selected": false,
+      "source_class": "public-alternative"
+    },
+    {
+      "id": "base-public-complete",
+      "board_id": "BASE",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/7.超稳底板定义（公开）/底板-202500203-J-XK（公开）",
+      "pst_dir": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/7.超稳底板定义（公开）/底板-202500203-J-XK（公开）/allegro",
+      "dsn": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/7.超稳底板定义（公开）/底板-202500203-J-XK（公开）/202500203-J-XK.DSN",
+      "pdf": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/7.超稳底板定义（公开）/底板-202500203-J-XK（公开）/底板.pdf",
+      "selected": true,
+      "source_class": "public-primary"
+    },
+    {
+      "id": "power-public-complete",
+      "board_id": "POWER",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/5.电源模块2 202401770C-JXB（公开）",
+      "pst_dir": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/5.电源模块2 202401770C-JXB（公开）/allegro",
+      "dsn": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/5.电源模块2 202401770C-JXB（公开）/202401770C-JXB_260420.DSN",
+      "pdf": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/5.电源模块2 202401770C-JXB（公开）/202401770C-JXB_260420.pdf",
+      "selected": true,
+      "source_class": "public-primary"
+    },
+    {
+      "id": "ycqd-public-complete",
+      "board_id": "YCQD",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/2.YCQD/延迟驱动  最终PCB(公开)",
+      "pst_dir": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/2.YCQD/延迟驱动  最终PCB(公开)/allegro",
+      "dsn": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/2.YCQD/延迟驱动  最终PCB(公开)/202401770CXF.DSN",
+      "pdf": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/2.YCQD/延迟驱动  最终PCB(公开)/延迟驱动.pdf",
+      "selected": true,
+      "source_class": "public-primary"
+    },
+    {
+      "id": "ycqd-internal-complete",
+      "board_id": "YCQD",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/超稳激光电控箱延迟数字驱动板鉴定件图纸(内部) (1)",
+      "pst_dir": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/超稳激光电控箱延迟数字驱动板鉴定件图纸(内部) (1)/allergo",
+      "dsn": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/超稳激光电控箱延迟数字驱动板鉴定件图纸(内部) (1)/202401770CXF.DSN",
+      "selected": false,
+      "source_class": "internal-alternative"
+    },
+    {
+      "id": "pz-review-pdf",
+      "board_id": "PZ",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/3.频综板PCB评审文件（公开）/PCB评审文件（公开）",
+      "pdf": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/3.频综板PCB评审文件（公开）/PCB评审文件（公开）/光疏频综板鉴定件XA板明细表.pdf",
+      "pcbdoc": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/3.频综板PCB评审文件（公开）/PCB评审文件（公开）/XA板鉴定件V3.PcbDoc",
+      "selected": true,
+      "source_class": "public-review-only"
+    },
+    {
+      "id": "temp-review-pdf",
+      "board_id": "TEMP_CONTROL",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/6.温控板材料（公开）",
+      "pdf": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/6.温控板材料（公开）/温控板恒流源功率输入口增加假负载评审证明书(公开).pdf",
+      "selected": true,
+      "source_class": "public-review-only"
+    },
+    {
+      "id": "lock-drive-altium",
+      "board_id": "LOCK_DRIVE",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/4.超稳锁定驱动PCB评审（公开）",
+      "schdoc": [
+        "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/4.超稳锁定驱动PCB评审（公开）/功放-1.SchDoc",
+        "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/4.超稳锁定驱动PCB评审（公开）/功放-2.SchDoc"
+      ],
+      "pcbdoc": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/4.超稳锁定驱动PCB评审（公开）/202401770-6RFXB-XG.PcbDoc",
+      "selected": true,
+      "source_class": "public-altium-only"
+    },
+    {
+      "id": "error-detect-dsn",
+      "board_id": "ERROR_DETECT",
+      "root": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/8.误差检测板/误差检测板投产",
+      "dsn": "F:/01_Laser/0_20260727_513test/04_共用硬件设计资料/超稳原理图pcb_王老师/8.误差检测板/误差检测板投产/WCJC_ZDY_260212_V3.6.dsn",
+      "selected": true,
+      "source_class": "dsn-only"
+    }
+  ],
+  "edges": [
+    {"id": "SZSD_BASE_CONTROL", "from": "SZSD", "to": "BASE", "type": "fpga_control", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_POWER_CONTROL", "from": "BASE", "to": "POWER", "type": "fpga_control", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_YCQD_CONTROL", "from": "BASE", "to": "YCQD", "type": "fpga_control", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_PZ_CONTROL", "from": "BASE", "to": "PZ", "type": "fpga_control", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "YCQD_BASE_SIGNAL", "from": "YCQD", "to": "BASE", "type": "board_signal", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_PZ_SIGNAL", "from": "BASE", "to": "PZ", "type": "board_signal", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "POWER_BASE_RAIL", "from": "POWER", "to": "BASE", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_PZ_RAIL", "from": "BASE", "to": "PZ", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_LASER_RAIL", "from": "BASE", "to": "LASER_DRIVE", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_TEMP_RAIL", "from": "BASE", "to": "TEMP_CONTROL", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_LOCK_RAIL", "from": "BASE", "to": "LOCK_DRIVE", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_ERROR_RAIL", "from": "BASE", "to": "ERROR_DETECT", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"},
+    {"id": "BASE_OTHER_RAIL", "from": "BASE", "to": "OTHER_LOADS", "type": "power_rail", "connector_mapping_evidence": [], "status": "跨板待确认"}
+  ],
+  "chains": [
+    {"id": "SZSD_BASE_POWER", "kind": "fpga_control", "priority": "critical", "path": ["SZSD", "BASE", "POWER"]},
+    {"id": "SZSD_BASE_YCQD", "kind": "fpga_control", "priority": "critical", "path": ["SZSD", "BASE", "YCQD"]},
+    {"id": "SZSD_BASE_PZ", "kind": "fpga_control", "priority": "critical", "path": ["SZSD", "BASE", "PZ"]},
+    {"id": "POWER_BASE_PZ", "kind": "power_rail", "priority": "critical", "path": ["POWER", "BASE", "PZ"]},
+    {"id": "POWER_BASE_LASER", "kind": "power_rail", "priority": "critical", "path": ["POWER", "BASE", "LASER_DRIVE"]},
+    {"id": "POWER_BASE_TEMP", "kind": "power_rail", "priority": "critical", "path": ["POWER", "BASE", "TEMP_CONTROL"]},
+    {"id": "POWER_BASE_LOCK", "kind": "power_rail", "priority": "critical", "path": ["POWER", "BASE", "LOCK_DRIVE"]},
+    {"id": "POWER_BASE_ERROR", "kind": "power_rail", "priority": "critical", "path": ["POWER", "BASE", "ERROR_DETECT"]},
+    {"id": "POWER_BASE_OTHER", "kind": "power_rail", "priority": "high", "path": ["POWER", "BASE", "OTHER_LOADS"]},
+    {"id": "YCQD_BASE_PZ", "kind": "board_signal", "priority": "critical", "path": ["YCQD", "BASE", "PZ"]}
+  ],
+  "conflicts": [],
+  "unclosed_points": [],
+  "physical_checks": []
+}

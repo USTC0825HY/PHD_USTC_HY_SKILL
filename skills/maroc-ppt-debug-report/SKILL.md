@@ -22,6 +22,6 @@ Use `$maroc-ppt` for visual style and QA. Use `maroc-evidence-ppt-sync` before w
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-ppt-assets.md` to find existing debug decks, build scripts, previews, and QA reports.
-- Start new MAROC debug-report decks from `C:/Users/Administrator/.codex/hardware-assets/templates/ppt/MAROC科研汇报模板_20260519.pptx` when no newer project template is specified.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/claim_table_template.md` before turning debug evidence into slide conclusions.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-ppt-assets.md` to find existing debug decks, build scripts, previews, and QA reports.
+- Start new MAROC debug-report decks from `<CODEX_HOME>/hardware-assets/templates/ppt/MAROC科研汇报模板_20260519.pptx` when no newer project template is specified.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/claim_table_template.md` before turning debug evidence into slide conclusions.

@@ -3,12 +3,21 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 
-REFERENCE_DOCX = (
-    r"C:\01_obsidian\ustc_hy\01_科研主系统\04_实验测试与证据"
-    r"\03_超稳激光电控箱指标测试"
-    r"\LASER 测试报告\202607\01_正式报告\00_参考"
-    r"\电信件1 1397nm超稳激光PDH数字锁定环路分析20260710.docx"
+from _portable_profile import profile_path
+
+
+REFERENCE_DOCX = str(
+    profile_path("obsidian_vault_root", Path.home() / "Obsidian")
+    / "01_科研主系统"
+    / "04_实验测试与证据"
+    / "03_超稳激光电控箱指标测试"
+    / "LASER 测试报告"
+    / "202607"
+    / "01_正式报告"
+    / "00_参考"
+    / "电信件1 1397nm超稳激光PDH数字锁定环路分析20260710.docx"
 )
 
 BODY_STYLE = {
@@ -50,7 +59,8 @@ PAGE_STYLE = {
 
 TABLE_STYLE = {
     "name": "报告表格样式",
-    "header_fill": "DDEBF7",
+    "header_fill": "1F4E79",
+    "header_font_color": "FFFFFF",
     "body_fill": "FFFFFF",
     "border_color": "808080",
     "border_size_eighth_pt": "4",

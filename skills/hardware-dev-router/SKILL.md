@@ -1,44 +1,29 @@
 ---
 name: hardware-dev-router
-description: "Generic hardware-development skill router, evidence policy, and reusable asset entrypoint. Use when a request spans FPGA RTL, simulation, ILA/on-chip debug, CDC/reset/timing, Vivado Tcl, register maps, host software, schematic/XDC alignment, datasheet review, PCB bring-up, lab evidence, Markdown notes, PPT/reporting, reusable templates, source examples, scripts, or asset selection. MAROC is only one project example."
+description: "Route cross-domain FPGA and hardware tasks to focused engineering skills and apply shared evidence boundaries. Use when work crosses RTL, board connectivity, host/instrument control or measured-evidence reporting, or when the appropriate specialist is unclear."
 ---
 
 # Hardware Development Router
 
-## Start Here
+## Select the work, not the whole chain
 
-1. Classify the request with `references/routing-table.md`.
-2. Use one focused leaf skill when possible; combine skills only when the task crosses ownership boundaries.
-3. Load `references/evidence-boundaries.md` before making technical claims.
-4. Load `references/asset-library.md` when the request asks for templates, source examples, scripts, PPT layouts, QA patterns, or reusable assets.
-5. Load `references/hook-library.md` when the request asks to run, wrap, validate, or automate reusable scripts.
-6. Identify the project-specific application layer, such as MAROC, only after the generic work type is clear.
+1. Classify the authorized action: explain/review, plan, edit, build or hardware operation. Use [routing table](references/routing-table.md) to choose one focused skill; combine only for genuine ownership crossings.
+2. Read [evidence boundaries](references/evidence-boundaries.md) before technical claims. RTL, simulation, applied constraints, routed timing and board measurements are different evidence.
+3. Select the user's actual project and nearest rules. Use current source/configuration/diffs over historical notes; old authorizations and PASS records do not authorize new builds or hardware operations.
 
-## Routing Rules
+Small module work does not require a repository map, all downstream skills or new reports. Reuse already-read unchanged evidence; verify identity/freshness before relying on saved results. Review does not authorize editing. New-project layout preferences do not authorize migrating existing projects.
 
-- Use generic skills for common FPGA, hardware, host, and reporting workflows.
-- Use project-specific skills only for project paths, register meanings, packet formats, board names, templates, or established local procedures.
-- Keep source artifacts in place. Do not copy project repositories, schematics, notes, or PPT templates into generic skill folders.
-- When implementation is requested, inspect current source, constraints, scripts, notes, and diffs before trusting historical summaries.
+## Application boundaries
 
-## Asset Rules
+- Generic skills own reusable methods. Thin Laser/MAROC adapters own project paths, board/register/packet meanings and local delivery conventions.
+- For 513/CW specifics use `laser-cw-qualification-test-development`; 05_CW_TEST_HY is not the default for every Laser request. Its mother projects and dedicated targets keep separate identities.
+- Host development, joint SDG/ILA operation, instrument drivers, data analysis, manuals, reports and notes have separate entries in the routing table. An RTL task does not automatically include them.
+- Trace the actual transport: packet work needs framing/parser evidence; VIO/JTAG uses command/probe contracts, matching BIT/LTX and readback, not an invented packet parser.
 
-- Use the central library at `C:/Users/Administrator/.codex/hardware-assets` for reusable templates, asset catalogs, and representative snapshots.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks` for script hooks. Start with dry-run and obey the registry risk level before executing anything.
-- Prefer `stable` and `active` assets. Treat `experimental` and `historical` assets as reference only.
-- Use copied or derived templates from `templates/`; read `source-refs/` for original project files.
-- Do not edit original source assets through the asset library.
+## Conditional resources
 
-## Cross-Domain Discipline
+- Templates/examples: read [asset library](references/asset-library.md). Keep original projects, board sources and report templates in their owning location.
+- Reusable automation: read [hook library](references/hook-library.md) when using its registry. Inspect the chosen script and write boundary; use its dry-run where available.
+- Laser paths/tools: read [profile path resolution](references/profile-path-resolution.md). Validate only current dependencies; missing optional roots must not block unrelated work.
 
-- Host-to-RTL tasks must prove application export, wire framing, fixture generation, parser/TB consumption, and replay/checker behavior.
-- RTL-to-hardware tasks must prove RTL port, constraint pin, schematic net, board connector/test point, IO standard, and timing role.
-- Lab-to-report tasks must preserve evidence path, date, build/bitstream/version, observed fact, allowed conclusion, and remaining boundary.
-
-## Application Examples
-
-Use MAROC skills as project adapters, not as the generic architecture:
-
-- MAROC Qt host work -> `maroc-qt-host-development`, with common Qt structure from `qt-cpp-host-development`.
-- MAROC packet/fixture replay -> `maroc-host-rtl-alignment`, backed by generic `host-rtl-alignment`.
-- MAROC RTL/XDC/schematic checks -> `maroc-rtl-schematic-xdc-alignment`, backed by generic `rtl-schematic-xdc-alignment`.
+Resolve `<CODEX_HOME>` from the environment, falling back to the user's `.codex` directory. Shared templates live in `hardware-assets/templates`; hook use requires an existing registry. Execute maintained helpers from their owning skill/project, not an untracked copy. Do not edit original source assets through the library.

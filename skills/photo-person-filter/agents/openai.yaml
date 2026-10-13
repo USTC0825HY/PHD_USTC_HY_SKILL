@@ -1,4 +1,0 @@
-interface:
-  display_name: "Photo Person Filter"
-  short_description: "Find photos containing a reference person"
-  default_prompt: "Use $photo-person-filter to find all photos containing the person in this reference image."

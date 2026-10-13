@@ -2,9 +2,16 @@
 
 Central hardware asset root:
 
-`C:/Users/Administrator/.codex/hardware-assets`
+`<CODEX_HOME>/hardware-assets`
 
 Use this file after classifying the generic workflow with `hardware-dev-router`. The original MAROC repositories, PPT folders, and Obsidian vault remain authoritative. The asset library provides indexes, stable templates, representative snapshots, and derived generic skeletons.
+
+## Availability Gate
+
+- Treat every `source-refs/`, `hooks/`, and project-root entry below as optional. Check that the referenced file or directory exists before using it.
+- In this installation, the PPT templates under `<CODEX_HOME>/hardware-assets/templates/ppt/` are available, but `source-refs/` and `hooks/` may be absent.
+- If an index is absent, consult `resource-map.md` only as a historical location hint. Verify the current project root with the user or by workspace discovery; never invent or silently recreate an author-specific path.
+- If the original project cannot be located, continue with the generic workflow and explicitly mark project-specific evidence as unavailable.
 
 ## Source Reference Files
 
@@ -39,3 +46,4 @@ Use this file after classifying the generic workflow with `hardware-dev-router`.
 - `derived-template` assets are generic skeletons extracted from repeated MAROC workflows.
 - Historical and experimental assets can inform context, but do not use them as default templates.
 - Hooked scripts remain in their source repositories. Use the hook registry for risk level, dry-run, and execution logs before running any script.
+- An absent hook registry is not permission to infer a command. Fall back to documented read-only inspection or ask the user to identify the current script.

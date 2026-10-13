@@ -4,12 +4,15 @@
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
 from urllib.parse import unquote
 
-DEFAULT_ROOT = Path("C:/01_obsidian/ustc_hy/01_科研主系统")
+from _portable_profile import profile_path
+
+DEFAULT_ROOT = profile_path("obsidian_vault_root", Path.home() / "Obsidian") / "01_科研主系统"
 DEFAULT_PROJECT = "Laser_PDH_Study"
 MAX_MERMAID_LABEL_LEN = 12
 
@@ -36,6 +39,10 @@ MERMAID_NODE_LABEL_RE = re.compile(
     """
 )
 MERMAID_LINK_RE = re.compile(r"<a[^>]*href=[\"']([^\"']+)[\"'][^>]*>", re.IGNORECASE)
+MERMAID_MD_ASSET_LINK_RE = re.compile(
+    r"\[[^\]\n]*\]\(([^)\n]+\.(?:mmd|html)(?:#[^)\n]*)?)\)",
+    re.IGNORECASE,
+)
 MERMAID_SOURCE_BLOCK_RE = re.compile(r"<pre\b[^>]*id=[\"']diagram-source[\"'][^>]*>(.*?)</pre>", re.IGNORECASE | re.DOTALL)
 MD_IMAGE_RE = re.compile(r"!\[[^\]\n]*\]\(([^)\n]+)\)")
 OBSIDIAN_IMAGE_RE = re.compile(r"!\[\[([^\]\n]+)\]\]")
@@ -289,8 +296,37 @@ def check_mermaid_escape_and_labels(
 
 def audit_markdown_mermaid(path: Path, issues: dict[str, list[str]]) -> None:
     text = read_text(path)
-    for start_line, block in iter_mermaid_blocks(text):
+    blocks = iter_mermaid_blocks(text)
+    for start_line, block in blocks:
         check_mermaid_escape_and_labels(path, block, start_line, issues)
+
+    asset_links = list(MERMAID_MD_ASSET_LINK_RE.finditer(text))
+    if asset_links and not blocks and not is_raw_source(path):
+        add_issue(
+            issues,
+            "MERMAID_INLINE_DISPLAY",
+            path,
+            None,
+            "formal note has Mermaid asset links but no inline mermaid block",
+        )
+
+    for match in asset_links:
+        target = unquote(match.group(1).split("#", 1)[0].strip())
+        if target.startswith("<") and target.endswith(">"):
+            target = target[1:-1]
+        if REMOTE_RESOURCE_RE.match(target):
+            continue
+        target_path = Path(target)
+        resolved = target_path if target_path.is_absolute() else (path.parent / target_path).resolve()
+        if not resolved.exists():
+            line_no = text.count("\n", 0, match.start()) + 1
+            add_issue(
+                issues,
+                "MERMAID_LINK_TARGET",
+                path,
+                line_no,
+                f"missing Mermaid asset: {target}",
+            )
 
 
 def audit_schematic_images(path: Path, issues: dict[str, list[str]]) -> None:
@@ -386,8 +422,8 @@ def audit_mmd_file(path: Path, issues: dict[str, list[str]]) -> None:
 
 
 def audit_mermaid_pairing(html_files: list[Path], mmd_files: list[Path], issues: dict[str, list[str]]) -> None:
-    mmd_stems = {str(p.with_suffix("").relative_to(p.parents[0])): p for p in mmd_files}
-    html_stems = {str(p.with_suffix("").relative_to(p.parents[0])): p for p in html_files}
+    mmd_stems = {os.path.normcase(str(p.resolve().with_suffix(""))): p for p in mmd_files}
+    html_stems = {os.path.normcase(str(p.resolve().with_suffix(""))): p for p in html_files}
 
     for stem, path in mmd_stems.items():
         expected_html = path.with_suffix(".html")
@@ -480,6 +516,8 @@ def main() -> int:
         "MERMAID_LABEL_LEN": [],
         "MERMAID_PAIR_CHECK": [],
         "MERMAID_SINGLE_VIEWER": [],
+        "MERMAID_LINK_TARGET": [],
+        "MERMAID_INLINE_DISPLAY": [],
         "SCHEMATIC_IMAGE_EXISTS": [],
         "SCHEMATIC_IMAGE_SCOPE": [],
         "SCHEMATIC_IMAGE_CONTEXT": [],

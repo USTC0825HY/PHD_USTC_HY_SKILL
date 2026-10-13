@@ -65,4 +65,4 @@ Keep explanations lecture-like: start from the logic chain, then add equations, 
 - Raw sources can be copied into `07_资料源与资产索引/03_原始摘录`, but formal notes must split, rewrite, and link them.
 - Distinguish thesis facts, PPT facts, web-answer explanations, user questions, and Codex derivations.
 - Do not imply an experimental conclusion is proven unless the note cites the relevant data, figure, or extracted source.
-- Use absolute `C:/` and `F:/` paths only in source/evidence sections; use `[[wikilinks]]` inside the vault knowledge graph.
+- Use absolute filesystem paths only in source/evidence sections; use `[[wikilinks]]` inside the vault knowledge graph.

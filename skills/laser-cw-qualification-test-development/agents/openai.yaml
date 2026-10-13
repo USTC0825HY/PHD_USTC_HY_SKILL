@@ -1,0 +1,4 @@
+interface:
+  display_name: "513 CW qualification test"
+  short_description: "Audit 513 firmware and board evidence for tests"
+  default_prompt: "Use $laser-cw-qualification-test-development for affected 513 firmware or board evidence; route numerical analysis and DOCX edits to their dedicated skills."

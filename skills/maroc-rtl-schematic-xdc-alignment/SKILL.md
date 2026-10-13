@@ -20,7 +20,7 @@ description: "MAROC adapter for RTL-schematic-XDC alignment. Use when MAROC FPGA
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC RTL, XDC, schematic-review, and board-debug asset routing.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` and `source-refs/maroc-doc-assets.md` to locate XDC files, pin notes, and hardware review documents.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/rtl_xdc_schematic_alignment_table.md` as the standard comparison table.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` for `xdc.review.maroc.port-map` and related XDC review hooks. Treat generated XDC artifacts as project-writing outputs unless directed otherwise.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC RTL, XDC, schematic-review, and board-debug asset routing.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` and `source-refs/maroc-doc-assets.md` to locate XDC files, pin notes, and hardware review documents.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/rtl_xdc_schematic_alignment_table.md` as the standard comparison table.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` for `xdc.review.maroc.port-map` and related XDC review hooks. Treat generated XDC artifacts as project-writing outputs unless directed otherwise.

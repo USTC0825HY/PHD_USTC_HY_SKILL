@@ -70,6 +70,8 @@ Use `可能`, `尚需确认`, or `需通过……区分` for unverified causes. 
 
 ## Parentheses And Mixed-Language Typography
 
+Apply the profile and OOXML rules in `figure-identity-typography.md`. For formal reports, use 宋体 for Chinese body/table/caption text and Times New Roman for Latin letters, digits, units, identifiers, and paths. Set East Asian and Latin font attributes on the same run; do not split fields, hyperlinks, or formulas merely to change fonts.
+
 Use ASCII parentheses `( )` when the enclosed span contains Latin letters, identifiers, formulas, version strings, or number-plus-unit expressions:
 
 - `采样率(MSPS)`
@@ -82,6 +84,8 @@ Use Chinese parentheses `（ ）` for Chinese prose, for example `后续补测�
 ## Captions And References
 
 - Write a concise object-and-condition caption without a terminal period.
+- Use the reader-facing form `图N 对象/接口：图像内容`; do not insert a space between `图` and its number.
+- Keep evidence IDs and original filenames out of visible captions. Store them in the task-local figure manifest; the seven-column data appendix is required for 513 reports.
 - Do not repeat `来源/内容/观察` blocks under every figure. Put paths and provenance in the data appendix.
 - Cite every figure and table in the nearby body text. A caption does not replace quantitative interpretation.
 

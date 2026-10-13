@@ -1,0 +1,4 @@
+interface:
+  display_name: "FPGA Board Signal Chain Closure"
+  short_description: "Close multi-board signal and power graphs with evidence"
+  default_prompt: "Use $fpga-board-signal-chain-closure to audit a typed multi-board graph, selected evidence sets, connector closure, and applicable FPGA RTL/XDC/Vivado evidence."

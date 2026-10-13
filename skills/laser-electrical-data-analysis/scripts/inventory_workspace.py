@@ -13,12 +13,36 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+from _portable_profile import profile_path
 
-DEFAULT_CODE = Path(r"F:\01_Laser\03_Code_代码工程\02_MATLAB分析\MATLAB")
-DEFAULT_DATA = Path(r"G:\01_laser\202607_电2test")
-DEFAULT_REPORT = Path(
-    r"C:\01_obsidian\ustc_hy\01_科研主系统\04_实验测试与证据"
-    r"\03_超稳激光电控箱指标测试\LASER 测试报告\202607"
+
+DEFAULT_LASER_ROOT = profile_path("laser_source_root", Path.home() / "Laser")
+DEFAULT_VAULT_ROOT = profile_path("obsidian_vault_root", Path.home() / "Obsidian")
+DEFAULT_CODE = profile_path(
+    "matlab_code_root",
+    DEFAULT_LASER_ROOT / "03_Code_代码工程" / "02_MATLAB分析" / "MATLAB",
+)
+DEFAULT_DATA = profile_path("test_data_root", Path.home() / "Laser-Test-Data")
+DEFAULT_513_CODE = profile_path(
+    "cw513_analysis_root",
+    DEFAULT_LASER_ROOT
+    / "code"
+    / "matlab"
+    / "513DIANXING_analysis"
+    / "CW_analysis"
+    / "CW_513_ANALYSIS",
+)
+DEFAULT_513_DATA = profile_path(
+    "cw513_test_data_root",
+    DEFAULT_LASER_ROOT / "0_20260727_513test" / "CW_Data" / "513_CW_DATA",
+)
+DEFAULT_REPORT = (
+    DEFAULT_VAULT_ROOT
+    / "01_科研主系统"
+    / "04_实验测试与证据"
+    / "03_超稳激光电控箱指标测试"
+    / "LASER 测试报告"
+    / "202607"
 )
 
 
@@ -59,7 +83,15 @@ def git_status(root: Path) -> list[str]:
         return []
     try:
         result = subprocess.run(
-            ["git", "-C", str(root), "status", "--short"],
+            [
+                "git",
+                "-c",
+                f"safe.directory={root}",
+                "-C",
+                str(root),
+                "status",
+                "--short",
+            ],
             check=False,
             capture_output=True,
             text=True,
@@ -71,16 +103,41 @@ def git_status(root: Path) -> list[str]:
         return ["git unavailable"]
 
 
-def build_inventory(include_hash: bool) -> dict:
-    code = env_path("LASER_TEST_CODE_ROOT", DEFAULT_CODE)
-    data = env_path("LASER_TEST_DATA_ROOT", DEFAULT_DATA)
-    report = env_path("LASER_TEST_REPORT_ROOT", DEFAULT_REPORT)
-    requirement_root = data / "测试参考文件_20260630"
+ROOT_CONFIG = {
+    "code": ("matlab_code_root", "LASER_TEST_CODE_ROOT", DEFAULT_CODE),
+    "data": ("test_data_root", "LASER_TEST_DATA_ROOT", DEFAULT_DATA),
+    "report": ("formal_report_corpus", "LASER_TEST_REPORT_ROOT", DEFAULT_REPORT),
+    "cw513_code": ("cw513_analysis_root", "LASER_TEST_513_CODE_ROOT", DEFAULT_513_CODE),
+    "cw513_data": ("cw513_test_data_root", "LASER_TEST_513_DATA_ROOT", DEFAULT_513_DATA),
+    "requirement": ("requirement_root", "LASER_TEST_REQUIREMENT_ROOT", profile_path("requirement_root", DEFAULT_DATA / "测试参考文件_20260630")),
+}
+
+
+def resolve_roots(overrides=None, required_roots=None):
+    overrides = overrides or {}
+    required = set(ROOT_CONFIG if required_roots is None else required_roots)
+    unknown = (set(overrides) | required) - set(ROOT_CONFIG)
+    if unknown:
+        raise ValueError("unknown roots: " + ", ".join(sorted(unknown)))
+    roots = {name: Path(overrides[name]) if overrides.get(name) is not None else env_path(env, default)
+             for name, (_, env, default) in ROOT_CONFIG.items()}
+    unavailable = [{"root": name, "key": ROOT_CONFIG[name][0], "path": str(path),
+                    "required": name in required, "error": "directory missing or wrong type"}
+                   for name, path in roots.items() if not path.is_dir()]
+    return roots, unavailable
+
+
+def build_inventory(include_hash: bool, overrides=None, required_roots=None) -> dict:
+    roots, unavailable = resolve_roots(overrides, required_roots)
+    if any(row["required"] for row in unavailable):
+        raise ValueError(json.dumps({"status": "missing_required_roots", "unavailable_roots": unavailable}, ensure_ascii=False))
+    code, data, report = (roots[k] for k in ("code", "data", "report"))
+    cw513_code, cw513_data, requirement_root = (roots[k] for k in ("cw513_code", "cw513_data", "requirement"))
     formal_root = report / "01_正式报告"
     digital_report = formal_root / "02_SZSD_数字锁定板" / "数字锁定板测试报告.docx"
 
     scripts = []
-    if code.exists():
+    if code.is_dir():
         for path in sorted(code.glob("s[0-9][0-9]_*.m")):
             text = path.read_text(encoding="utf-8", errors="replace")
             row = info(path, include_hash)
@@ -89,8 +146,23 @@ def build_inventory(include_hash: bool) -> dict:
             )
             scripts.append(row)
 
+    cw513_scripts = []
+    if cw513_code.is_dir():
+        for path in sorted(cw513_code.rglob("*.m")):
+            if any(part in {"legacy", "_release"} for part in path.parts):
+                continue
+            row = info(path, include_hash)
+            row["device"] = next(
+                (part for part in ("9245_hy", "2208_hy", "9726_hy", "766_hy") if part in path.parts),
+                "_shared/tools/tests",
+            )
+            row["has_conflict_markers"] = bool(
+                re.search(r"(?m)^(?:<<<<<<< .+|=======\s*|>>>>>>> .+)$", path.read_text(encoding="utf-8", errors="replace"))
+            )
+            cw513_scripts.append(row)
+
     top_data = []
-    if data.exists():
+    if data.is_dir():
         top_data = [info(path) for path in sorted(data.iterdir()) if path.is_dir()]
 
     locks = newest(report, "~$*", include_lock_files=True) if report.exists() else []
@@ -112,10 +184,16 @@ def build_inventory(include_hash: bool) -> dict:
         if Path(item["path"]).name in expected_lock_names
     ]
     return {
+        "status": "partial_inventory" if unavailable else "available",
+        "unavailable_roots": unavailable,
         "verified_at": datetime.now(timezone.utc).astimezone().isoformat(),
-        "roots": {"code": str(code), "data": str(data), "report": str(report)},
+        "roots": {name: str(path) for name, path in roots.items()},
         "git_status": git_status(code),
         "matlab_scripts": scripts,
+        "cw513_matlab_scripts": cw513_scripts,
+        "cw513_data_directories": [
+            info(path) for path in sorted(cw513_data.iterdir())
+        ] if cw513_data.is_dir() else [],
         "data_directories": top_data,
         "digital_lock_report": info(
             digital_report, include_hash and not digital_report_locks
@@ -134,8 +212,8 @@ def build_inventory(include_hash: bool) -> dict:
 
 
 def flatten(inventory: dict) -> list[dict]:
-    rows = []
-    for key in ("matlab_scripts", "data_directories", "report_locks",
+    rows = [{"category": "unavailable_root", **item} for item in inventory.get("unavailable_roots", [])]
+    for key in ("matlab_scripts", "cw513_matlab_scripts", "data_directories", "cw513_data_directories", "report_locks",
                 "digital_lock_report_locks", "latest_requirements",
                 "latest_ad_fit_summaries", "latest_da_fit_summaries"):
         for item in inventory.get(key, []):
@@ -148,8 +226,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, help="Optional .json or .csv output; stdout is default")
     parser.add_argument("--hash", action="store_true", help="Hash files; skipped for a locked report")
+    for name in ROOT_CONFIG:
+        parser.add_argument("--" + name.replace("_", "-") + "-root", type=Path)
+    parser.add_argument("--require-root", action="append", choices=sorted(ROOT_CONFIG),
+                        help="Require only these task roots; default requires all roots")
     args = parser.parse_args()
-    inventory = build_inventory(args.hash)
+    overrides = {name: getattr(args, name + "_root") for name in ROOT_CONFIG
+                 if getattr(args, name + "_root") is not None}
+    try:
+        inventory = build_inventory(args.hash, overrides, args.require_root)
+    except ValueError as exc:
+        print(str(exc))
+        return 2
     if not args.output:
         print(json.dumps(inventory, ensure_ascii=False, indent=2))
         return 0

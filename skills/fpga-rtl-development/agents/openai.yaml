@@ -1,0 +1,4 @@
+interface:
+  display_name: "FPGA RTL Development"
+  short_description: "Write clear RTL with cycle-accurate interfaces"
+  default_prompt: "Use $fpga-rtl-development to implement simple RTL while preserving the project's cycle-level interface and timing requirements."

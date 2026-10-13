@@ -21,5 +21,5 @@ description: "Generic FPGA register-map and command-parser workflow. Use for reg
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/host_rtl_alignment_table.md` to trace fields or commands through host bytes, fixtures, parser, and checker.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/host_rtl_alignment_table.md` to trace fields or commands through host bytes, fixtures, parser, and checker.
 - Use project `source-refs/` files to locate register maps, packet fixtures, parser modules, and compare scripts.

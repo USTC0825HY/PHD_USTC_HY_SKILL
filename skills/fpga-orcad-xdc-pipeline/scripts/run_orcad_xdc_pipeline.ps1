@@ -5,7 +5,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$python = 'C:\Users\Administrator\.codex\tools\io-gen-c852b04\.venv\Scripts\python.exe'
+$codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
+$python = Join-Path $codexHome 'tools\io-gen-c852b04\.venv\Scripts\python.exe'
 $script = Join-Path $PSScriptRoot 'orcad_xdc_pipeline.py'
 
 if (-not (Test-Path -LiteralPath $python)) {

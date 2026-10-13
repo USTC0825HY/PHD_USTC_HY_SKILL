@@ -11,15 +11,15 @@ Create an evidence-backed repository map. Work directly in the current repositor
 
 1. Locate RTL, headers, filelists, Vivado project/Tcl files, IP metadata, XDC, and existing maps with `rg --files` or PowerShell.
 2. Determine the configured top from project/Tcl/filelist evidence. If several tops remain plausible, map all and label the ambiguity.
-3. Run `scripts/rtl_hierarchy_scan.py <repo> --output <repo>/.fpga-map` for a deterministic first pass.
+3. For a full map, prefer `scripts/rtl_hierarchy_scan.py <repo> --project <selected.xpr>` or `--filelist <literal-list> --top <module>`. Default output is JSON on stdout, with no project writes. Directory-only scanning is a file inventory, not active-project authority. Read [scanner contract](references/scanner-contract.md) when running or consuming the scanner.
 4. Inspect source around uncertain declarations, parameterized instances, generate blocks, macros, interfaces, FSMs, clocks, and resets. Preserve file and line evidence.
-5. Cross-check the source map against Vivado 2022.2 elaboration or synthesis when a runnable project or source list exists. Keep tool-generated and source-inferred facts separate.
+5. Select the tool version from the explicit target, nearest project rules and current XPR; use the shared profile only as a fallback. Cross-check with existing matching elaboration/synthesis evidence; run a new stage only when the task authorizes it. Report a tool/project mismatch instead of upgrading the project. Keep tool-generated and source-inferred facts separate.
 6. Use `rtl-schematic-xdc-alignment` when a top-level XDC or schematic pin map is in scope.
 7. Report unresolved modules as vendor IP, encrypted/black-box IP, missing source, simulation-only code, or probable parser limitation. Never silently drop them.
 
-## Required outputs
+## Task-scaled outputs
 
-Write under `.fpga-map/` unless the user supplies another output directory:
+For one-module explanations, inspect that module and necessary callers directly; do not generate the following bundle. For requested repository maps, pass `--output <explicit-directory>` to write the full bundle below. Respect no-write requests and workspace temporary-directory rules; `.fpga-map` is an option, not an implicit write destination.
 
 - `rtl_hierarchy.md`: module tree, module/file index, instances, parameters, ports, and evidence.
 - `rtl_hierarchy.json`: machine-readable modules, ports, instances, clocks, resets, and unresolved references.

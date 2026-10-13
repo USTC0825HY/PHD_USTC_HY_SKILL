@@ -1,0 +1,442 @@
+{
+  "date": "2026-10-13",
+  "scope": "current Codex personal profile",
+  "checked": 87,
+  "results": [
+    {
+      "skill": "academic-paper-analysis-ppt",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "audit-optimize-windows-performance",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "benchmark-paper-template",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "business-trip-reimbursement-organizer",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "codex-log-guard",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "codex-reset-credits",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "cw-dac-host-development",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "figure-designer",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-board-signal-chain-closure",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-cdc-reset-timing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-ila-debug",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-orcad-xdc-pipeline",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-register-command-parser",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-rtl-code-review",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-rtl-development",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-substitute-board-workflow-validation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-testbench-simulation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "fpga-vivado-tcl-automation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "gf-architect",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "gf-plan",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "gf-viz",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "gh-address-comments",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "gh-fix-ci",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "hardware-datasheet-to-schematic",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "hardware-dev-router",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "hardware-evidence-report-sync",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "hardware-pcb-bringup-debug",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "hardware-schematic-review",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "host-rtl-alignment",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "hypothesis-generation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "idea-evaluator",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "idea-generation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "imagegen",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "intro-drafter",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "jupyter-notebook",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-cw-data-pipeline",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-cw-operation-manual-writing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-cw-qualification-test-development",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-electrical-data-analysis",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-electrical-test-report-standard",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-indicator-visio-style",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-pdh-obsidian-md-writing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-schematic-screenshot-repair",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "laser-test-report-writing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-evidence-ppt-sync",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-fpga-cdc-reset-timing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-fpga-ila-debug",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-fpga-register-command-parser",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-fpga-rtl-code-review",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-fpga-testbench-simulation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-fpga-vivado-tcl-automation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-hardware-dev-router",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-host-rtl-alignment",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-obsidian-md-writing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-ppt-debug-report",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-ppt-group-meeting",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-ppt-progress-summary",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-qt-host-development",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "maroc-rtl-schematic-xdc-alignment",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "matlab-clean-code",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "matlab-modernize-code",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "matlab-review-code",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "matlab-testing",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "matlab-validate-function-arguments",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "matlab-write-help",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "novelty-assessment",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "pdf",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "playwright-interactive",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "pre-submission-reviewer",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "qt-cpp-host-development",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "qu-ai-wei",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "research-defense-ppt",
+      "passed": false,
+      "message": "Description cannot contain angle brackets (< or >)"
+    },
+    {
+      "skill": "research-ideation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "rtl-schematic-xdc-alignment",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "scientific-brainstorming",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "screenshot",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "sdg-dmm-automation",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "systematic-literature-review",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "tech-paper-template",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "transcribe",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "vibe-research-workflow",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "vivado-analysis",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "vivado-constraints",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "vivado-impl",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "vivado-synth",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "yeet",
+      "passed": true,
+      "message": "Skill is valid!"
+    },
+    {
+      "skill": "zz-academic-paper-ppt",
+      "passed": true,
+      "message": "Skill is valid!"
+    }
+  ]
+}

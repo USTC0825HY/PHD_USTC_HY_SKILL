@@ -5,12 +5,12 @@ description: Visualize FPGA RTL architecture maps produced by gf-architect. Use 
 
 # FPGA Architecture Visualization
 
-Read `.fpga-map/rtl_hierarchy.json` first. Fall back to `.fpga-map/*.md`, then legacy `.gateflow/map/` files.
+Read the supplied map first, otherwise `.fpga-map/rtl_hierarchy.json`; fall back to Markdown/legacy maps only as historical context. Check selected project/top, current input membership and hashes before calling a map current. For scanner schema/limits see [scanner contract](../gf-architect/references/scanner-contract.md). Missing provenance means freshness unverified, not an automatic full rescan or write.
 
 ## Views
 
 - Overview: counts for modules, top modules, instances, clocks, resets, CDC candidates, unresolved modules, and warnings.
-- Hierarchy: full tree plus parent/instance/module/parameter table.
+- Hierarchy: the requested subtree or compact overview; full tree only when useful/requested.
 - Module detail: source location, parameters, ports, child instances, clocks, resets, and parents.
 - Clock/reset: group modules by clock and reset; distinguish evidence from naming inference.
 - CDC: source, destination, signal, synchronizer evidence, status, and follow-up.

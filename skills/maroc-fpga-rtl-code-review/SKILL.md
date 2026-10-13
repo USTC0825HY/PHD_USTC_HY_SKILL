@@ -19,6 +19,6 @@ Use `maroc-fpga-cdc-reset-timing` for CDC/reset/timing closure, and `maroc-fpga-
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC RTL module and review-template routing.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` to locate current RTL modules and representative snapshots.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/rtl/rtl_module_review_checklist.md` as the reusable review structure.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC RTL module and review-template routing.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` to locate current RTL modules and representative snapshots.
+- Use `<CODEX_HOME>/hardware-assets/templates/rtl/rtl_module_review_checklist.md` as the reusable review structure.

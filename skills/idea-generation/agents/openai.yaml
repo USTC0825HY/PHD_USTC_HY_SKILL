@@ -1,4 +1,5 @@
 interface:
-  display_name: "Idea Generation"
-  short_description: "Generate novel research ideas with iterative refinement and nov…"
-  default_prompt: "Use $idea-generation to complete the relevant task."
+  display_name: "Research Idea Generation"
+  short_description: "Develop feasible research hypotheses with traceable evidence"
+  default_prompt: "Use $idea-generation to develop testable research ideas within\
+    \ my evidence and resource constraints."

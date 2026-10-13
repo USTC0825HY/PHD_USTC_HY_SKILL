@@ -1,4 +1,4 @@
 interface:
   display_name: "Laser Test Report Writing"
-  short_description: "Final-edit and audit laser electrical test reports"
-  default_prompt: "Use $laser-test-report-writing to final-edit a Chinese laser electrical test report, preserve measured evidence and layout, synchronize conclusions, remove AI-style prose, and run the mode-aware DOCX audit."
+  short_description: "Write and verify qualification test result reports"
+  default_prompt: "Use $laser-test-report-writing to update the latest report: method, requirement, table, result explanation, figures, and a verified data-traceability appendix."

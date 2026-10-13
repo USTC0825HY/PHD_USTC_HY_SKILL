@@ -33,6 +33,7 @@ def main() -> int:
         default="auto",
     )
     parser.add_argument("--json", dest="json_path", type=Path)
+    parser.add_argument("--strict", action="store_true", help="Validate declared evidence layers; unverified is nonzero")
     args = parser.parse_args()
     root = args.result_dir
     errors: list[str] = []
@@ -40,6 +41,13 @@ def main() -> int:
     if not root.is_dir():
         print(f"ERROR: result directory not found: {root}")
         return 2
+    if args.strict:
+        from bundle_validation import strict_audit
+        result = strict_audit(root, args.kind)
+        payload = json.dumps(result, ensure_ascii=False, indent=2)
+        print(payload)
+        if args.json_path: args.json_path.write_text(payload, encoding="utf-8")
+        return 0 if result["status"] == "PASS" else 1
     files = [p for p in root.rglob("*") if p.is_file()]
     csv_files = [p for p in files if p.suffix.lower() == ".csv"]
     png_files = [p for p in files if p.suffix.lower() == ".png"]
@@ -113,6 +121,8 @@ def main() -> int:
         "result_dir": str(root),
         "kind": kind,
         "file_count": len(files),
+        "mode": "legacy_structure_only",
+        "acceptance": "not_strictly_verified",
         "errors": errors,
         "warnings": warnings,
         "status": "ERROR" if errors else ("WARN" if warnings else "PASS"),

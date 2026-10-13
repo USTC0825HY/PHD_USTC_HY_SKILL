@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-13",
+  "status": "fail",
+  "csv_entries": 117,
+  "active_metadata_checked": 87,
+  "restore_files_verified": 738,
+  "errors": [
+    "metadata:research-defense-ppt:Description cannot contain angle brackets (< or >)"
+  ]
+}

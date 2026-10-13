@@ -21,6 +21,6 @@ Keep one judgment per slide. Use `$maroc-ppt` for MAROC template and `maroc-evid
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-ppt-assets.md` to find prior progress-summary decks, build scripts, PNG previews, and QA reports.
-- Start new progress decks from `C:/Users/Administrator/.codex/hardware-assets/templates/ppt/MAROC科研汇报模板_20260519.pptx` unless the task names another template.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/ppt/build_ppt_skeleton.py` and `qa_ppt_checklist.md` for reproducible generation and QA.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-ppt-assets.md` to find prior progress-summary decks, build scripts, PNG previews, and QA reports.
+- Start new progress decks from `<CODEX_HOME>/hardware-assets/templates/ppt/MAROC科研汇报模板_20260519.pptx` unless the task names another template.
+- Use `<CODEX_HOME>/hardware-assets/templates/ppt/build_ppt_skeleton.py` and `qa_ppt_checklist.md` for reproducible generation and QA.

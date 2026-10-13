@@ -5,16 +5,26 @@ description: Laser/PDH Obsidian Markdown writing, repair, and governance workflo
 
 # Laser/PDH Obsidian Markdown Writing
 
+Before consuming profile-derived inputs, read [path validation](../hardware-dev-router/references/profile-path-resolution.md) and run its read-only validator for the required keys only (or validate an explicit task path). Missing inputs stop dependent work; do not create obsolete directories or guess replacement campaigns. Keep existing CLI/environment overrides ahead of profile defaults.
+
+运行脚本前按 [运行时验证](../hardware-dev-router/references/runtime-validation.md) 探测实际 Python 版本和所需导入；优先复用可执行专用环境。
+
+先区分指定文件写作/修复与明确授权的全项目治理。单篇任务只检查和修改目标文件，不因全库问题扩展任务。公式工具默认预览；写入必须提供可重复的 --file，或在全项目治理时提供 --all-project。备份、哈希复核与原子替换由工具执行；默认排除原始摘录/历史目录。Mermaid 仍保留内嵌与 .mmd/.html 配套习惯，只对本次新建/修改的图应用，不给仅修公式的旧笔记补图。
+
+## Portable Configuration
+
+Read `<CODEX_HOME>/laser-fpga-profile.json` before resolving any path. Resolve `<CODEX_HOME>` from the environment, falling back to the current user's `.codex` directory. Treat `<obsidian_vault_root>` below as the profile value. Use `<CODEX_HOME>/tools/laser-fpga-runtime/.venv/Scripts/python.exe` for bundled Python dependencies.
+
 ## Canonical Paths
 
-- Research system root: `C:/01_obsidian/ustc_hy/01_科研主系统`
-- Knowledge root: `C:/01_obsidian/ustc_hy/01_科研主系统/02_Laser_PDH知识体系`
-- System engineering root: `C:/01_obsidian/ustc_hy/01_科研主系统/03_超稳激光系统工程`
-- Experiment/evidence root: `C:/01_obsidian/ustc_hy/01_科研主系统/04_实验测试与证据`
-- Source/asset index root: `C:/01_obsidian/ustc_hy/01_科研主系统/07_资料源与资产索引`
-- Governance root: `C:/01_obsidian/ustc_hy/01_科研主系统/99_系统治理/02_Laser资料治理`
-- Note template: `C:/01_obsidian/ustc_hy/模板/科研流程/Laser_PDH_Study_科研学习笔记模板.md`
-- CSS snippet: `C:/01_obsidian/ustc_hy/.obsidian/snippets/laser-pdh-study.css`
+- Research system root: `<obsidian_vault_root>/01_科研主系统`
+- Knowledge root: `<obsidian_vault_root>/01_科研主系统/02_Laser_PDH知识体系`
+- System engineering root: `<obsidian_vault_root>/01_科研主系统/03_超稳激光系统工程`
+- Experiment/evidence root: `<obsidian_vault_root>/01_科研主系统/04_实验测试与证据`
+- Source/asset index root: `<obsidian_vault_root>/01_科研主系统/07_资料源与资产索引`
+- Governance root: `<obsidian_vault_root>/01_科研主系统/99_系统治理/02_Laser资料治理`
+- Note template: `<obsidian_vault_root>/模板/科研流程/Laser_PDH_Study_科研学习笔记模板.md`
+- CSS snippet: `<obsidian_vault_root>/.obsidian/snippets/laser-pdh-study.css`
 - Required note class: `cssclasses: [laser-pdh-note]`
 
 ## Workflow
@@ -23,14 +33,16 @@ description: Laser/PDH Obsidian Markdown writing, repair, and governance workflo
 2. Use the canonical directory for the note type. Read `references/laser_pdh_obsidian_rules.md` before creating or reorganizing notes.
 3. Keep raw sources in `07_资料源与资产索引/03_原始摘录`; do not turn raw web/PDF text into formal notes by dumping it unchanged.
 4. Write formal notes in lecture style: core conclusion, physical picture, math expression, experiment implementation, common pitfalls, source/evidence boundary, and related questions.
-5. Use Obsidian `[[wikilinks]]` for knowledge links. Use absolute `C:/` and `F:/` paths only in source/evidence sections.
+5. Use Obsidian `[[wikilinks]]` for knowledge links. Use absolute filesystem paths only in source/evidence sections.
 6. For LaTeX work, read `references/latex_rendering_rules.md` and run `scripts/audit_laser_pdh_md.py` after edits.
-7. When the user explicitly asks to fix formula rendering, run `scripts/fix_laser_pdh_latex.py --write`, then re-run the audit script.
+7. When the user explicitly asks to fix formula rendering, run `scripts/fix_laser_pdh_latex.py --file <指定笔记.md> --write`, then re-run the audit script.
 8. For table layout, wide table, screenshot-metadata table, engineering-list table, or long-text table repairs, read `references/table_layout_rules.md` before editing:
    - Convert long-text explanation tables into heading + field-list cards.
    - Keep numeric comparison tables, signal matrices, and short record templates as tables.
    - Skip `01_Raw` and `_旧版.md`; preserve values, evidence IDs, image paths, and `needs_check`.
 9. For Mermaid 图，读 `references/mermaid_rendering_rules.md` 后再产出/修改：
+   - 正式 Markdown 必须至少内嵌一张可直接渲染的 Mermaid 图；不能只提供 `.mmd/.html` 链接。
+   - 多图索引至少内嵌一张总览或代表图，避免一次渲染全部图造成卡顿。
    - 禁止在 Mermaid 节点内使用 `/n`、`\n`、`<br/>` 强制换行。
    - 节点标签尽量不超过 12 字符，长文本放到正文/表格/说明中，图内只放结构名。
    - 每张图必须有同名的 `.mmd` 与 `.html` 成对文件；每个 `.html` 只加载一张图的源码，支持独立调试。
@@ -40,25 +52,31 @@ description: Laser/PDH Obsidian Markdown writing, repair, and governance workflo
    - 围绕单一对象裁剪：接口、输入前端、核心芯片、输出级、电源支路、控制线或反馈链路。
    - 一张图放不下时拆成多张局部图，并在正文按“接口 -> 前端 -> 核心 -> 输出”解释。
    - 每张截图附近说明来源、页码/文件、对应功能块、测试关注点和易错点。
+11. For CSV mapping tables intended for Microsoft Excel, read `references/csv_excel_compatibility_rules.md` before delivery:
+   - Write UTF-8 with BOM, CRLF line endings, and RFC 4180 quoting; quote every field by default.
+   - Round-trip the final CSV and assert a fixed column count for every row.
+   - Scan decoded cells for replacement characters or common mojibake before handoff.
+   - When practical, provide a formatted `.xlsx` companion for direct Excel use.
 
 ## Validation Commands
 
 Run from any working directory:
 
 ```powershell
-python C:/Users/Administrator/.codex/skills/laser-pdh-obsidian-md-writing/scripts/audit_laser_pdh_md.py --root C:/01_obsidian/ustc_hy/01_科研主系统 --project Laser_PDH_Study
+$codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
+& "$codexHome/tools/laser-fpga-runtime/.venv/Scripts/python.exe" "$codexHome/skills/laser-pdh-obsidian-md-writing/scripts/audit_laser_pdh_md.py" --project Laser_PDH_Study
 ```
 
 Use dry-run before writing formula fixes:
 
 ```powershell
-python C:/Users/Administrator/.codex/skills/laser-pdh-obsidian-md-writing/scripts/fix_laser_pdh_latex.py --root C:/01_obsidian/ustc_hy/01_科研主系统 --project Laser_PDH_Study
+& "$codexHome/tools/laser-fpga-runtime/.venv/Scripts/python.exe" "$codexHome/skills/laser-pdh-obsidian-md-writing/scripts/fix_laser_pdh_latex.py" --project Laser_PDH_Study
 ```
 
 Run Mermaid-focused auditing after rendering-related edits:
 
 ```powershell
-python C:/Users/Administrator/.codex/skills/laser-pdh-obsidian-md-writing/scripts/audit_laser_pdh_md.py --root C:/01_obsidian/ustc_hy/01_科研主系统 --project Laser_PDH_Study
+& "$codexHome/tools/laser-fpga-runtime/.venv/Scripts/python.exe" "$codexHome/skills/laser-pdh-obsidian-md-writing/scripts/audit_laser_pdh_md.py" --project Laser_PDH_Study
 ```
 
 Expected Mermaid checks are included in `MERMAID_*` counters:
@@ -68,6 +86,8 @@ MERMAID_LABEL_ESCAPES
 MERMAID_LABEL_LEN
 MERMAID_PAIR_CHECK
 MERMAID_SINGLE_VIEWER
+MERMAID_LINK_TARGET
+MERMAID_INLINE_DISPLAY
 ```
 
 Expected schematic screenshot checks are included in `SCHEMATIC_IMAGE_*` counters:
@@ -91,7 +111,7 @@ TABLE_SCREENSHOT_METADATA
 Apply formula fixes only when requested:
 
 ```powershell
-python C:/Users/Administrator/.codex/skills/laser-pdh-obsidian-md-writing/scripts/fix_laser_pdh_latex.py --root C:/01_obsidian/ustc_hy/01_科研主系统 --project Laser_PDH_Study --write
+& "$codexHome/tools/laser-fpga-runtime/.venv/Scripts/python.exe" "$codexHome/skills/laser-pdh-obsidian-md-writing/scripts/fix_laser_pdh_latex.py" --file <指定笔记.md> --write
 ```
 
 ## Evidence Rules

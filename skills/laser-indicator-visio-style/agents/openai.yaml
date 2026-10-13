@@ -1,0 +1,5 @@
+interface:
+  display_name: "Laser Indicator Visio Style"
+  short_description: "Format laser test Visio pages in the approved style"
+  default_prompt: "Use $laser-indicator-visio-style to format qualification-test Visio pages in the approved light compact style."
+

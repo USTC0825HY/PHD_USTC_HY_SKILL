@@ -1,4 +1,4 @@
 interface:
   display_name: "Vivado Analysis"
   short_description: "Interpret Vivado timing and QoR reports"
-  default_prompt: "Use $vivado-analysis to interpret these Vivado timing and QoR reports with 2022.2 compatibility checks."
+  default_prompt: "Use $vivado-analysis for this task after identifying the actual project, device and Vivado version; preserve its evidence and execution boundaries."

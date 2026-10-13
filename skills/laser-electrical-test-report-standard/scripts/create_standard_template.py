@@ -17,6 +17,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 from docx.text.paragraph import Paragraph
 
+from _portable_profile import profile_path
 from latex_to_omml import latex_to_display_omml
 from style_contract import (
     BODY_STYLE,
@@ -31,10 +32,14 @@ from style_contract import (
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = SKILL_DIR / "assets" / "超稳激光电控箱测试报告标准模板.docx"
-REPORT_ROOT = Path(
-    r"C:\01_obsidian\ustc_hy\01_科研主系统\04_实验测试与证据"
-    r"\03_超稳激光电控箱指标测试"
-    r"\LASER 测试报告\202607\01_正式报告"
+REPORT_ROOT = (
+    profile_path("obsidian_vault_root", Path.home() / "Obsidian")
+    / "01_科研主系统"
+    / "04_实验测试与证据"
+    / "03_超稳激光电控箱指标测试"
+    / "LASER 测试报告"
+    / "202607"
+    / "01_正式报告"
 )
 BODY_FONT_EAST_ASIA = "宋体"
 BODY_FONT_LATIN = "Times New Roman"
@@ -826,6 +831,7 @@ def format_table(
                             BODY_FONT_EAST_ASIA,
                             9.5,
                             bold=True if row_index == 0 else None,
+                            color=TABLE_STYLE["header_font_color"] if row_index == 0 else "000000",
                         )
     apply_status_fills(table)
 
@@ -962,7 +968,7 @@ def configure_document(doc: Document, add_numbering: bool = True) -> int | None:
 
     table_header = ensure_style(doc, "表格表头")
     table_header.base_style = table_text
-    set_font(table_header, BODY_FONT_EAST_ASIA, 9.5, True)
+    set_font(table_header, BODY_FONT_EAST_ASIA, 9.5, True, color=TABLE_STYLE["header_font_color"])
     table_header.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
     set_style_zero_indent(table_header)
     table_header.paragraph_format.line_spacing = 1.0

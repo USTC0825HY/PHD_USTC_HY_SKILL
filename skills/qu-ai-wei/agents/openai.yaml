@@ -1,4 +1,5 @@
 interface:
-  display_name: "Qu Ai Wei"
-  short_description: "去除简体中文文本里的 AI 写作痕迹,不虚构事实,让终稿干净、精准。 触发:显式 `/qu-ai-wei`,或用户说「去 AI…"
-  default_prompt: "Use $qu-ai-wei to complete the relevant task."
+  display_name: "中文表达润色"
+  short_description: "按授权润色中文，保留事实、术语与语体；默认交终稿"
+  default_prompt: "Use $qu-ai-wei to polish this Chinese text while preserving its\
+    \ facts, terminology, register, and my requested scope."

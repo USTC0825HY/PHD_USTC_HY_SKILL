@@ -2,5 +2,6 @@ interface:
   display_name: "Laser PDH Obsidian Writing"
   short_description: "Govern Laser/PDH notes, tables, diagrams, and evidence."
   default_prompt: "Use $laser-pdh-obsidian-md-writing to maintain Laser_PDH_Study notes, repair wide table layouts, fix LaTeX/Mermaid rendering, crop schematic evidence images, apply CSS/frontmatter, and keep source-to-note coverage auditable."
+
 policy:
   allow_implicit_invocation: true

@@ -1,0 +1,57 @@
+{
+  "reviewer": "Codex primary agent; actual outputs inspected, no independent model identity exposed",
+  "cases": [
+    {
+      "id": 1,
+      "verdict": "pass",
+      "basis": "真人稿由“进行了测试工作”改为“测试了板卡”；2.503 V、2.500 V、3 mV、尚未排除探头偏置均保留。"
+    },
+    {
+      "id": 2,
+      "verdict": "pass",
+      "basis": "仅给两项具体发现，没有替换稿、作者身份判断或文件编辑。"
+    },
+    {
+      "id": 3,
+      "verdict": "pass",
+      "basis": "终稿压缩展开深入检查等套层，没有初稿、自审或打磨报告。"
+    },
+    {
+      "id": 4,
+      "verdict": "pass",
+      "basis": "10 kSa/s、60 s、1 kHz、ASD、8 nV/√Hz及推测/未验证均保留；保持正式语体。"
+    },
+    {
+      "id": 5,
+      "verdict": "pass",
+      "basis": "注释精简，可执行片段 always @(posedge clk) begin\\n  out <= in;\\nend 的字符和换行一致。"
+    },
+    {
+      "id": 6,
+      "verdict": "pass",
+      "basis": "保留“我”、犹豫和个人判断，只顺了语序，没有增加经历。"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": 1,
+      "verdict": "pass",
+      "basis": "1990年代与尚无量化结果保留，没有细化为某年或加入数据。"
+    },
+    {
+      "id": 2,
+      "verdict": "pass",
+      "basis": "没有新增更快/更省电；续航未公布保留。"
+    },
+    {
+      "id": 3,
+      "verdict": "pass",
+      "basis": "ASD/PSD中文首释保留，没有新增从业年限或混称。"
+    }
+  ],
+  "limitations": [
+    "六基本案共用一个独立子代理上下文，三引用案同理；不是九个独立随机会话。",
+    "具体模型版本不可核实。",
+    "未验证宿主自动选择或所有文体；只在所列请求和已加载上下文范围判定。"
+  ]
+}

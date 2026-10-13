@@ -786,6 +786,18 @@ def _cell_fill(cell) -> str | None:
     return shading.get(qn("w:fill")) if shading is not None else None
 
 
+def _header_cell_has_white_text(cell) -> bool:
+    visible_runs = [run for paragraph in cell.paragraphs for run in paragraph.runs if clean(run.text)]
+    if not visible_runs:
+        return True
+    for run in visible_runs:
+        r_pr = run._r.get_or_add_rPr()
+        color = r_pr.find(qn("w:color"))
+        if color is None or (color.get(qn("w:val")) or "").upper() != TABLE_STYLE["header_font_color"]:
+            return False
+    return True
+
+
 def _cell_margin(cell, side: str) -> str | None:
     margins = cell._tc.get_or_add_tcPr().find(qn("w:tcMar"))
     if margins is None:
@@ -825,6 +837,8 @@ def audit_tables(doc: Document, result: AuditResult, strict_visual_style: bool =
             for cell_index, cell in enumerate(table.rows[0].cells, 1):
                 if (_cell_fill(cell) or "").upper() != TABLE_STYLE["header_fill"]:
                     add(result, "error", "table_header_fill", f"table {table_index} header {cell_index}", f"Expected #{TABLE_STYLE['header_fill']} fill.")
+                if not _header_cell_has_white_text(cell):
+                    add(result, "error", "table_header_font_color", f"table {table_index} header {cell_index}", f"Expected bold white #{TABLE_STYLE['header_font_color']} header text.")
             conclusion_columns = [
                 index for index, cell in enumerate(table.rows[0].cells) if clean(cell.text) == "结论"
             ]

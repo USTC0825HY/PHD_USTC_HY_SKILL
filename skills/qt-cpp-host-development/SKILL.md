@@ -40,6 +40,6 @@ Read `references/qt-host-patterns.md` when implementing or reviewing:
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/qt-cpp-host/CMakeLists_skeleton.txt` for new Qt/CMake host-app scaffolds.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/qt-cpp-host/AbstractDeviceClient.h`, `FakeDeviceClient.h`, and `test_payload_transform_skeleton.cpp` for backend abstraction and test patterns.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-qt-host-assets.md` only as a project example; do not copy MAROC protocol fields into generic Qt work.
+- Use `<CODEX_HOME>/hardware-assets/templates/qt-cpp-host/CMakeLists_skeleton.txt` for new Qt/CMake host-app scaffolds.
+- Use `<CODEX_HOME>/hardware-assets/templates/qt-cpp-host/AbstractDeviceClient.h`, `FakeDeviceClient.h`, and `test_payload_transform_skeleton.cpp` for backend abstraction and test patterns.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-qt-host-assets.md` only as a project example; do not copy MAROC protocol fields into generic Qt work.

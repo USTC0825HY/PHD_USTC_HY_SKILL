@@ -1,4 +1,4 @@
 interface:
-  display_name: "FPGA OrCAD to XDC Pipeline"
-  short_description: "Generate audited FPGA pin XDC from OrCAD netlists"
-  default_prompt: "Use $fpga-orcad-xdc-pipeline to extract an audited FPGA I/O map from an OrCAD netlist and validate it against RTL and XDC."
+  display_name: "FPGA PST Signal Trace and XDC"
+  short_description: "Trace OrCAD PST nets and audit FPGA XDC pins"
+  default_prompt: "Use $fpga-orcad-xdc-pipeline to inventory board evidence, query exact PST nets, and trace FPGA signals without guessing cross-board continuity."

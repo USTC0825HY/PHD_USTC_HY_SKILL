@@ -19,7 +19,7 @@ Return a slide claim table with page/topic, evidence class, evidence path, obser
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before selecting MAROC evidence or report templates.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-ppt-assets.md` and `source-refs/maroc-doc-assets.md` to locate existing decks, build scripts, QA reports, and Obsidian notes.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/claim_table_template.md` and `ppt_md_companion_template.md` for new evidence-to-slide synchronization records.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` when script outputs feed a slide. Preserve hook id, mode, run directory, and risk level in the claim table.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before selecting MAROC evidence or report templates.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-ppt-assets.md` and `source-refs/maroc-doc-assets.md` to locate existing decks, build scripts, QA reports, and Obsidian notes.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/claim_table_template.md` and `ppt_md_companion_template.md` for new evidence-to-slide synchronization records.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` when script outputs feed a slide. Preserve hook id, mode, run directory, and risk level in the claim table.

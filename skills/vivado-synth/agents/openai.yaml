@@ -1,4 +1,4 @@
 interface:
   display_name: "Vivado Synthesis"
   short_description: "Plan and optimize Vivado RTL synthesis"
-  default_prompt: "Use $vivado-synth to choose a Vivado 2022.2 synthesis strategy and verify inferred resources."
+  default_prompt: "Use $vivado-synth for this task after identifying the actual project, device and Vivado version; preserve its evidence and execution boundaries."

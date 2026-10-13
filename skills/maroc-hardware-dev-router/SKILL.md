@@ -36,5 +36,5 @@ This skill is a MAROC project adapter. The generic architecture lives in `hardwa
 - Keep source artifacts in place. Do not copy RTL scripts, Qt source, Obsidian notes, or PPT templates into skills.
 - Treat old `maroc-fpga-development` as a compatibility entry only.
 - MAROC is an application example of the generic hardware workflow, not the generic workflow itself.
-- Use `C:/Users/Administrator/.codex/hardware-assets` as the central asset library; `.cc-switch` skills should reference it rather than carrying a second asset copy.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` for MAROC script hooks. Start with dry-run and do not run project-write, hardware-write, or destructive hooks without explicit confirmation.
+- Use `<CODEX_HOME>/hardware-assets` as the central asset library; `.cc-switch` skills should reference it rather than carrying a second asset copy.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` for MAROC script hooks. Start with dry-run and do not run project-write, hardware-write, or destructive hooks without explicit confirmation.

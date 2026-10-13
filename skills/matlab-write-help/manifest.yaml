@@ -1,0 +1,12 @@
+# Copyright 2026 The MathWorks, Inc.
+schema-version: 1
+license: MathWorks BSD-3-Clause
+scope: cross-product
+version: "1.0"
+human-description: Generate or improve MATLAB help text following MathWorks documentation standards.
+matlab-release: ">=R2021a"
+required-tools: []
+# MATLAB MCP tools are optional; local MATLAB/static fallback is documented in SKILL.md.
+required-skills: []
+required-products: []
+toolkit: matlab-agentic-toolkit

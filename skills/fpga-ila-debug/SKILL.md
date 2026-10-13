@@ -5,20 +5,20 @@ description: "Generic FPGA ILA/on-chip debug workflow. Use for Vivado ILA/VIO ca
 
 # FPGA ILA Debug
 
-## Workflow
+## Select the requested stage
 
-1. Record repository revision, build output, bitstream, LTX/probe file, board state, capture date, and programmed device.
-2. Verify each debug signal is connected in RTL and present in the active probe file before trusting the waveform.
-3. Choose one capture role at a time: transport, parser, register/control, serializer, trigger/control, acquisition/readout, memory, or debug probe.
-4. Use project Hardware Manager Tcl helpers when present; otherwise keep capture, upload, and CSV export steps explicit.
-5. Interpret captures using evidence boundaries. ILA proves internal FPGA activity for that image and trigger condition, not external analog behavior by itself.
+1. **Plan/insert probes:** inspect signal widths, domains, trigger purpose and available sample clock. BIT/LTX or a connected board is not required. MARK_DEBUG preserves/selects nets; it does not itself instantiate an ILA. Keep asynchronous raw signals separate from synchronized system-domain observations; a stopped measured clock cannot sustain its ILA capture. Insertion requires an edit request, not merely a request for a signal list.
+2. **Build/offline audit:** compare RTL/IP probe order and widths with the selected synthesis/implementation and matching BIT/LTX. Check ILA/VIO and debug-hub clocks. Inspect existing artifacts read-only; do not build simply to answer a review question.
+3. **Live capture:** record image/probe identity, device, board state, trigger and date. Verify the programmed image before trusting waveforms. Use project Hardware Manager helpers after inspecting their side effects. Programming, arming and live capture require current authorization.
+
+ILA proves internal FPGA activity for that image and trigger condition, not external analog behavior or pin accuracy by itself.
 
 ## Outputs
 
-Produce a capture plan, trigger condition, probe list, bit/ltx check, CSV/export path, observed fact, allowed conclusion, and next action.
+Deliver only the requested stage's evidence: a probe/trigger table for planning; contract and clock findings for offline audit; matched BIT/LTX, capture/export, observations and limitations for live capture.
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/vivado/ila_export_workflow_skeleton.tcl` for a generic Hardware Manager export starting point.
+- Use `<CODEX_HOME>/hardware-assets/templates/vivado/ila_export_workflow_skeleton.tcl` for a generic Hardware Manager export starting point.
 - Use project `source-refs/` files to find existing ILA trigger presets, wave groups, and CSV export scripts.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/hardware-hook-registry.yaml` for `ila.capture.*` hooks. Listing or inspecting may be read-only; programming, arming, live capture, and live CSV export are hardware operations unless proven otherwise.
+- Read ILA automation before running it. Listing saved data may be read-only; programming, arming, live capture, and live CSV export are hardware operations unless proven otherwise.

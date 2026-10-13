@@ -13,6 +13,14 @@ description: "Generic FPGA RTL code-review workflow. Use when reviewing Verilog,
 4. Check whether an existing testbench covers the module and whether that testbench models board-relevant timing.
 5. Report findings in code-review style: severity, file/line, behavior risk, evidence, and minimal fix direction.
 
+## Shared RTL contract
+
+Read [the shared simple RTL contract](../fpga-rtl-development/references/simple-rtl-contract.md) for design simplicity and cycle-preserving changes. Review control ownership, unnecessary wrappers/states/parameters, arithmetic widths and timing-sensitive paths. Prefer concrete behavior risks over subjective line-count criticism. Review-only requests do not authorize edits; route requested implementation to `fpga-rtl-development`.
+
+For new-project layout review, use [native project layout](../fpga-vivado-tcl-automation/references/native-project-layout.md): functional folders, one active source per file and separate simulation sources. Report legacy layout issues without moving files.
+
+The linked contract is the sole shared formatting/simplification policy. Do not reload development merely to follow that reference; review findings do not authorize a rewrite or a build.
+
 ## Handoffs
 
 - Use `fpga-cdc-reset-timing` for reset synchronizers, async FIFO, generated clocks, constraints, or timing closure.
@@ -21,5 +29,5 @@ description: "Generic FPGA RTL code-review workflow. Use when reviewing Verilog,
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/rtl/rtl_module_review_checklist.md` for reusable review structure.
-- Use `C:/Users/Administrator/.codex/hardware-assets/catalogs/hardware-assets-index.yaml` or project `source-refs/` files to find RTL examples; do not treat project RTL as a generic template without adaptation.
+- Use `<CODEX_HOME>/hardware-assets/templates/rtl/rtl_module_review_checklist.md` for reusable review structure.
+- Treat project RTL as evidence, not as a generic template without adaptation.

@@ -18,6 +18,6 @@ Local 2FF sync of `valid + data bus` across unrelated clocks is unsafe; prefer a
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC clock, reset, XDC, and timing-report assets.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` to locate XDC files, timing scripts, and CDC-related RTL.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/rtl/cdc_reset_timing_checklist.md` for reusable CDC/reset/timing reviews.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC clock, reset, XDC, and timing-report assets.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` to locate XDC files, timing scripts, and CDC-related RTL.
+- Use `<CODEX_HOME>/hardware-assets/templates/rtl/cdc_reset_timing_checklist.md` for reusable CDC/reset/timing reviews.

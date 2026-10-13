@@ -2,13 +2,15 @@
 
 Use this map as the shared path index for the MAROC skill family. Do not copy project scripts into skills; read or run them in place so the workflow follows the current repo state.
 
+> Portability note: the absolute roots below came from the upstream author's environment and are not present in every installation. Check each root before use. When absent, treat it only as a description of the expected repository role, discover the corresponding current workspace, or ask the user to locate it.
+
 ## Roots
 
 - RTL repo: `F:/01_MOUN/01_logic/02_MAROC/SPIROC_REF/01_MAROC_USB`
 - Qt host repo: `F:/01_MOUN/04_PC_HOST/02_QT_MUON`
 - Obsidian process notes: `C:/01_obsidian/ustc_hy/01_科研主系统/02_项目/MAROC开发/00_MAROC文档/过程开发笔记`
 - PPT workspace: `F:/09_ppt`
-- Existing MAROC PPT template skill: `C:/Users/Administrator/.codex/skills/maroc-ppt`
+- Existing MAROC PPT template skill: `<CODEX_HOME>/skills/maroc-ppt`
 
 ## RTL Entry Points
 

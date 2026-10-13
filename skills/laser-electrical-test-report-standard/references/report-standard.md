@@ -1,6 +1,6 @@
 # Report Standard
 
-Formal DOCX and Markdown reports belong under `C:\01_obsidian\ustc_hy\01_科研主系统\04_实验测试与证据\03_超稳激光电控箱指标测试\LASER 测试报告\202607\01_正式报告`. The template asset remains inside the skill.
+Formal DOCX and Markdown reports belong under `<obsidian_vault_root>\01_科研主系统\04_实验测试与证据\03_超稳激光电控箱指标测试\LASER 测试报告\202607\01_正式报告`. The template asset remains inside the skill.
 
 ## 1. Document Logic
 
@@ -37,6 +37,7 @@ Apply the engineering language, evidence classification, section naming, and sta
 Apply the global figure, caption, table, formula, and source-path rules from `laser-test-report-writing`. In this project template:
 
 - Map captions to `图表题注`.
+- Display figure captions as `图{SEQ 图} 对象/接口：图像内容`, without a space after `图` and without an evidence ID or source filename.
 - Map image anchors to `图片`.
 - Map header/body cell text to `表格表头` and `表格文字`.
 - Convert LaTeX through the project Pandoc/OMML helper when professional equations are required.
@@ -57,7 +58,7 @@ Directory entries use explicit `TOC 1/2/3` styles: Songti/Times New Roman 12 pt,
 | `三级标题` | Microsoft YaHei 12 pt, bold, black, automatic `1.1.1`, 6/3 pt before/after |
 | Report information | Songti/Times New Roman 12 pt, no indent, not numbered |
 | Caption | Songti/Times New Roman 10.5 pt, centered, no indent |
-| Table header | `表格表头`, Songti/Times New Roman 9.5 pt, bold, centered, zero first/left/right indent |
+| Table header | `表格表头`, Songti/Times New Roman 9.5 pt, bold white `FFFFFF`, centered, zero first/left/right indent |
 | Table body | `表格文字`, Songti/Times New Roman 9.5 pt, centered, zero first/left/right indent |
 | Image anchor | `图片`, centered, zero first/left/right indent, kept with its following figure caption |
 
@@ -69,16 +70,20 @@ Set the table object itself to centered, keep `tblInd` absent or explicitly zero
 Apply this contract to newly created tables and to existing tables only when the user explicitly requests restyling:
 
 - Use `报告表格样式`; place a centered `图表题注` caption above the table.
-- Fill the header row with `DDEBF7`; use a white `FFFFFF` body without banded rows.
+- Fill the header row with dark blue `1F4E79` and set every visible header run to bold white `FFFFFF`; use a white `FFFFFF` body without banded rows.
 - Use `808080` 0.5 pt single borders for all outside and inside edges.
 - Use `表格表头` for bold 9.5 pt header text and `表格文字` for 9.5 pt body text; center horizontally and vertically. Use 85 twip top/bottom and 102 twip left/right cell margins.
 - Use status fills only in a column explicitly named `结论`: `满足`=`E2F0D9`, `不满足`=`F4CCCC`, `暂不能判定`=`FFF2CC`, `未测试`=`E7E6E6`.
+- Rework before/after comparison tables follow `laser-test-report-writing/references/rework-comparison-style.md`: a `状态` (or `焊接情况`) column right after the interface column, post-rework row first with light-blue `B8CCE4` status+data cells, pre-rework row after with light-red `E5B8B7` and gray `595959` text, interface column white. Do not pre-place these tables in the formal template.
 - Insert line breaks at semantic or unit boundaries in long headers; do not end headers or captions with punctuation.
 - Use fixed columns within the body width, zero table/paragraph indents, a repeated header row, and non-splitting data rows.
 - Run `audit_standard_test_report_docx.py <docx> --strict-table-style` for newly generated documents whose complete table set is expected to follow this visual contract.
+- For a user-edited report, do not use strict restyling as a cleanup step. Preserve its existing table geometry and visual choices; audit the requested change and the untouched-object diff separately.
 - Before final delivery, also use `--final-content` to reject residual `待填写`, figure placeholders, short-title placeholders, and technical full-width parentheses.
 
 The delivery audit scans high-confidence template wording that weakens engineering prose and, when an equivalent-input noise result appears, checks that calibration and FPGA gain or transfer terms are recorded. Use `--profile engineering` for the engineering-narrative contract and `--profile ad2208-da9726` for the digital-lock-board ADC/DAC review. A warning identifies a possible problem; it is not a substitute for source-data review.
+
+Field export no longer runs sanitation by default. For an explicitly requested post-refresh cleanup, run the sanitizer on a new output copy only. Use `--restyle-tables --normalize-fonts` only for a new report or after explicit approval. The default path must not change custom widths, fills, borders, row heights, merged cells, alignment exceptions, or direct font choices.
 
 ## 6. Known Project-Specific Legacy Defects To Correct
 

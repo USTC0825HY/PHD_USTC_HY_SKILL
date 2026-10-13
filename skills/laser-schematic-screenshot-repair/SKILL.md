@@ -5,17 +5,23 @@ description: Repair and recut clear Laser/PDH schematic screenshots for Obsidian
 
 # Laser Schematic Screenshot Repair
 
+Before consuming profile-derived inputs, read [path validation](../hardware-dev-router/references/profile-path-resolution.md) and run its read-only validator for the required keys only (or validate an explicit task path). Missing inputs stop dependent work; do not create obsolete directories or guess replacement campaigns. Keep existing CLI/environment overrides ahead of profile defaults.
+
+运行脚本前按 [运行时验证](../hardware-dev-router/references/runtime-validation.md) 探测实际 Python 版本和所需导入；优先复用可执行专用环境。
+
 ## Overview
 
 Use this skill to replace blurry or poorly framed schematic screenshots with high-resolution, tightly cropped, source-traceable local images. Prioritize the latest user-specified PDF source, exact target framing, and visually verified highlights.
 
 If the task also edits Laser/PDH Obsidian Markdown, follow the Laser/PDH Markdown governance skill if available, then use this skill for screenshot-specific work.
 
+Read `<CODEX_HOME>/laser-fpga-profile.json` before resolving `<laser_source_root>` or `<obsidian_vault_root>`. Use the isolated Python at `<CODEX_HOME>/tools/laser-fpga-runtime/.venv/Scripts/python.exe`.
+
 ## Workflow
 
 1. Confirm the authoritative source PDF.
    - Prefer the newest path explicitly given by the user.
-   - For this vault, the current schematic source path is often `F:/01_Laser/原理图/原理图--汇总-20260508/_输出PDF`.
+   - Resolve the requested schematic from current source evidence or a validated `schematic_pdf_root`. Historical `原理图--汇总-20260508` paths are discovery hints only; never create them or choose a similarly named PDF as authority.
    - Do not silently reuse older copied PDFs when the user has given a newer schematic directory.
 
 2. Inventory affected screenshots.
@@ -54,16 +60,17 @@ If the task also edits Laser/PDH Obsidian Markdown, follow the Laser/PDH Markdow
    - Inspect final image files, not only temporary candidates.
    - Report dimensions of replaced images.
    - Run the Laser/PDH audit when working in that vault:
-     `python C:/Users/Administrator/.codex/skills/laser-pdh-obsidian-md-writing/scripts/audit_laser_pdh_md.py --root C:/01_obsidian/ustc_hy/01_科研主系统/09_博士研究主线/00_理论补充/Laser_PDH_Study`
-   - Key screenshot checks should be zero: `SCHEMATIC_IMAGE_EXISTS`, `SCHEMATIC_IMAGE_SCOPE`, `SCHEMATIC_IMAGE_CONTEXT`, and `TABLE_SCREENSHOT_METADATA`.
+     `$codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }; & "$codexHome/tools/laser-fpga-runtime/.venv/Scripts/python.exe" "$codexHome/skills/laser-pdh-obsidian-md-writing/scripts/audit_laser_pdh_md.py"`
+   - Resolve actual `SCHEMATIC_IMAGE_EXISTS`, `SCHEMATIC_IMAGE_SCOPE` and `SCHEMATIC_IMAGE_CONTEXT` defects. `TABLE_SCREENSHOT_METADATA`, like other `TABLE_*` counters, is report-only: retain valid matrices and compact numeric/record tables; do not force its count to zero.
 
 ## Script
 
 Use `scripts/render_crop_highlight.py` when generating or replacing a crop:
 
 ```powershell
-python C:/Users/Administrator/.codex/skills/laser-schematic-screenshot-repair/scripts/render_crop_highlight.py `
-  --pdf "F:/01_Laser/原理图/原理图--汇总-20260508/_输出PDF/数字锁定.pdf" `
+$codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
+& "$codexHome/tools/laser-fpga-runtime/.venv/Scripts/python.exe" "$codexHome/skills/laser-schematic-screenshot-repair/scripts/render_crop_highlight.py" `
+  --pdf "<laser_source_root>/原理图/原理图--汇总-20260508/_输出PDF/数字锁定.pdf" `
   --page 4 `
   --scale 8 `
   --crop 1260,2020,2580,3120 `

@@ -17,6 +17,9 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 from docx.table import Table
 from docx.text.paragraph import Paragraph
+from lxml import etree
+
+from audit_figure_mapping import audit_document as audit_figure_document
 
 
 DEFAULT_PROBLEM_TERMS = [
@@ -137,6 +140,12 @@ class AuditResult:
     table_pagination_issues: list[dict[str, str]]
     table_header_issues: list[dict[str, str]]
     caption_issues: list[dict[str, str]]
+    figure_mapping_issues: list[dict[str, str]]
+    duplicate_evidence_id_issues: list[dict[str, str]]
+    cross_reference_issues: list[dict[str, str]]
+    traceability_table_issues: list[dict[str, str]]
+    mixed_font_issues: list[dict[str, str]]
+    post_refresh_layout_issues: list[dict[str, str]]
     structure_issues: list[dict[str, str]]
     engineering_profile_issues: list[dict[str, str]]
     ad2208_da9726_profile_issues: list[dict[str, str]]
@@ -452,7 +461,7 @@ def block_has_drawing(kind: str, block: Paragraph | Table) -> bool:
     return bool(element.xpath(".//w:drawing | .//w:pict"))
 
 
-def caption_issues(doc: Document) -> list[dict[str, str]]:
+def caption_issues(doc: Document, require_seq: bool = False) -> list[dict[str, str]]:
     issues: list[dict[str, str]] = []
     blocks = body_blocks(doc)
     for index, (kind, block) in enumerate(blocks):
@@ -469,7 +478,7 @@ def caption_issues(doc: Document) -> list[dict[str, str]]:
         if text.endswith(("。", ".")):
             issues.append({"location": location, "issue": f"{label} caption ends with a period", "text": text})
         instruction = "".join(node.text or "" for node in block._p.xpath(".//w:instrText"))
-        if not re.search(fr"\bSEQ\s*{label}\b", instruction):
+        if require_seq and not re.search(fr"\bSEQ\s*{label}\b", instruction):
             issues.append({"location": location, "issue": f"{label} caption lacks an automatic SEQ field", "text": text})
         if label == "图":
             previous_is_template_prompt = (
@@ -485,6 +494,73 @@ def caption_issues(doc: Document) -> list[dict[str, str]]:
                 issues.append({"location": location, "issue": "figure caption is not immediately below a figure", "text": text})
         elif index + 1 >= len(blocks) or blocks[index + 1][0] != "table":
             issues.append({"location": location, "issue": "table caption is not immediately above a table", "text": text})
+    for index, element in enumerate(doc.element.xpath(".//w:p"), 1):
+        instruction = " ".join(node.text or "" for node in element.xpath(".//w:instrText"))
+        if not re.search(r"\bSEQ\s+图\b", instruction):
+            continue
+        text = "".join(node.text or "" for node in element.xpath(".//w:t")).strip()
+        if re.match(r"^图\s+\d", text):
+            issues.append({"location": f"figure caption {index}", "issue": "space between 图 and figure number", "text": text})
+        if re.search(r"^图\s*\d+\s*\[[A-Z0-9-]+\]", text):
+            issues.append({"location": f"figure caption {index}", "issue": "visible caption exposes evidence ID", "text": text})
+    return issues
+
+
+def mixed_font_issues(path: Path, profile: str | None) -> list[dict[str, str]]:
+    if profile is None:
+        return []
+    issues: list[dict[str, str]] = []
+    heading_names = {
+        "报告题名", "报告短题名", "目录标题", "一级标题", "二级标题", "三级标题",
+        "标题 1", "标题 2", "标题 3", "Heading 1", "Heading 2", "Heading 3",
+    }
+    with zipfile.ZipFile(path) as archive:
+        styles = etree.fromstring(archive.read("word/styles.xml"))
+        names: dict[str, str] = {}
+        for style in styles.xpath(".//w:style", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}):
+            style_id = style.get(qn("w:styleId"), "")
+            name = style.find(qn("w:name"))
+            names[style_id] = name.get(qn("w:val"), "") if name is not None else ""
+        parts = [name for name in archive.namelist() if name == "word/document.xml" or re.fullmatch(r"word/(?:header|footer)\d+\.xml", name)]
+        for part_name in parts:
+            root = etree.fromstring(archive.read(part_name))
+            paragraphs = root.xpath(".//w:p", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"})
+            for paragraph_index, paragraph in enumerate(paragraphs, 1):
+                style_node = paragraph.find("./w:pPr/w:pStyle", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"})
+                style_name = names.get(style_node.get(qn("w:val"), ""), "") if style_node is not None else ""
+                expected_east_asia = "微软雅黑" if profile == "manual" or style_name in heading_names else "宋体"
+                for run_index, run in enumerate(paragraph.xpath(".//w:r[.//w:t or .//w:instrText]", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}), 1):
+                    if run.xpath("ancestor::m:oMath | ancestor::m:oMathPara", namespaces={"m": "http://schemas.openxmlformats.org/officeDocument/2006/math"}):
+                        continue
+                    fonts = run.find("./w:rPr/w:rFonts", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"})
+                    text = "".join(run.xpath(".//w:t/text()", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}))[:80]
+                    actual = {} if fonts is None else {
+                        "eastAsia": fonts.get(qn("w:eastAsia")),
+                        "ascii": fonts.get(qn("w:ascii")),
+                        "hAnsi": fonts.get(qn("w:hAnsi")),
+                        "cs": fonts.get(qn("w:cs")),
+                    }
+                    if actual.get("eastAsia") != expected_east_asia or any(actual.get(key) != "Times New Roman" for key in ("ascii", "hAnsi", "cs")):
+                        issues.append({
+                            "location": f"{part_name} paragraph {paragraph_index} run {run_index}",
+                            "issue": "mixed-language run fonts do not match profile",
+                            "text": text,
+                            "expected": f"eastAsia={expected_east_asia}, Latin=Times New Roman",
+                            "actual": str(actual),
+                        })
+    return issues
+
+
+def post_refresh_layout_issues(doc: Document, enabled: bool) -> list[dict[str, str]]:
+    if not enabled:
+        return []
+    issues = [dict(issue, issue="table paragraph indents changed after Word refresh") for issue in table_indent_issues(doc)]
+    for index, paragraph in enumerate(doc.paragraphs, 1):
+        text = paragraph.text.strip()
+        if re.match(r"^图\s+\d", text):
+            issues.append({"location": f"paragraph {index}", "issue": "space between 图 and figure number after refresh", "text": text})
+        if re.search(r"^图\s*\d+\s*\[[A-Z0-9-]+\]", text):
+            issues.append({"location": f"paragraph {index}", "issue": "visible caption exposes evidence ID after refresh", "text": text})
     return issues
 
 
@@ -848,7 +924,15 @@ def office_math_metrics(path: Path) -> tuple[int, int, list[str]]:
     return office_math_count, structured_count, warnings
 
 
-def audit(path: Path, terms: list[str], profile: str | None = None, mode: str = "reconstruction") -> AuditResult:
+def audit(
+    path: Path,
+    terms: list[str],
+    profile: str | None = None,
+    mode: str = "reconstruction",
+    figure_manifest: Path | None = None,
+    font_profile: str | None = None,
+    post_refresh: bool = False,
+) -> AuditResult:
     doc = Document(str(path))
     office_math_count, office_math_structured_count, formula_structure_warnings = office_math_metrics(path)
     all_text = "\n".join([para.text for para in doc.paragraphs] + ["\t".join(cell.text for cell in row.cells) for table in doc.tables for row in table.rows])
@@ -859,6 +943,8 @@ def audit(path: Path, terms: list[str], profile: str | None = None, mode: str = 
                 calibration_warnings.append(f"AD 输入端等效噪声 section missing {required}")
         if "H_FPGA" not in all_text and "G/H_FPGA" not in all_text and "FPGA 增益" not in all_text:
             calibration_warnings.append("AD 输入端等效噪声 section missing FPGA gain/transfer term")
+    from docx_safe_edit import reference_checks
+    figure_audit = audit_figure_document(path, figure_manifest, "surgical" if mode == "surgical" else "new") if figure_manifest is not None else None
     return AuditResult(
         path=str(path),
         mode=mode,
@@ -879,7 +965,13 @@ def audit(path: Path, terms: list[str], profile: str | None = None, mode: str = 
         table_object_issues=table_object_issues(doc),
         table_pagination_issues=table_pagination_issues(doc),
         table_header_issues=table_header_issues(doc),
-        caption_issues=caption_issues(doc),
+        caption_issues=caption_issues(doc, require_seq=(mode != "surgical" and profile == "engineering")),
+        figure_mapping_issues=[] if figure_audit is None else figure_audit.figure_mapping_issues,
+        duplicate_evidence_id_issues=[] if figure_audit is None else figure_audit.duplicate_evidence_id_issues,
+        cross_reference_issues=reference_checks(doc) if figure_audit is None else figure_audit.cross_reference_issues,
+        traceability_table_issues=[] if figure_audit is None else figure_audit.traceability_table_issues,
+        mixed_font_issues=mixed_font_issues(path, font_profile),
+        post_refresh_layout_issues=post_refresh_layout_issues(doc, post_refresh),
         structure_issues=structure_issues(doc),
         engineering_profile_issues=(
             engineering_profile_issues(doc)
@@ -913,6 +1005,9 @@ def main() -> int:
         default=DEFAULT_PROBLEM_TERMS,
         help="Problem terms to scan",
     )
+    parser.add_argument("--figure-manifest", type=Path, help="Audit figures against figure_manifest.csv")
+    parser.add_argument("--font-profile", choices=["report", "manual"], help="Require direct mixed-language run fonts")
+    parser.add_argument("--post-refresh", action="store_true", help="Enforce post-Word-refresh layout invariants")
     parser.add_argument("--warn-only", action="store_true", help="Always exit 0")
     parser.add_argument(
         "--profile",
@@ -925,16 +1020,45 @@ def main() -> int:
         default="reconstruction",
         help="Select strict new/reconstruction audit or format-preserving surgical audit",
     )
+    parser.add_argument("--before", type=Path)
+    parser.add_argument("--scope-json", type=Path)
+    parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
+    if bool(args.before) != bool(args.scope_json): parser.error("--before and --scope-json required together")
 
     path = Path(args.docx).expanduser().resolve()
     if not path.exists():
         raise SystemExit(f"DOCX not found: {path}")
 
-    result = audit(path, args.terms, args.profile, args.mode)
+    figure_manifest = args.figure_manifest.expanduser().resolve() if args.figure_manifest else None
+    result = audit(path, args.terms, args.profile, args.mode, figure_manifest, args.font_profile, args.post_refresh)
 
+    historical = {}
+    scope_issues = []
+    if args.mode == "surgical" and args.before:
+        from collections import Counter
+        from docx_safe_edit import surgical_diff
+        baseline = asdict(audit(args.before, args.terms, args.profile, args.mode, figure_manifest, args.font_profile, args.post_refresh))
+        for key,values in asdict(result).items():
+            if key.endswith(("_issues","_warnings")) or key == "problem_hits":
+                if not isinstance(values,list): continue
+                old = Counter(json.dumps(x,sort_keys=True,ensure_ascii=False) for x in baseline.get(key,[]))
+                fresh=[]; inherited=[]
+                for value in values:
+                    identity=json.dumps(value,sort_keys=True,ensure_ascii=False)
+                    if old[identity]: old[identity]-=1; inherited.append(value)
+                    else: fresh.append(value)
+                historical[key]=inherited
+                setattr(result,key,fresh)
+        scope_issues=surgical_diff(args.before,path,json.loads(args.scope_json.read_text(encoding="utf-8-sig")))
+    if args.strict and args.mode == "surgical" and not args.before: scope_issues.append("strict surgical audit requires baseline/scope")
+    if args.strict and result.image_count:
+        if not figure_manifest: scope_issues.append("strict figure acceptance requires manifest")
+        else:
+            strict_figures=audit_figure_document(path,figure_manifest,"surgical" if args.mode=="surgical" else "new",True,args.before)
+            result.figure_mapping_issues.extend(strict_figures.figure_mapping_issues)
     if args.json:
-        print(json.dumps(asdict(result), ensure_ascii=False, indent=2))
+        print(json.dumps(asdict(result) | {"historical_findings":historical,"scope_issues":scope_issues,"verification_level":"strict" if args.strict else "structure"}, ensure_ascii=False, indent=2))
     else:
         print(f"path: {result.path}")
         print(f"mode: {result.mode}")
@@ -991,6 +1115,14 @@ def main() -> int:
         print(f"caption_issues: {len(result.caption_issues)}")
         for issue in result.caption_issues[:20]:
             print(f"  - {issue['location']}: {issue['issue']}: {issue.get('text', '')}")
+        for field_name in (
+            "figure_mapping_issues", "duplicate_evidence_id_issues", "cross_reference_issues",
+            "traceability_table_issues", "mixed_font_issues", "post_refresh_layout_issues",
+        ):
+            values = getattr(result, field_name)
+            print(f"{field_name}: {len(values)}")
+            for issue in values[:30]:
+                print(f"  - {issue['location']}: {issue['issue']}: {issue.get('text', '')}")
         print(f"structure_issues: {len(result.structure_issues)}")
         for issue in result.structure_issues[:20]:
             print(f"  - {issue['location']}: {issue['issue']}: {issue.get('text', '')}")
@@ -1019,6 +1151,12 @@ def main() -> int:
         or result.parenthesis_issues
         or result.table_header_issues
         or result.caption_issues
+        or result.figure_mapping_issues
+        or result.duplicate_evidence_id_issues
+        or result.cross_reference_issues
+        or result.traceability_table_issues
+        or result.mixed_font_issues
+        or result.post_refresh_layout_issues
         or result.structure_issues
         or result.formula_structure_warnings
     )
@@ -1035,7 +1173,7 @@ def main() -> int:
             or result.ad2208_da9726_profile_issues
             or result.dds_profile_issues
         )
-    return 0 if args.warn_only or not failed else 1
+    return 0 if (args.warn_only and not args.strict) or not (failed or scope_issues) else 1
 
 
 if __name__ == "__main__":

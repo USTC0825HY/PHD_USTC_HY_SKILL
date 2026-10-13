@@ -1,45 +1,24 @@
-# MATLAB Script Routing
+# MATLAB 入口路由
 
-Use the code root from `workspace-map.md`. Inspect the script configuration and source data before running it; this table routes tasks but does not replace parameter verification.
+当前权威库见workspace-map；先读实际入口、器件README和审计台账。目录或版本记录不能替代采样率、码制、增益、参考面及限值证据。
 
-| Script | Preferred task | Input | Main output/limitation |
-|---|---|---|---|
-| `s01_convert_ila_to_pico_mat.m` | Convert ILA codes for voltage-domain analysis | Vivado ILA CSV | MAT with `A` and `Tinterval`; verify coding and voltage scale first |
-| `s02_analyze_pico_psd_asd.m` | Generic exploratory PSD/ASD | Pico/converted MAT | Welch spectrum and band statistics; not a task-specific formal judge by itself |
-| `s03_calc_dac_integrated_noise_1k_100k.m` | DAC 1 kHz–100 kHz integrated noise | Voltage MAT | PSD integral in µVrms; do not integrate ASD |
-| `s04_separate_ad_da_noise.m` | Optional AD/DA noise separation | Matched total and DAC-baseline MAT | Subtract PSD only; matching and negative-bin audit required |
-| `s05_compare_ad_p1_p100_input_noise.m` | P=1 versus P=100 chain comparison | Two matched MAT captures | Total-chain input-referred comparison; not ADC device floor |
-| `s06_calibrate_ila_single_sine.m` | Single-point ADC diagnostic | One sine ILA CSV | Local scale only; cannot establish full-range linearity |
-| `s07_calibrate_ila_multi_sine.m` | Formal ADC Vpp-Codepp calibration | Multiple level-labelled ILA CSV | Fit summary, measurements, fit/residual plot, MAT |
-| `s08_calibrate_dac_multi_sine.m` | Formal DAC Vpp-Codepp calibration | Multiple `code_*` Pico MAT files | Fit summary, measurements, fit/residual plot, MAT |
-| `s09_analyze_ad_input_equiv_noise_new_flow.m` | ADC–FPGA–DAC total-chain equivalent-input noise | DAC-output MAT plus ADC/DAC slopes and FPGA gain | Default: no DAC/Pico baseline subtraction; optional matched PSD subtraction |
-| `s10_analyze_adc_grounded_csv_input_noise.m` | Direct grounded-ADC code noise | ILA CSV | Code PSD scaled by reviewed ADC slope |
-| `s11_analyze_dac_output_noise_metrics.m` | DA output ASD@1 Hz and integrated noise | Pico voltage MAT | Verify duration and 1 Hz resolution before judgment |
-| `s12_batch_allan_stability_analysis.m` | ADEV/MDEV and 1 s stability | Counter CSV/TXT | Requires frequency column, cadence, nominal frequency, gap/outlier policy |
-| `s13_analyze_ad9245_psd_asd_datasheet_scale.m` | AD9245 datasheet-scale cross-check | AD9245 data or audited summary | Estimate/cross-check; distinguish measured and theoretical scale |
-| `s14_analyze_ad2208_jg12_jg15_10m25m_noise.m` | JG12/JG15 10–25 MHz noise indicator | 100 MSPS ILA CSV | Welch plus full-record spur screening; external-interface scale |
-| `s15_analyze_dac766_c1_noise_metrics.m` | DAC766 `C1_data/C1_time` noise | Pico MAT | Guards short records that cannot resolve 1 Hz |
-| `s16_analyze_jg18_jg3_g100_1hz_noise.m` | JG18–G100–JG3 1 Hz total-chain noise | Time-axis/value MAT | Window sensitivity and segment stability; no DAC/Pico subtraction |
+| 任务 | 入口 |
+|---|---|
+| AD2208/AD9245 SFDR、带宽、隔离度、输入刻度、INL/DNL | 2208_hy / 9245_hy 内对应 adc_*_analysis.m |
+| AD2208 ILA/PICO噪声 | 2208_hy/adc_ila_noise_analysis.m 与 adc_pico_noise_1hz_analysis.m，均四参数 |
+| AD9245 PICO噪声 | 9245_hy/adc_input_noise_analysis.m：dataFolder, outputFolder, runOptions；文件及接口在选项内 |
+| AD677 ILA/PICO噪声 | 677_hy/adc_ila_noise_analysis.m 与 adc_pico_noise_1hz_analysis.m，均四参数 |
+| AD677 输入刻度、带宽、输入噪声 | 677_hy 当前入口，板卡/接口校准显式指定 |
+| AD128 带宽 | 128_hy 当前入口 |
+| DA9726/DA766 刻度、噪声、隔离度、输出范围 | 9726_hy / 766_hy 当前 dac_* 入口 |
+| 多通道Pico切分 | 9726_hy/split_dac_isolation_channels.m，CH位置/显式channelMapping |
+| DAC隔离度内核 | _shared/+converter/+dac/runIsolation.m、fitTone.m；IO为+io/loadPicoMat.m |
 
-## Priority Rules
+每次从实际README确认参数顺序，尤其766hex频率数值参数、2208 INL多参数和不同PICO入口差别。不固定入口数量。legacy、旧laser_analysis/01_workflows及发布ZIP不作新分析首选。
 
-- Use `s14`, not generic `s02`, for the JG12/JG15 10–25 MHz formal indicator.
-- Use `s16`, not one arbitrary periodogram bin, for the JG18 1 Hz total-chain result.
-- Use `s07`/`s08` for multi-point calibration; use `s06` only for a diagnostic point.
-- Use `s10` for direct ADC code-stream noise. Use `s09` only when the observed waveform is at the DAC/Pico output of an ADC–FPGA–DAC chain.
-- Use `s04` only when the user requests baseline separation and matched baseline evidence exists. The current formal total-chain scheme does not subtract DAC/Pico background.
+执行前记录输入哈希、采样率/时长、通道/列、码制、频带、校准来源/参考面、全部增益与输出目录。数据不足、通道歧义或参数不明时保留待确认，不猜值。
+复用适用且已验证的算法；本技能维护不授权修改MATLAB源码。涉及方法修改时遵循MATLAB项目AGENTS的公式、文档、测试和台账同步要求。
 
-## Preflight
+2026-10-13项目有26个正式入口，完整清单见库内docs/20261013_structure_governance/STRUCTURE.md；运行时仍核对磁盘。DA9726的dac_output_voltage_analysis.m为直流台阶分析，保留CSV/PNG/MAT布局。677审计/批处理/FFT、切分工具及Phase_delay单独分类。
 
-Before execution, record:
-
-- actual source files and hashes;
-- sample rate, duration, channel/probe, radix, coding, data column, validity field;
-- frequency band and required statistic;
-- calibration slope source, reference plane, method, and quality;
-- analog and FPGA gains;
-- output directory and whether it is outside the formal-report directory.
-
-Reject scripts containing merge-conflict markers. Run MATLAB `checkcode` after modification and before formal use.
-
-Resolve reviewed per-channel scale data with `laser_latest_fit_summary(deviceType, interfaceName)`. `s09`, `s14`, and `s16` use this helper by default; do not silently fall back to the historical aggregate calibration workbook.
+需要内置刻度的五个ADC噪声入口使用boardType和calibrationState；无电压刻度换算的指标不增加板型弹窗。PICO选择同板ADC和DA9726 JG18；详见calibration-workflow。

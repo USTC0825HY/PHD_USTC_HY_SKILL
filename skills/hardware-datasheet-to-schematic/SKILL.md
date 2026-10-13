@@ -23,5 +23,5 @@ Use project-specific adapter skills only for local signal names, board revisions
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/rtl_xdc_schematic_alignment_table.md` when datasheet pins must be tied to RTL/XDC/schematic nets.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/rtl_xdc_schematic_alignment_table.md` when datasheet pins must be tied to RTL/XDC/schematic nets.
 - Use project `source-refs/` files to locate prior datasheet-to-schematic notes and review artifacts.

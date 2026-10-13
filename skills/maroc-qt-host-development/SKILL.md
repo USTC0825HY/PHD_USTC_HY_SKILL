@@ -7,7 +7,7 @@ description: "MAROC-specific Qt host development workflow. Use for QT_MUON C++/Q
 
 ## Workflow
 
-1. Read the Qt host root from router `resource-map.md`: `F:/01_MOUN/04_PC_HOST/02_QT_MUON`.
+1. Read the historical Qt host root from router `resource-map.md`, verify that it exists, and otherwise discover or ask for the current project root. Do not assume the upstream author's `F:/01_MOUN/04_PC_HOST/02_QT_MUON` path exists locally.
 2. For generic Qt/C++ structure, worker threading, fake backend, CMake option, or CTest patterns, apply `qt-cpp-host-development` first.
 3. Classify the MAROC-specific surface: UI binding, ASIC model, configuration export, USB/CyAPI transport, direct FPGA command, read-probe automation, or host/RTL alignment.
 4. Keep MAROC protocol ownership clear: UI/binder collects intent; `maroc3a_model` and `DeviceConfig` hold MAROC state; `MarocConfigurationManager` exports configuration; `FpgaCommandBuilder` builds FPGA commands; `UsbPayloadTransform` handles wire payload transforms; `UsbDeviceClient` handles transport.
@@ -42,6 +42,6 @@ description: "MAROC-specific Qt host development workflow. Use for QT_MUON C++/Q
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before selecting reusable MAROC host artifacts.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-qt-host-assets.md` to locate QT_MUON source files, tests, docs, and snapshots.
-- Use generic Qt skeletons from `C:/Users/Administrator/.codex/hardware-assets/templates/qt-cpp-host/` for new abstractions; keep MAROC3A fields, CyAPI endpoint details, and packet formats in the MAROC adapter layer.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before selecting reusable MAROC host artifacts.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-qt-host-assets.md` to locate QT_MUON source files, tests, docs, and snapshots.
+- Use generic Qt skeletons from `<CODEX_HOME>/hardware-assets/templates/qt-cpp-host/` for new abstractions; keep MAROC3A fields, CyAPI endpoint details, and packet formats in the MAROC adapter layer.

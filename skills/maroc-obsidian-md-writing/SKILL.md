@@ -34,7 +34,7 @@ Follow router `evidence-boundaries.md`. Configuration-chain, ADC/upload, and ana
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-doc-assets.md` before citing or extending existing MAROC Obsidian notes.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/claim_table_template.md`, `board_bringup_log_template.md`, and `ppt_md_companion_template.md` for reusable note structures.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/hardware-hook-registry.yaml` when a note cites script-generated evidence. Record the hook id, mode, run directory, and risk level instead of implying broader hardware proof.
+- Read `<CODEX_HOME>/hardware-assets/source-refs/maroc-doc-assets.md` before citing or extending existing MAROC Obsidian notes.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/claim_table_template.md`, `board_bringup_log_template.md`, and `ppt_md_companion_template.md` for reusable note structures.
+- Use `<CODEX_HOME>/hardware-assets/hooks/hardware-hook-registry.yaml` when a note cites script-generated evidence. Record the hook id, mode, run directory, and risk level instead of implying broader hardware proof.
 - Do not move existing Obsidian notes into the asset library; catalog source paths and write new notes only in the requested canonical vault location.

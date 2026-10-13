@@ -19,5 +19,5 @@ Use `rtl-schematic-xdc-alignment` when a schematic signal must match FPGA RTL an
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/rtl_xdc_schematic_alignment_table.md` when FPGA-connected schematic nets need RTL/XDC correlation.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/rtl_xdc_schematic_alignment_table.md` when FPGA-connected schematic nets need RTL/XDC correlation.
 - Use project `source-refs/` files to locate schematic review notes, XDC inputs, and board documentation.

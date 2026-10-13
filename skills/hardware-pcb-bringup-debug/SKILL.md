@@ -22,6 +22,6 @@ description: "Generic PCB bring-up and hardware debug workflow. Use for power-up
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/board_bringup_log_template.md` for layered bring-up notes.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/claim_table_template.md` before converting lab results into report claims.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/board_bringup_log_template.md` for layered bring-up notes.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/claim_table_template.md` before converting lab results into report claims.
 - Use project `source-refs/` files to locate board logs, ILA/scope evidence, and PPT/MD reporting examples.

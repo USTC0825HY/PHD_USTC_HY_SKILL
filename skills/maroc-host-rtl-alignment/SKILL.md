@@ -21,7 +21,7 @@ description: "MAROC adapter for host-to-RTL alignment. Use when QT_MUON exports,
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before choosing host export, fixture, parser, or report assets.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-qt-host-assets.md` for QT_MUON exporters and payload transforms, and `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` for parser/TB fixture consumers.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/host_rtl_alignment_table.md` as the standard alignment record.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` for `rtl.fixture.prepare.maroc` and related fixture/replay hooks. Keep hook run logs as provenance, not as board evidence.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before choosing host export, fixture, parser, or report assets.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-qt-host-assets.md` for QT_MUON exporters and payload transforms, and `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` for parser/TB fixture consumers.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/host_rtl_alignment_table.md` as the standard alignment record.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` for `rtl.fixture.prepare.maroc` and related fixture/replay hooks. Keep hook run logs as provenance, not as board evidence.

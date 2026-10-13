@@ -21,7 +21,7 @@ description: "MAROC adapter for FPGA testbench, XSim, fixture, and simulation-re
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before selecting TB, fixture, XSim, or host-export assets.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` to find MAROC testbenches, fixture bundles, and XSim scripts.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/rtl/tb_skeleton.v`, `fixture_manifest_template.md`, and `C:/Users/Administrator/.codex/hardware-assets/templates/vivado/xsim_run_wrapper_skeleton.ps1` for new reusable simulation scaffolds.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` for scenario hooks such as `rtl.sim.maroc.xsim`. Dry-run first and keep hook logs with the simulation report.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` before selecting TB, fixture, XSim, or host-export assets.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` to find MAROC testbenches, fixture bundles, and XSim scripts.
+- Use `<CODEX_HOME>/hardware-assets/templates/rtl/tb_skeleton.v`, `fixture_manifest_template.md`, and `<CODEX_HOME>/hardware-assets/templates/vivado/xsim_run_wrapper_skeleton.ps1` for new reusable simulation scaffolds.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` for scenario hooks such as `rtl.sim.maroc.xsim`. Dry-run first and keep hook logs with the simulation report.

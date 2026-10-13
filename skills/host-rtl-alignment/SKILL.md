@@ -1,6 +1,6 @@
 ---
 name: host-rtl-alignment
-description: "Generic host-to-RTL alignment workflow. Use when host software exports register maps, binary packets, command streams, payload transforms, CSV/JSON/hex/mem fixtures, or readback expectations that must match RTL parsers, testbench fixtures, bus adapters, or FPGA command handlers."
+description: "Align host settings, packet/fixture exports or VIO/JTAG commands with RTL consumers and readback. Use for byte/field mismatches, parser replay, probe contracts and host-to-FPGA control evidence."
 ---
 
 # Host RTL Alignment
@@ -9,20 +9,20 @@ description: "Generic host-to-RTL alignment workflow. Use when host software exp
 
 1. Identify the host artifact: GUI setting, config object, register map, command builder, raw payload, transport packet, fixture, or replay bundle.
 2. Identify the RTL consumer: parser, bus adapter, register file, serializer, memory loader, testbench, or checker.
-3. Trace one field or command end-to-end through host model, export, byte transform, packet framing, fixture generation, RTL parser, and checker.
+3. Select the transport: for packets/fixtures, trace host model, export, transforms, framing, RTL parser and checker. For VIO/JTAG, trace host value/unit, Tcl request, exact CELL_NAME/probe direction/width, matched BIT/LTX, RTL consumer and internal readback. Packet framing and parser fixtures are not required for VIO-only work.
 4. Classify mismatches as UI binding, domain model, register map, byte order, packet framing, fixture generation, parser, or checker issue.
 5. Preserve provenance: export path, generation script, hashes/counts, RTL commit, testbench, and run log.
 
 ## Output Contract
 
-Produce a host/RTL alignment table with field/command, host source, wire bytes, fixture path, RTL consumer, expected behavior, observed behavior, mismatch class, and next action.
+Produce an alignment table with field/command, host source, transport representation, RTL consumer, expected and observed behavior, evidence, mismatch class and next action. Include wire bytes/fixtures for packet workflows or probe/bitstream identity for VIO/JTAG workflows; mark irrelevant fields as not applicable.
 
 ## Boundaries
 
-Host/RTL alignment proves digital intent and simulated consumption only. Board, timing, and analog behavior require separate evidence.
+Static and simulated alignment prove digital intent and modeled consumption. Actual VIO/ILA observations prove internal activity only for the recorded image/session. Board, timing and analog behavior require separate evidence.
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/reports/host_rtl_alignment_table.md` for the alignment table.
+- Use `<CODEX_HOME>/hardware-assets/templates/reports/host_rtl_alignment_table.md` for the alignment table.
 - Use project `source-refs/` files to locate host exports, fixture manifests, parser examples, and replay scripts.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/hardware-hook-registry.yaml` for `rtl.fixture.*` hooks that flatten host exports, generate fixtures, compare payloads, or prepare replay inputs. Preserve export and fixture provenance in the output table.
+- Use `rtl.fixture.*` hooks only when both `<CODEX_HOME>/hardware-assets/hooks/hardware-hook-registry.yaml` and its runner exist. Otherwise inspect and use the owning project's script within its write boundary, or report the missing dependency. Never invent a hook command. Preserve export and fixture provenance.

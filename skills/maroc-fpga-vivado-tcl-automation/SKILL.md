@@ -19,7 +19,7 @@ MAROC Tcl automation proves a reproducible build or hardware-manager operation. 
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC Vivado, XSim, ILA, and XDC script routing.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` to locate current project scripts without copying generated build folders into skill directories.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/vivado/vivado_project_build_skeleton.tcl`, `ila_export_workflow_skeleton.tcl`, and `xsim_run_wrapper_skeleton.ps1` for new reproducible automation.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` and the `vivado.build.*` registry entries before running MAROC Tcl/PowerShell helpers. Treat build, mem staging, IP generation, and project creation as project-writing hooks.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC Vivado, XSim, ILA, and XDC script routing.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` to locate current project scripts without copying generated build folders into skill directories.
+- Use `<CODEX_HOME>/hardware-assets/templates/vivado/vivado_project_build_skeleton.tcl`, `ila_export_workflow_skeleton.tcl`, and `xsim_run_wrapper_skeleton.ps1` for new reproducible automation.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` and the `vivado.build.*` registry entries before running MAROC Tcl/PowerShell helpers. Treat build, mem staging, IP generation, and project creation as project-writing hooks.

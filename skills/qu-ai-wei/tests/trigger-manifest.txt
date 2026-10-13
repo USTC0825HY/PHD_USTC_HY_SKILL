@@ -22,7 +22,7 @@
 # - expect values: TRIGGER = skill should fire; NO-TRIGGER = skill should NOT
 #   fire (out of scope); BOUNDARY = near-miss, judgement call, document result.
 #
-# Cases target the v0.8.1 description (triggers: 去AI味 / 改得说人话 /
+# Cases target the local description (triggers: 去AI味 / 改得说人话 /
 # humanize中文 / 改自然点 / 读着别扭 / 太生硬了, plus explicit /qu-ai-wei).
 
 [01]
@@ -73,12 +73,12 @@ note=生成，非 de-AI 化。SKILL.md 边界明示不属于本 skill。
 [10]
 query=润色一下我的论文
 expect=BOUNDARY
-note=可能只是语法润色而非去 AI 味；如果原文是真人写的学术文本，第负一步门检会停手。
+note=按任务和目标语体选择；作者身份不是停手条件。
 
 [11]
 query=这段太书面了改口语点
 expect=BOUNDARY
-note=语体降级请求，§3 语体降级保护约束跨档；若原文是真人写的，不改语言本身。
+note=按用户已授权的语体转换执行，保持关键事实与术语。
 
 [12]
 query=帮我 proofread 一下这篇

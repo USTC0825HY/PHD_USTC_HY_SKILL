@@ -15,13 +15,18 @@ description: "Generic FPGA testbench and simulation workflow. Use for writing, r
 
 ## Evidence Rules
 
+- Use independent expected values/models or cycle-by-cycle pre/post comparison. Cover applicable arithmetic boundaries, continuous/busy requests, backpressure, reset interruption, stop and restart; simplification must preserve latency and throughput as well as values.
+- Require actual checks, an explicit PASS/FAIL result and watchdog timeout. Inject a known error when creating/changing a checker or wrapper; reuse that validation for unchanged infrastructure. A zero exit or completion alone is not PASS. Wrappers must reject FAIL, timeout, zero checks and missing actual simulator PASS; a parent-script echo is insufficient.
+- For new projects read [native layout](../fpga-vivado-tcl-automation/references/native-project-layout.md): TB/fixtures in sim_1 functional folders, never synthesis sources. Run standalone simulators in a dedicated run directory, not the project root. Do not migrate existing projects automatically.
+
 - A passing simulation proves behavior only inside the modeled DUT, fixture, and timing assumptions.
 - Same-clock or simplified testbenches can hide CDC and board timing failures.
 - Host-export replay must preserve provenance: original export, flattening/packing transform, fixture hash/count, parser input, and checker result.
 
 ## Asset Library
 
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/rtl/tb_skeleton.v` for a minimal testbench starting point.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/rtl/fixture_manifest_template.md` for fixture provenance.
+- Use `<CODEX_HOME>/hardware-assets/templates/rtl/tb_skeleton.v` for a minimal testbench starting point.
+- Use `<CODEX_HOME>/hardware-assets/templates/rtl/fixture_manifest_template.md` for fixture provenance.
 - Use project `source-refs/` files to find existing TBs, fixtures, replay scripts, and run wrappers.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/hardware-hook-registry.yaml` for `rtl.fixture.*` and `rtl.sim.*` hooks. Dry-run first; simulation hooks prove only modeled DUT behavior.
+- Read simulation wrappers before running them and use dry-run behavior when available. Simulation proves only modeled DUT behavior.
+- The shared XSim wrapper requires a fresh run directory and a simulator transcript inside it (`-TranscriptPath`, default `xsim.log`), with one `TB_PASS checks=N` where N>0. Set `-TimeoutSeconds` for longer tests (default 600). See [audit helper usage](../fpga-vivado-tcl-automation/references/audit-helper-usage.md) for runtime and evidence boundaries.

@@ -19,7 +19,7 @@ Config chain -> trigger/control -> upload/data -> read-probe.
 
 ## Asset Library
 
-- Read `C:/Users/Administrator/.codex/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC ILA and Hardware Manager routing.
-- Use `C:/Users/Administrator/.codex/hardware-assets/source-refs/maroc-rtl-assets.md` to locate ILA scripts, bit/ltx-related notes, and capture helpers.
-- Use `C:/Users/Administrator/.codex/hardware-assets/templates/vivado/ila_export_workflow_skeleton.tcl` as the reusable capture/export starting point.
-- Use `C:/Users/Administrator/.codex/hardware-assets/hooks/maroc-hook-map.md` for `ila.capture.*` hooks such as `ila.capture.list`. Do not run live capture, arm, or programming hooks without explicit hardware confirmation.
+- Read `<CODEX_HOME>/skills/maroc-hardware-dev-router/references/maroc-asset-map.md` for MAROC ILA and Hardware Manager routing.
+- Use `<CODEX_HOME>/hardware-assets/source-refs/maroc-rtl-assets.md` to locate ILA scripts, bit/ltx-related notes, and capture helpers.
+- Use `<CODEX_HOME>/hardware-assets/templates/vivado/ila_export_workflow_skeleton.tcl` as the reusable capture/export starting point.
+- Use `<CODEX_HOME>/hardware-assets/hooks/maroc-hook-map.md` for `ila.capture.*` hooks such as `ila.capture.list`. Do not run live capture, arm, or programming hooks without explicit hardware confirmation.
