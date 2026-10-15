@@ -18,10 +18,10 @@ Read `<CODEX_HOME>/laser-fpga-profile.json` before resolving any path. Resolve `
 ## Canonical Paths
 
 - Research system root: `<obsidian_vault_root>/01_科研主系统`
-- Knowledge root: `<obsidian_vault_root>/01_科研主系统/02_Laser_PDH知识体系`
-- System engineering root: `<obsidian_vault_root>/01_科研主系统/03_超稳激光系统工程`
-- Experiment/evidence root: `<obsidian_vault_root>/01_科研主系统/04_实验测试与证据`
-- Source/asset index root: `<obsidian_vault_root>/01_科研主系统/07_资料源与资产索引`
+- Theory / literature: `<obsidian_vault_root>/01_科研主系统/02_理论学习` / `03_文献阅读`
+- Modeling / RTL: `<obsidian_vault_root>/01_科研主系统/04_建模与算法` / `05_RTL与系统实现`
+- Experiment / analysis: `<obsidian_vault_root>/01_科研主系统/06_实验测试` / `07_数据分析`
+- Source/asset indexes: `<obsidian_vault_root>/01_科研主系统/09_资料与工具`
 - Governance root: `<obsidian_vault_root>/01_科研主系统/99_系统治理/02_Laser资料治理`
 - Note template: `<obsidian_vault_root>/模板/科研流程/Laser_PDH_Study_科研学习笔记模板.md`
 - CSS snippet: `<obsidian_vault_root>/.obsidian/snippets/laser-pdh-study.css`
@@ -29,20 +29,22 @@ Read `<CODEX_HOME>/laser-fpga-profile.json` before resolving any path. Resolve `
 
 ## Workflow
 
+本地科研主系统AGENTS.md/MEMORY.md优先于任何示例目录。2026-10-12前旧目录只作历史线索，不自动重建。单篇遥测笔记读[遥测笔记模式](references/telemetry-note-layout.md)；技术记录来自`telemetry-route-workbook`，跨板方法来自`fpga-board-signal-chain-closure`。该模式不套用于普通论文或理论笔记。
+
 1. Classify the task before writing: source import, lecture-note rewrite, experiment method, derivation, index/map update, formula repair, or coverage audit.
 2. Use the canonical directory for the note type. Read `references/laser_pdh_obsidian_rules.md` before creating or reorganizing notes.
-3. Keep raw sources in `07_资料源与资产索引/03_原始摘录`; do not turn raw web/PDF text into formal notes by dumping it unchanged.
+3. Keep raw sources in their locally confirmed evidence location (large originals outside the vault); use `09_资料与工具` for indexes. Do not turn raw web/PDF text into formal notes by dumping it unchanged.
 4. Write formal notes in lecture style: core conclusion, physical picture, math expression, experiment implementation, common pitfalls, source/evidence boundary, and related questions.
 5. Use Obsidian `[[wikilinks]]` for knowledge links. Use absolute filesystem paths only in source/evidence sections.
 6. For LaTeX work, read `references/latex_rendering_rules.md` and run `scripts/audit_laser_pdh_md.py` after edits.
 7. When the user explicitly asks to fix formula rendering, run `scripts/fix_laser_pdh_latex.py --file <指定笔记.md> --write`, then re-run the audit script.
 8. For table layout, wide table, screenshot-metadata table, engineering-list table, or long-text table repairs, read `references/table_layout_rules.md` before editing:
-   - Convert long-text explanation tables into heading + field-list cards.
+   - Split unreadable long-text tables into smaller comparisons or field-list cards; preserve deliberately requested concise node/parameter/result tables.
    - Keep numeric comparison tables, signal matrices, and short record templates as tables.
    - Skip `01_Raw` and `_旧版.md`; preserve values, evidence IDs, image paths, and `needs_check`.
 9. For Mermaid 图，读 `references/mermaid_rendering_rules.md` 后再产出/修改：
    - 正式 Markdown 必须至少内嵌一张可直接渲染的 Mermaid 图；不能只提供 `.mmd/.html` 链接。
-   - 多图索引至少内嵌一张总览或代表图，避免一次渲染全部图造成卡顿。
+   - 多图索引默认内嵌总览或代表图；明确要求逐路图时逐路内嵌，用章节折叠，不擅自改为仅链接。
    - 禁止在 Mermaid 节点内使用 `/n`、`\n`、`<br/>` 强制换行。
    - 节点标签尽量不超过 12 字符，长文本放到正文/表格/说明中，图内只放结构名。
    - 每张图必须有同名的 `.mmd` 与 `.html` 成对文件；每个 `.html` 只加载一张图的源码，支持独立调试。
@@ -59,6 +61,8 @@ Read `<CODEX_HOME>/laser-fpga-profile.json` before resolving any path. Resolve `
    - When practical, provide a formatted `.xlsx` companion for direct Excel use.
 
 ## Validation Commands
+
+局部任务优先：`audit_laser_pdh_md.py --root <科研主系统> --file <指定笔记.md>`，可重复`--file`。此模式只审计目标笔记及其引用资源；索引其他文件仅用于解析链接。`--project`全项目审计保留，但不扩大修改范围。静态审计、实际Mermaid/公式渲染与视觉检查分别记录。
 
 Run from any working directory:
 

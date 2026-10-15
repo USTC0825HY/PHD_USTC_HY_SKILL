@@ -2,59 +2,62 @@
 
 ## Input authority
 
-| Item | Selected source | Version/hash/time | Completeness | Notes |
-|---|---|---|---|---|
-| XPR |  |  |  | actual fileset/top/part |
-| Active XDC |  |  |  | `UsedIn` and disabled state |
-| Board registry |  |  |  | schema v2 |
+| 对象 | 当前依据／版本 | 证据ID | 缺口 |
+| --- | --- | --- | --- |
+| 物理板卡 | 当前连接依据；历史版本另列 | | |
 
-## Physical boards and evidence sets
-
-| Board ID | Role | Selected evidence set | Alternatives not mixed | PST/DSN/PDF/SchDoc | Level | Gaps |
-|---|---|---|---|---|---|---|
-|  |  |  |  |  | E0/E1 |  |
+文件路径、哈希、PST行号或PDF页码集中列于证据索引。XPR/XDC仅在FPGA相关链路列入。
 
 ## End-to-end chains
 
-| Chain ID | Kind | Functional class | Ordered boards | Electrical availability | Evidence level | Status |
-|---|---|---|---|---|---|---|
-|  | fpga_control/status_return/board_signal/clock_reference/power_rail/ground_return | 必需控制/硬件默认/可选功能/状态输出/电源分配 |  | 可用/电气不可用/待确认 | E0-E4 |  |
+| Chain ID／类型 | 源端 -> 接收端 | 经过板卡 | 条件／缺口 |
+| --- | --- | --- | --- |
+| | | | |
+
+分别列trace_direction与signal_direction；功能分类为必需控制、硬件默认、可选功能、状态输出、电源分配或地返回。NC／禁用不称可选功能。
 
 ## Ordered segments
 
-| Chain | Seq | Board | From | Net | Components/channel | Connector contact | To | DIR/OE/pulls | Assembly | Evidence | Status |
-|---|---:|---|---|---|---|---|---|---|---|---|---|
-|  | 1 |  |  |  |  |  |  |  | fitted/DNP/TSD*/NC | path:line/page |  |
+每条链单独列小表；不要将所有电气、实现与证据字段压入一张宽表。
 
-## FPGA alignment (FPGA chains only)
+| 顺序／板卡 | 起止器件脚或接口位置 | 实际网络及中间元件 | 连接条件／证据ID |
+| --- | --- | --- | --- |
+| | | | |
 
-| Chain | RTL port | Direction/owner | Active XDC:line | PACKAGE_PIN | IOSTANDARD | SZSD refdes.ball | `report_io` | Result |
-|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | reviewed/not reviewed |  |
+连接器另列双方位号、分区、物理接触位、视图方向及配对依据。元件记录两侧网络、通道、值、原图marker、当前state、版本及装配确认；模拟传递和数字DIR/OE不能当短线。
 
-For `power_rail` and `ground_return`, enter `不适用` here. Record power enable and power-good/fault as separate FPGA chains.
+条件与缺口明确区分：跨板待确认、装配待确认、已知未焊、NC、OE禁用及方向冲突，不能统一写成可选支路。
 
-## Power distribution branches
+## Evidence dimensions
 
-| Chain | Source rail/voltage | Source connector | Protection/fuse | Switch/enable | Filter | BASE entry/exit | Load connector | Load board | Return ground | Assembly | Status |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |
+| 维度 | 已确认／待确认／不适用 | 依据 | 未覆盖 |
+| --- | --- | --- | --- |
+| 板内设计连接 | | | |
+| 跨板映射 | | | |
+| 当前装配 | | | |
+| 实物／线缆导通 | | | |
+| RTL/XDC | | | |
+| Vivado实现 | | | |
+| 采集／测量 | | | |
+
+E0—E4仅为兼容摘要，不能替代分维度状态。FPGA链另列端口、方向、ball、活动约束及report_io；电源链另列电源域、保护、开关、滤波、负载、返回地。电源使能／状态作为独立信号链。
 
 ## Conflicts
 
-| ID | Chain/segment | Type | Evidence A | Evidence B | Impact | Resolution |
-|---|---|---|---|---|---|---|
-| EXAMPLE_DIR |  | 方向冲突 | required A→B | fixed DIR gives B→A | electrically unusable | verify assembly/design intent |
-| EXAMPLE_OE |  | disabled branch | FPGA/XDC reaches D120 | OE holds D120 disabled | `硬件禁用/电气不可用` | do not classify as optional |
+| 链路／区段 | 冲突类型 | 双方证据 | 影响／待核对 |
+| --- | --- | --- | --- |
+| | | | |
 
 ## Unclosed points
 
-| ID | Chain/edge | Missing evidence | Current level | Next proof required |
-|---|---|---|---|---|
-| EXAMPLE_CONN |  | connector contacts on both boards and BASE mapping（跨板待确认） | E0/E1 | connector table, BASE PST, or continuity measurement |
+| 链路／边界 | 已知两端 | 缺少依据 | 下一步检查 |
+| --- | --- | --- | --- |
+| | | | |
 
 ## Physical checks
 
-| ID | Board/refdes | Check | Expected | Result | Evidence |
-|---|---|---|---|---|---|
-| EXAMPLE_ASSEMBLY |  | fitted/DNP/TSD*/NC and option resistor population |  | pending | photo/BOM/measurement |
+| 板卡／位号 | 检查对象与条件 | 结果 | 实测依据 |
+| --- | --- | --- | --- |
+| | | 未进行／待确认 | |
+
+静态输入读取成功不代表链路闭合或板测通过。图、XLSX和局部截图只在需要的交付中提供。

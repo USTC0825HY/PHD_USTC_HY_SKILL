@@ -15,6 +15,10 @@ Small module work does not require a repository map, all downstream skills or ne
 
 ## Application boundaries
 
+- Cross-board method belongs to `fpga-board-signal-chain-closure`: physical-board identity, per-segment proof, connector mapping, assembly and evidence dimensions. PST extraction and RTL/XDC alignment remain separate specialists. An exact single-net lookup does not require a complete system manifest or report.
+- Telemetry adds measurement/conversion and workbook views through `telemetry-route-workbook`; notes add presentation through `laser-pdh-obsidian-md-writing`. Do not import a telemetry project's channel counts, ADC references or display aliases into generic routing.
+- Check the current environment's installed skills before dispatch. If an application skill is absent (for example telemetry on a ZCode-only installation), use the provided mapping and the installed cross-board method, state the missing specialist, and leave unsupported conversions unresolved. Do not install or copy a new peer implicitly.
+
 - Generic skills own reusable methods. Thin Laser/MAROC adapters own project paths, board/register/packet meanings and local delivery conventions.
 - For 513/CW specifics use `laser-cw-qualification-test-development`; 05_CW_TEST_HY is not the default for every Laser request. Its mother projects and dedicated targets keep separate identities.
 - Host development, joint SDG/ILA operation, instrument drivers, data analysis, manuals, reports and notes have separate entries in the routing table. An RTL task does not automatically include them.

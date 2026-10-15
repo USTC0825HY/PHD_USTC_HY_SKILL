@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "boards": {"ACQ": {"label": "采集板", "version": "", "evidence_set": ""}},
+  "evidence": {},
+  "nodes": {},
+  "routes": [{
+    "route_id": "TM001", "chain_id": null, "address": null,
+    "kind": "measurement", "mode": "MODE_TO_CONFIRM", "status": "partial",
+    "input": null, "mux": {}, "segments": [],
+    "source_board": "ACQ", "source_interface": "local", "endpoint": null,
+    "display": {"address_text": "地址未确认", "signal": "测点待核对", "board": "采集板"}
+  }],
+  "workbook": {"sheets": [{
+    "name": "遥测简表", "header_row": 4, "first_data_row": 5, "last_data_row": 5,
+    "address_column": "A", "headers": {"A": "地址／通道", "B": "信号", "C": "板卡"},
+    "route_ids": ["TM001"], "row_bindings": {"5": "TM001"},
+    "fields": {"B": "signal", "C": "board"}, "route_columns": ["B"]
+  }]}
+}

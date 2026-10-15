@@ -1,7 +1,7 @@
 interface:
   display_name: "Laser PDH Obsidian Writing"
-  short_description: "Govern Laser/PDH notes, tables, diagrams, and evidence."
-  default_prompt: "Use $laser-pdh-obsidian-md-writing to maintain Laser_PDH_Study notes, repair wide table layouts, fix LaTeX/Mermaid rendering, crop schematic evidence images, apply CSS/frontmatter, and keep source-to-note coverage auditable."
+  short_description: "整理Laser/PDH工程笔记、遥测推导、表格与路由图，检查公式和证据链接"
+  default_prompt: "使用 $laser-pdh-obsidian-md-writing 整理指定工程笔记；遥测内容按板卡、路由、推导和换算结论组织，保留原始资料与有效定位。"
 
 policy:
   allow_implicit_invocation: true

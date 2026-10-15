@@ -104,6 +104,9 @@ def test_v2_registry_keeps_versions_separate_and_models_power(tmp_path: Path) ->
     assert board["PZ"]["role"] == "frequency_synthesis"
     assert board["LOCK_DRIVE"]["role"] == "lock_drive"
     assert board["PZ"]["status"].startswith("E0")
+    assert board["PZ"]["source_availability"] == "schematic_available_unreviewed"
+    assert board["ERROR_DETECT"]["source_availability"] == "native_source_available_unreviewed"
+    assert "人工核图" in chain["SZSD_BASE_PZ"]["preflight_status"]
     assert board["ERROR_DETECT"]["status"].startswith("E0")
     assert [item["id"] for item in board["SZSD"]["evidence_sets"] if item["selected"]] == ["szsd-public"]
     assert [item["id"] for item in board["YCQD"]["evidence_sets"] if item["selected"]] == ["ycqd-public"]

@@ -41,6 +41,8 @@ Join connector boundaries only with explicit backplane PST, a controlled connect
 
 Trace return/status signals in the reverse direction and verify that the RTL direction is input.
 
+The tracing order and electrical direction are separate: receiver-to-source lookup does not reverse RTL direction or translator DIR. Keep actual node ownership, original TSD/DNP markers and scoped population confirmations in the common closure record. NC/disabled paths cannot become controllable merely because RTL/XDC matches. Analog telemetry up to its ADC input does not require a fabricated FPGA port; any ADC digital control/readout is a separate FPGA chain.
+
 ## Vivado read-only review
 
 After static checks pass, use `scripts/vivado_io_audit.tcl` when a complete, non-stale selected run exists. It opens the project read-only, checks each requested `get_ports` pattern, applied PACKAGE_PIN/IOSTANDARD, duplicate pins, bank, and writes `report_io.rpt` to a new explicit report directory. NEEDS_REFRESH=false is tool-reported freshness, not proof of historical source hashes.

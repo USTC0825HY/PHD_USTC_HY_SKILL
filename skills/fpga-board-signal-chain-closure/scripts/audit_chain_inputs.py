@@ -362,6 +362,7 @@ def summarize_board(
     }
     if selected_id is None:
         result.update({
+            "source_availability": "unselected",
             "status": "E0 输入不完整",
             "errors": [f"{board_id}: 未选择证据集"],
             "queries": [{"kind": kind, "selector": selector, "matches": [], "status": "not_applicable_no_pst"} for kind, selector in queries],
@@ -370,13 +371,22 @@ def summarize_board(
     selected = next(item for item in candidates if item["id"] == selected_id)
     pst_dir = selected.get("pst_dir")
     if not pst_dir:
+        source_records = evidence_source_records(selected)
+        available = []
+        for field, records in source_records.items():
+            for record in records if isinstance(records, list) else [records]:
+                if isinstance(record, dict) and record.get("exists"):
+                    available.append(field)
+        availability = "schematic_available_unreviewed" if "pdf" in available else "native_source_available_unreviewed" if available else "missing_sources"
         result.update({
-            "status": "E0 输入不完整（无PST）",
+            "source_availability": availability,
+            "status": "E0 无PST（原理图文件可用，内容待核对）" if "pdf" in available else "E0 无PST（原生源待查看或导出）" if available else "E0 输入不完整（资料缺失）",
             "errors": [f"{board_id}: 选定证据集{selected_id}没有pst_dir"],
             "queries": [{"kind": kind, "selector": selector, "matches": [], "status": "not_applicable_no_pst"} for kind, selector in queries],
         })
         return result
     result.update(summarize_pst(board_id, Path(pst_dir), queries))
+    result["source_availability"] = "pst_available" if result.get("net_count") else "missing_pst"
     return result
 
 
@@ -511,7 +521,9 @@ def annotate_topology(registry: dict[str, Any], board_results: list[dict[str, An
         chain["requires_fpga_alignment"] = kind in FPGA_CHAIN_TYPES
         chain["rtl_xdc_requirement"] = "required" if kind in FPGA_CHAIN_TYPES else "not_applicable"
         chain["boards_with_incomplete_evidence"] = missing
-        chain["preflight_status"] = "资料不完整，无法继续" if missing else "跨板待确认"
+        reviewable = {item["id"] for item in board_results if item.get("source_availability") in {"schematic_available_unreviewed", "native_source_available_unreviewed"}}
+        blocking = [board_id for board_id in missing if board_id not in reviewable]
+        chain["preflight_status"] = "资料不完整，无法继续" if blocking else "无PST区段需人工核图；跨板待确认" if missing else "跨板待确认"
         chains.append(chain)
     return edges, chains
 
@@ -571,21 +583,21 @@ def main() -> int:
                 "id": f"BOARD_{board['id']}_PST",
                 "type": "board_evidence",
                 "board_id": board["id"],
-                "reason": "选定证据集无可用PST，不能断言板内连通",
+                "reason": "无可用PST；已有原理图需逐节点人工核对" if board.get("source_availability") == "schematic_available_unreviewed" else "缺少可用连接证据；原生源需查看或导出后核对",
                 "status": board["status"],
             }
             for board in board_results if board["status"].startswith("E0")
         )
         implementation = {
             "status": "not_supplied",
-            "vivado_status": "RTL/XDC静态核查完成，Vivado应用状态未复核",
+            "vivado_status": "未提供RTL/XDC输入；未核查FPGA实现",
         }
         if args.xpr and args.xdc:
             implementation = {
                 "status": "static_inputs_parsed",
                 "xpr": parse_xpr(args.xpr, args.xdc),
                 "xdc": parse_xdc(args.xdc),
-                "vivado_status": "RTL/XDC静态核查完成，Vivado应用状态未复核",
+                "vivado_status": "已解析XPR/XDC输入；RTL/PST对齐和Vivado应用状态未复核",
             }
         data = {
             "schema": "fpga-board-signal-chain-closure/preflight-v2",
@@ -608,7 +620,8 @@ def main() -> int:
             ],
         }
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        with args.output.open("x", encoding="utf-8") as report:
+            report.write(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
         print(json.dumps({"output": str(args.output.resolve()), "status": "ok", "board_count": len(board_results), "chain_count": len(chains)}, ensure_ascii=False))
         return 0
     except (ET.ParseError, json.JSONDecodeError, OSError, ValueError) as exc:

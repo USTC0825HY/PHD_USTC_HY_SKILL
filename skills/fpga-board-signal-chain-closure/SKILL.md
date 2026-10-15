@@ -9,6 +9,7 @@ Use this skill as the topology and evidence-closure layer above `fpga-orcad-xdc-
 
 ## Read first
 
+- Read [trace and evidence method](references/trace-and-evidence-method.md) for any cross-board trace; it is the shared method used by telemetry and digital-alignment skills.
 - Read [references/multi-board-topology.md](references/multi-board-topology.md) when defining boards, evidence sets, graph edges, or power distribution.
 - Read [references/chain-schema.md](references/chain-schema.md) before creating a manifest or report.
 - Use [assets/signal_chain_report.table.md](assets/signal_chain_report.table.md) for a reusable evidence/conflict/closure report.
@@ -35,7 +36,7 @@ Allowed edge/chain kinds are `fpga_control`, `status_return`, `board_signal`, `c
 4. Store each path as ordered `chains[].segments[]`. Keep connector contacts, FPGA balls, device pins, and nets as distinct fields. Do not infer a cross-board edge from equal pin numbers, similar net names, device suffixes, or logical group numbers.
 5. For every translator, record channel/A-B pins, supply domains, DIR, OE/OE*, pull state, assembly resistors, and fitted state. A D120-like OE-disabled branch is `硬件禁用/电气不可用` even when a reachable FPGA ball and XDC entry exist.
 6. For `power_rail` and `ground_return`, record source rail, voltage/domain, source connector, fuse/protection, switch, filter, baseboard entry/exit, load connector, return ground, and assembly state. RTL/XDC is `不适用` unless a separate enable or status signal exists; model that signal as its own control or return chain.
-7. Use PDF only for device-side pin/function, page/zone, and visual intent. Use PST for actual net membership. Identify fixed pull-up/down, NC, DNP, and TSD*; stop electrical-availability claims at disabled or unpopulated branches.
+7. Selected PST provides exact exported net membership. A legible schematic can establish explicitly drawn board-local connections even without PST; record file/page/zone and do not invent PST identifiers. A PDF file merely existing proves no connection. Keep original TSD/DNP markers separate from current population and scoped assembly confirmations; stop availability claims at disabled, NC or unfitted branches.
 8. Compare FPGA chains with RTL direction, active XDC PACKAGE_PIN/IOSTANDARD, and read-only Vivado `report_io` when a current synthesis run already exists. Never launch synthesis or implementation implicitly.
 
 ## Evidence and outputs
@@ -49,7 +50,7 @@ Required outputs are:
 - conflicts, unclosed points, disabled/DNP/TSD*/NC branches, and required physical checks;
 - XPR/XDC/Vivado evidence only for FPGA-related chains.
 
-Keep generated artifacts in staging. Do not edit user XPR, XDC, RTL, PST, DSN, PDF, SchDoc, or hardware data during an audit.
+Keep generated artifacts in the workspace-authorized task directory. Do not edit user XPR, XDC, RTL, PST, DSN, PDF, SchDoc, or hardware data during an audit. Small lookups need only relevant findings; full closure requests use the report template. Graphs, screenshots and XLSX are conditional deliverables, not mandatory for every query.
 
 ## Preflight script
 
@@ -67,4 +68,6 @@ python scripts/audit_chain_inputs.py `
 
 Add or override an ad-hoc PST board with repeated `--board ID=PATH`. The legacy `--szsd-pst-dir`, `--backplane-pst-dir`, and `--child-pst-dir` interface remains supported when all three are supplied.
 
-The script inventories boards and validates declared topology; it never joins board segments automatically.
+The script inventories boards and validates declared topology; it never joins board segments automatically. `status=ok` means the preflight completed, not that a circuit, interface, assembly or board test passed. PDF-only availability remains a manual-review input, not an automatically verified E1 connection.
+
+The explicit output file must not exist; the script refuses overwriting an input or an earlier report. Re-running requires a fresh task-report path.

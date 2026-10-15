@@ -1,12 +1,12 @@
 # 技能分类与装载范围
 
-分类按任务划分；每项只归入一个主分类。历史保留项仍可查阅，但当前 Codex 装载范围严格对应已安装的 87 个个人技能。
+分类按任务划分；每项只归入一个主分类。历史保留项仍可查阅，但当前 Codex 装载范围严格对应已安装的 88 个个人技能。
 
 | 功能分类 | 数量 | 适用任务 |
 |---|---:|---|
 | [FPGA/RTL/EDA 与硬件](categories/fpga-hardware/README.md) | 26 | 处理通用 RTL、Vivado、板级连接、调试及证据闭环。 |
 | [MAROC 项目适配](categories/maroc/README.md) | 19 | 把通用硬件与文档流程应用到 MAROC 工程。 |
-| [Laser/PDH 与精密测量](categories/laser-pdh/README.md) | 12 | 覆盖 Laser/PDH 电测、CW 板卡、仪器协同和操作报告。 |
+| [Laser/PDH 与精密测量](categories/laser-pdh/README.md) | 13 | 覆盖 Laser/PDH 电测、CW 板卡、仪器协同和操作报告。 |
 | [学术研究与论文](categories/research/README.md) | 17 | 支持选题、文献、研究设计、论文结构和投稿检查。 |
 | [演示文稿与视觉表达](categories/presentations/README.md) | 13 | 制作与检查学术汇报、项目演示和可编辑图示。 |
 | [文档/PDF/表格办公](categories/documents/README.md) | 6 | 制作、检查和整理 Word、PDF、表格及办公资料。 |

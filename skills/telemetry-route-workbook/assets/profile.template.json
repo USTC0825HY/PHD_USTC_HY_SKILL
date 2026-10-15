@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "mode": "MODE_TO_CONFIRM",
+  "physical_inputs": {"U1.S1": {"node": "ACQ:U1.1"}},
+  "cascade_inputs": [],
+  "expected_routes": {"0x00": {"input": "U1.S1", "mux": {"U1": "S1"}}},
+  "connector_pairs": []
+}

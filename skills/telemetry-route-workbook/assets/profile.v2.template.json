@@ -1,0 +1,5 @@
+{
+  "schema_version": 2, "mode": "MODE_TO_CONFIRM",
+  "physical_inputs": {}, "cascade_inputs": [], "connector_pairs": [],
+  "expected_routes": {"TM001": {"chain_id": null, "address": null, "input": null}}
+}

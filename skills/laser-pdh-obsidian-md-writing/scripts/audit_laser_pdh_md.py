@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import html
+from functools import lru_cache
 import os
 import re
 import sys
@@ -19,7 +21,7 @@ MAX_MERMAID_LABEL_LEN = 12
 LATEX_COMMAND_RE = re.compile(
     r"\\(frac|mathrm|operatorname|approx|gg|ll|delta|nu|lvert|rvert|Theta|Phi|omega|sqrt|angle|pm)"
 )
-WIKILINK_RE = re.compile(r"\[\[([^\]#|]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]")
+WIKILINK_RE = re.compile(r"(?<!!)\[\[([^\]#|]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]")
 FENCE_RE = re.compile(r"^\s*```(\S*)\s*$")
 MERMAID_LINE_ESCAPE_RE = re.compile(r"/n|\\n|<br\s*/?>", re.IGNORECASE)
 MERMAID_NODE_LABEL_RE = re.compile(
@@ -40,7 +42,7 @@ MERMAID_NODE_LABEL_RE = re.compile(
 )
 MERMAID_LINK_RE = re.compile(r"<a[^>]*href=[\"']([^\"']+)[\"'][^>]*>", re.IGNORECASE)
 MERMAID_MD_ASSET_LINK_RE = re.compile(
-    r"\[[^\]\n]*\]\(([^)\n]+\.(?:mmd|html)(?:#[^)\n]*)?)\)",
+    r"\[[^\]\n]*\]\((<?[^)\n]+?\.(?:mmd|html)(?:#[^)\n>]*)?>?)\)",
     re.IGNORECASE,
 )
 MERMAID_SOURCE_BLOCK_RE = re.compile(r"<pre\b[^>]*id=[\"']diagram-source[\"'][^>]*>(.*?)</pre>", re.IGNORECASE | re.DOTALL)
@@ -61,6 +63,71 @@ TABLE_SEVERE_CELL_LEN = 75
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8-sig")
+
+
+def fenced_sections(text: str) -> list[tuple[int, int, str, str, bool]]:
+    """Line-based fences, including longer outer fences and tilde fences."""
+    lines = text.splitlines()
+    sections = []
+    opening = None
+    for i, line in enumerate(lines):
+        if opening is None:
+            match = re.match(r"^ {0,3}(`{3,}|~{3,})([^\r\n]*)$", line)
+            if match:
+                opening = (i, match[1], match[2].strip().split()[0].lower() if match[2].strip() else "")
+        else:
+            start, token, lang = opening
+            if re.fullmatch(r" {0,3}" + re.escape(token[0]) + "{" + str(len(token)) + r",}\s*", line):
+                sections.append((start, i, lang, "\n".join(lines[start+1:i]), True))
+                opening = None
+    if opening:
+        start, _, lang = opening
+        sections.append((start, len(lines)-1, lang, "\n".join(lines[start+1:]), False))
+    return sections
+
+
+def visible_markdown(text: str) -> str:
+    lines = text.splitlines(keepends=True)
+    for start, end, _, _, _ in fenced_sections(text):
+        for i in range(start, end+1):
+            lines[i] = "\n" if lines[i].endswith("\n") else ""
+    return "".join(lines)
+
+
+@lru_cache(maxsize=8)
+def resource_index(root: Path) -> tuple[Path, ...]:
+    return tuple(p for p in root.rglob("*") if p.is_file())
+
+
+def resolve_local_target(path: Path, target: str, root: Path | None = None, note: bool = False) -> Path:
+    target = normalize_image_target(target).split("#", 1)[0].replace("\\", "/")
+    part = Path(target)
+    if note and not part.suffix:
+        part = part.with_suffix(".md")
+    if part.is_absolute():
+        return part
+    candidates = [path.parent / part]
+    if root:
+        candidates += [root / part, root.parent / part]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.resolve()
+    if root:
+        tail = part.as_posix().lstrip("./").casefold()
+        matches = [p for p in resource_index(root) if p.as_posix().casefold().endswith("/" + tail)]
+        if len(matches) == 1:
+            return matches[0]
+    return candidates[0].resolve()
+
+
+def linked_mermaid_assets(path: Path) -> set[Path]:
+    text = visible_markdown(read_text(path))
+    assets = set()
+    for match in MERMAID_MD_ASSET_LINK_RE.finditer(text):
+        target = normalize_image_target(match[1]).split("#", 1)[0]
+        if not REMOTE_RESOURCE_RE.match(target):
+            assets.add(resolve_local_target(path, target))
+    return assets
 
 
 def iter_md_files(root: Path, project: str | None = None) -> list[Path]:
@@ -229,7 +296,7 @@ def audit_tables(path: Path, issues: dict[str, list[str]]) -> None:
     if is_raw_source(path) or is_backup_note(path):
         return
 
-    lines = read_text(path).splitlines()
+    lines = visible_markdown(read_text(path)).splitlines()
     for line_no, header, rows, max_cell_len in iter_markdown_tables(lines):
         col_count = len(header)
         row_count = len(rows)
@@ -247,28 +314,7 @@ def audit_tables(path: Path, issues: dict[str, list[str]]) -> None:
 
 
 def iter_mermaid_blocks(text: str) -> list[tuple[int, str]]:
-    blocks: list[tuple[int, str]] = []
-    in_fence = False
-    start_line = 0
-    buffer: list[str] = []
-
-    for idx, line in enumerate(text.splitlines(), start=1):
-        fence_match = FENCE_RE.match(line)
-        if fence_match:
-            lang = (fence_match.group(1) or "").lower()
-            if not in_fence and lang == "mermaid":
-                in_fence = True
-                start_line = idx
-                buffer = []
-                continue
-            if in_fence:
-                blocks.append((start_line, "\n".join(buffer)))
-                in_fence = False
-                buffer = []
-                continue
-        if in_fence:
-            buffer.append(line)
-    return blocks
+    return [(start+1, body) for start, _, lang, body, closed in fenced_sections(text) if lang == "mermaid" and closed]
 
 
 def check_mermaid_escape_and_labels(
@@ -300,7 +346,7 @@ def audit_markdown_mermaid(path: Path, issues: dict[str, list[str]]) -> None:
     for start_line, block in blocks:
         check_mermaid_escape_and_labels(path, block, start_line, issues)
 
-    asset_links = list(MERMAID_MD_ASSET_LINK_RE.finditer(text))
+    asset_links = list(MERMAID_MD_ASSET_LINK_RE.finditer(visible_markdown(text)))
     if asset_links and not blocks and not is_raw_source(path):
         add_issue(
             issues,
@@ -327,19 +373,26 @@ def audit_markdown_mermaid(path: Path, issues: dict[str, list[str]]) -> None:
                 line_no,
                 f"missing Mermaid asset: {target}",
             )
+    sources = {read_text(p).strip() for p in linked_mermaid_assets(path) if p.suffix.lower() == ".mmd" and p.is_file()}
+    if sources:
+        for line_no, block in blocks:
+            if block.strip() not in sources:
+                add_issue(issues, "MERMAID_SOURCE_MISMATCH", path, line_no, "inline graph differs from referenced .mmd sources")
 
 
-def audit_schematic_images(path: Path, issues: dict[str, list[str]]) -> None:
+def audit_schematic_images(path: Path, issues: dict[str, list[str]], root: Path | None = None) -> None:
     if is_raw_source(path):
         return
 
-    lines = read_text(path).splitlines()
+    lines = visible_markdown(read_text(path)).splitlines()
     for idx, line in enumerate(lines):
         for target in iter_image_targets(line):
             if not is_local_image_target(target):
                 continue
 
-            resolved = resolve_image_target(path, target)
+            resolved = resolve_local_target(path, target, root)
+            if not resolved.is_file():
+                add_issue(issues, "LOCAL_IMAGE_MISSING", path, idx+1, target)
             if not is_schematic_image_target(target, resolved):
                 continue
 
@@ -362,9 +415,13 @@ def audit_schematic_images(path: Path, issues: dict[str, list[str]]) -> None:
                 )
 
 
-def audit_file(path: Path, all_note_targets: set[str], issues: dict[str, list[str]]) -> None:
+def audit_file(path: Path, all_note_targets: set[str], issues: dict[str, list[str]], root: Path | None = None) -> None:
     text = read_text(path)
-    lines = text.splitlines()
+    visible = visible_markdown(text)
+    lines = visible.splitlines()
+    for start, _, _, _, closed in fenced_sections(text):
+        if not closed:
+            add_issue(issues, "UNCLOSED_FENCE", path, start+1, "unclosed code fence")
 
     if not re.search(r"(?m)^cssclasses:\s*\[laser-pdh-note\]", text):
         add_issue(issues, "CSS_MISSING", path, None, None)
@@ -396,11 +453,11 @@ def audit_file(path: Path, all_note_targets: set[str], issues: dict[str, list[st
             if LATEX_COMMAND_RE.search(stripped):
                 add_issue(issues, "BARE_LATEX_OUTSIDE_MATH", path, idx, line)
 
-    for match in WIKILINK_RE.finditer(text):
+    for match in WIKILINK_RE.finditer(strip_inline_code(visible)):
         target = match.group(1).strip().replace("\\", "/")
         if target.lower().endswith(".md"):
             target = target[:-3]
-        if target and target not in all_note_targets:
+        if target and target not in all_note_targets and not resolve_local_target(path, target, root, note=True).is_file():
             issues.setdefault("BROKEN_WIKILINKS", []).append(f"{path}: [[{target}]]")
 
 
@@ -447,6 +504,8 @@ def audit_mermaid_html_viewer(path: Path, issues: dict[str, list[str]]) -> None:
             None,
             f"diagram-source blocks = {len(source_blocks)}",
         )
+    elif path.with_suffix(".mmd").is_file() and html.unescape(source_blocks[0]).strip() != read_text(path.with_suffix(".mmd")).strip():
+        add_issue(issues, "MERMAID_SOURCE_MISMATCH", path, None, "viewer source differs from .mmd")
 
     href_matches = MERMAID_LINK_RE.findall(text)
     if not href_matches:
@@ -467,43 +526,53 @@ def audit_mermaid_html_viewer(path: Path, issues: dict[str, list[str]]) -> None:
                 f"href links do not point to {target_name}: {href_matches[0]}",
             )
 
-    if "mermaid_viewer.js" not in text or "mermaid_viewer.css" not in text:
-        add_issue(
-            issues,
-            "MERMAID_SINGLE_VIEWER",
-            path,
-            None,
-            "viewer assets mermaid_viewer.js/css not both referenced",
-        )
+    # Static capability evidence, not a substitute for executing the viewer.
+    for label, pattern in (("zoom in", r"放大|zoom.?in|id=[\"']plus"), ("zoom out", r"缩小|zoom.?out|id=[\"']minus"), ("reset", r"重置|reset")):
+        if not re.search(pattern, text, re.I):
+            add_issue(issues, "MERMAID_SINGLE_VIEWER", path, None, "missing " + label + " control")
+    if not re.search(r"<script\b", text, re.I):
+        add_issue(issues, "MERMAID_SINGLE_VIEWER", path, None, "no rendering/controller script")
+    for link in re.findall(r"<(?:script|link)\b[^>]*(?:src|href)=[\"']([^\"']+)[\"']", text, re.I):
+        if not REMOTE_RESOURCE_RE.match(link) and not resolve_local_target(path, link).is_file():
+            add_issue(issues, "MERMAID_LINK_TARGET", path, None, "missing viewer asset: " + link)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument("--project", default=DEFAULT_PROJECT)
+    parser.add_argument("--file", type=Path, action="append", help="Audit only these notes and their linked resources; repeatable")
     parser.add_argument("--max-lines", type=int, default=80)
     args = parser.parse_args()
 
-    root = args.root
+    root = args.root.resolve()
     if not root.exists():
         print(f"ERROR: root does not exist: {root}", file=sys.stderr)
         return 2
 
-    md_files = iter_md_files(root, args.project or None)
+    md_files = sorted({p.resolve() for p in args.file}) if args.file else iter_md_files(root, args.project or None)
+    if any(not p.is_file() or p.suffix.lower() != ".md" or not p.is_relative_to(root) for p in md_files):
+        print("ERROR: --file must be an existing .md within --root", file=sys.stderr)
+        return 2
     all_md_files = iter_md_files(root)
     all_note_targets = {p.stem for p in all_md_files}
     for path in all_md_files:
         all_note_targets.add(path.with_suffix("").relative_to(root).as_posix())
         if root.name == "01_科研主系统":
             all_note_targets.add(f"01_科研主系统/{path.with_suffix('').relative_to(root).as_posix()}")
-    mmd_files = [
+    mmd_files = [] if args.file else [
         p for p in iter_mmd_files(root)
         if is_mermaid_asset(p) and "90_历史项目" not in p.parts and "_archive" not in p.parts
     ]
-    html_files = [
+    html_files = [] if args.file else [
         p for p in iter_html_files(root)
         if is_mermaid_asset(p) and "90_历史项目" not in p.parts and "_archive" not in p.parts
     ]
+    linked = set().union(*(linked_mermaid_assets(p) for p in md_files))
+    for resource in list(linked):
+        linked.add(resource.with_suffix(".html" if resource.suffix.lower() == ".mmd" else ".mmd"))
+    mmd_files = sorted(set(mmd_files) | {p for p in linked if p.suffix.lower() == ".mmd" and p.is_file()})
+    html_files = sorted(set(html_files) | {p for p in linked if p.suffix.lower() == ".html" and p.is_file()})
 
     issues: dict[str, list[str]] = {
         "CSS_MISSING": [],
@@ -528,9 +597,9 @@ def main() -> int:
     report_only_keys = {"TABLE_WIDE", "TABLE_SEVERE", "TABLE_SCREENSHOT_METADATA"}
 
     for path in md_files:
-        audit_file(path, all_note_targets, issues)
+        audit_file(path, all_note_targets, issues, root)
         audit_markdown_mermaid(path, issues)
-        audit_schematic_images(path, issues)
+        audit_schematic_images(path, issues, root)
         audit_tables(path, issues)
 
     for path in mmd_files:
@@ -539,9 +608,7 @@ def main() -> int:
     audit_mermaid_pairing(html_files, mmd_files, issues)
 
     for path in html_files:
-        # 仅审计 mermaid viewer 的 html，避免把大量普通页面误报
-        if "_mermaid" in str(path):
-            audit_mermaid_html_viewer(path, issues)
+        audit_mermaid_html_viewer(path, issues)
 
     failed = False
     for key, values in issues.items():

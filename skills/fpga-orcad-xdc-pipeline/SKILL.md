@@ -13,6 +13,8 @@ Read `<CODEX_HOME>/laser-fpga-profile.json` for the installed OrCAD, Vivado, and
 
 ## Workflow
 
+For a multi-board task use the shared [trace/evidence method](../fpga-board-signal-chain-closure/references/trace-and-evidence-method.md). This skill owns exact PST lookup, not automatic cross-board joining. An isolated query does not need a system report.
+
 1. Read `references/orcad-export.md` and export `pstxnet.dat`; retain `pstxprt.dat`, `pstchip.dat`, and `pstxprp.dat` when available.
 2. For signal lookup or cross-board tracing, read `references/signal-tracing.md`, inventory the hardware root, and select one version-consistent DSN/PDF/PST evidence set per board.
 3. Query exact networks or device pins before drafting any connection chain:
@@ -52,7 +54,7 @@ Read `<CODEX_HOME>/laser-fpga-profile.json` for the installed OrCAD, Vivado, and
 - Reject duplicate physical pins, duplicate RTL ports, incompatible Bank VCCO/IOSTANDARD, unknown verified voltage standards, incomplete evidence, or remaining `needs_review` rows.
 - Do not treat schematic connectivity as proof of electrical activity or timing closure.
 - Do not infer cross-board continuity from equal connector pin numbers, similar net names, or device numbering.
-- Do not claim a path through a `TSD*` component is physically fitted.
+- Preserve TSD/DNP as source markers. PST alone cannot establish current fitted state; scoped assembly confirmation is recorded by the closure layer without erasing the marker.
 - Treat `io-gen` output as a generated-wrapper option; preserve the audited `pins.xdc` as the direct top-port physical constraint source.
 
 ## Outputs

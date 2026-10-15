@@ -9,6 +9,9 @@ Prefer the most specific leaf skill. Use `hardware-dev-router` when the request 
 | Map existing RTL / plan new RTL / visualize an existing map | `gf-architect` / `gf-plan` / `gf-viz` respectively |
 | Choose synthesis / implementation strategy / interpret QoR / edit constraints | `vivado-synth` / `vivado-impl` / `vivado-analysis` / `vivado-constraints`; execution uses `fpga-vivado-tcl-automation` |
 | Extract exact PST nets / close multi-board topology | `fpga-orcad-xdc-pipeline` / `fpga-board-signal-chain-closure` |
+| Trace a source/device across connectors, compare interface ownership, population or alternative branches | `fpga-board-signal-chain-closure`; call PST queries only for relevant segments |
+| Build/review telemetry routing, ADC/channel mapping or physical-quantity conversion in XLSX | `telemetry-route-workbook`; cross-board method remains owned by `fpga-board-signal-chain-closure` |
+| Turn a telemetry mapping into an Obsidian engineering note | `laser-pdh-obsidian-md-writing` plus `telemetry-route-workbook` for technical content; do not edit source XLSX implicitly |
 | Develop or diagnose linearity_automation Tk GUI, service sessions, workers or packaging | `cw-dac-host-development` |
 | Operate the project's joint SDG/ILA capture workflow | `fpga-substitute-board-workflow-validation` |
 | Develop SCPI drivers or independent source/DMM measurements | `sdg-dmm-automation` |

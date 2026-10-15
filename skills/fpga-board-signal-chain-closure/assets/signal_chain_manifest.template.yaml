@@ -55,13 +55,23 @@ chains:
     kind: fpga_control
     function: 必需控制
     priority: critical
+    trace_direction: sink_to_source
+    signal_direction: source_to_sink
     path: [SZSD, BASE, FUNCTION_A]
     segments: []
     rtl_port: 未确认
     rtl_direction: output
     package_pin: 未确认
     iostandard: 未确认
-    vivado_status: RTL/XDC静态核查完成，Vivado应用状态未复核
+    vivado_status: RTL/XDC及Vivado应用状态均未复核
+    verification:
+      board_local: {status: pending, evidence: []}
+      connector_mapping: {status: pending, evidence: []}
+      assembly: {status: pending, evidence: []}
+      continuity: {status: pending, evidence: []}
+      rtl_xdc: {status: pending, evidence: []}
+      implementation: {status: pending, evidence: []}
+      measurement: {status: pending, evidence: []}
     evidence_level: E0 输入不完整
     status: 资料不完整，无法继续
   - id: POWER_001
@@ -74,6 +84,16 @@ chains:
     nominal_voltage: 未确认
     return_ground: 未确认
     rtl_xdc: 不适用
+    trace_direction: source_to_sink
+    signal_direction: source_to_load
+    verification:
+      board_local: {status: pending, evidence: []}
+      connector_mapping: {status: pending, evidence: []}
+      assembly: {status: pending, evidence: []}
+      continuity: {status: pending, evidence: []}
+      rtl_xdc: {status: not_applicable, evidence: []}
+      implementation: {status: not_applicable, evidence: []}
+      measurement: {status: pending, evidence: []}
     evidence_level: E0 输入不完整
     status: 资料不完整，无法继续
 conflicts: []

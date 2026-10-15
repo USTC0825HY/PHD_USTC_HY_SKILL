@@ -1,68 +1,19 @@
-# Laser/PDH Obsidian Rules
+# Laser/PDH Obsidian规则
 
-## Canonical Directory Roles
+## 位置与范围
 
-- `02_Laser_PDH知识体系/00_知识导航`: learning maps, question index, formula index, and glossary.
-- `02_Laser_PDH知识体系/01_论文脉络`: notes following thesis chapter order, especially chapter 3/4/5.
-- `02_Laser_PDH知识体系/02_基础知识`: reusable concepts such as PDH discriminator, loop gain, beat note, IQ, and noise.
-- `02_Laser_PDH知识体系/03_公式推导`: equation derivations and conversion chains.
-- `03_超稳激光系统工程`: project planning, product design, loops, board analysis, interfaces, and PD signal chains.
-- `04_实验测试与证据`: experiment methods, executable manuals, records, results, and formal reports.
-- `07_资料源与资产索引`: source maps, F/G/C asset indexes, raw exports, extracted source text, and rendered figures.
-- `99_系统治理/02_Laser资料治理`: processing notes, changelog, coverage audit, generated manifests, and agent traceability.
+先读科研主系统AGENTS.md/MEMORY.md；当前按研究活动分类：理论02、文献03、建模04、RTL05、实验06、分析07、论文汇报08、资料工具09、治理99。513/CW已完成阶段仍在06实验测试。旧`02_Laser_PDH知识体系`、`03_超稳激光系统工程`等名称仅用于历史定位，不自动重建。
 
-## Required Frontmatter
+同一正文只保留一个主位置，其他项目通过导航链接。原始工程、完整原理图、大型数据及正式报告留在权威资产目录；笔记保留必要局部图和来源链接。个人记录、QID、公式编号、块ID、已有标题定位和needs_check不因整理丢失。
 
-Every formal Markdown note should include:
+## 写作与元数据
 
-```yaml
-cssclasses: [laser-pdh-note]
-title:
-project: Laser_PDH_Study
-status: draft
-created:
-updated:
-doc_date:
-category:
-note_type:
-module:
-source_origin:
-  - 用户原始问题
-  - 论文原文
-  - PPT
-  - Codex 整理
-tags:
-  - laser/PDH
-```
+新正式Laser笔记可使用`cssclasses: [laser-pdh-note]`，并记录title、project、status、created/updated、category、note_type、source_origin。保留现有有效frontmatter；缺少未知信息不编造值。不要把所有项目强行改名为Laser_PDH_Study。
 
-Keep `needs_check` in tags or source status when a claim has not been verified against the thesis, PPT, or experiment script.
+普通教学笔记可按核心结论、问题、物理图像、推导、实验关联和来源展开；遥测笔记按`telemetry-note-layout.md`组织。源文不能原样堆成正式笔记。区分原始事实、计算推导与实测结果，文字简明但不删除影响结论的条件。
 
-## Writing Pattern
+内部知识使用Wikilink。资产链接可用已核实的绝对路径，笔记本地资源优先相对路径。需要Question_Index、Formula_Index或来源映射时先查其当前实际位置，不按旧路径新建第二套。索引更新限于本次明确范围，不扫描全库后顺带改写无关内容。
 
-Formal notes should be rewritten, not copied from raw web answers. Use this structure when it fits:
+## 检查
 
-1. 本页核心结论
-2. 要解决的问题
-3. 物理图像
-4. 数学表达 or 推导
-5. 实验实现
-6. 容易误解点
-7. 和论文第 3/4/5 章的关系
-8. 关联问题与来源
-
-Keep explanations lecture-like: start from the logic chain, then add equations, then connect to experiment signals and later thesis use.
-
-## Key Indexes
-
-- `02_Laser_PDH知识体系/00_知识导航/Question_Index.md`: user-facing QID index. Add fine-grained questions instead of one large topic.
-- `02_Laser_PDH知识体系/00_知识导航/Formula_Index.md`: reusable formulas. Use formula cards, not complex Markdown table formulas.
-- `02_Laser_PDH知识体系/00_知识导航/Core_Logic_Chain.md`: one-page chain from locking object to feedback, IQ measurement, `D(f)`, loop gain, and noise conversion.
-- `07_资料源与资产索引/02_来源映射/Web_QA_to_Notes_Map.md`: map web learning package sections to formal notes.
-- `99_系统治理/02_Laser资料治理/Agent_Log/Web_QA_Coverage_Audit.md`: coverage audit; do not leave uncovered sections as `缺失` without a follow-up target.
-
-## Source Boundaries
-
-- Raw sources can be copied into `07_资料源与资产索引/03_原始摘录`, but formal notes must split, rewrite, and link them.
-- Distinguish thesis facts, PPT facts, web-answer explanations, user questions, and Codex derivations.
-- Do not imply an experimental conclusion is proven unless the note cites the relevant data, figure, or extracted source.
-- Use absolute filesystem paths only in source/evidence sections; use `[[wikilinks]]` inside the vault knowledge graph.
+本地修订用`audit_laser_pdh_md.py --root <科研主系统> --file <笔记>`，可重复指定。检查链接存在、图片、Mermaid配套、公式与表格风险；渲染、缩放、截图可读性另行检查。备份与哈希记录留在本次任务证据目录，不写满长期MEMORY。

@@ -49,7 +49,14 @@ class PstSignalTraceTests(unittest.TestCase):
         result = MODULE.query_evidence(self.pst, "board", "ctrl_a", None, False)
         self.assertEqual(result[0]["network"], "CTRL_A")
         resistor = next(node for node in result[0]["nodes"] if node["refdes"] == "R1")
-        self.assertEqual(resistor["assembly_status"], "TSD*未焊")
+        self.assertEqual(resistor["assembly_markers"], ["TSD"])
+        self.assertEqual(resistor["fitted_state"], "unknown")
+        self.assertNotIn("未焊", resistor["assembly_status"])
+        self.assertEqual(MODULE.flatten_results(result)[1]["fitted_state"], "unknown")
+
+    def test_dnp_and_unmarked_do_not_prove_population(self):
+        self.assertEqual(MODULE.assembly_markers(None, {"value":"DNP"}), ["DNP"])
+        self.assertIn("未核实", MODULE.assembly_status(None, {"value":"10k"}))
 
     def test_node_returns_two_separate_nets(self):
         result = MODULE.query_evidence(self.pst, "board", None, "R1", False)

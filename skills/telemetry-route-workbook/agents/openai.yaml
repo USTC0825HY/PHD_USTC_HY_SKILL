@@ -1,0 +1,6 @@
+interface:
+  display_name: "跨板遥测路由与映射表"
+  short_description: "逐段核对遥测地址、装配和源端测点，维护清晰的跨板映射表与局部电路图"
+  default_prompt: "使用 $telemetry-route-workbook 核对当前板卡的遥测路由、采集链路和换算，以同一记录维护各视图并保留现有排版。"
+policy:
+  allow_implicit_invocation: true

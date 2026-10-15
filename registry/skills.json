@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-13",
+  "generated_utc": "2026-10-15",
   "repository_policy": "private-first",
-  "logical_skill_count": 117,
-  "physical_top_level_skill_directories": 110,
+  "logical_skill_count": 118,
+  "physical_top_level_skill_directories": 111,
   "generated_openai_yaml_count": 8,
   "skills": [
     {
@@ -26,7 +26,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -117,7 +117,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -187,7 +187,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -210,7 +210,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -233,7 +233,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -256,7 +256,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -279,7 +279,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "project-host-skills"
     },
     {
@@ -349,7 +349,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -360,9 +360,9 @@
       "nested_under": "",
       "source_kind": "codex_local",
       "source_relative_path": "fpga-board-signal-chain-closure/SKILL.md",
-      "source_skill_sha256": "40720dc1fb1491d2bdb469562ca54f70325da7afe2ecfc58c79c9ffba4292b30",
-      "staged_skill_sha256": "40720dc1fb1491d2bdb469562ca54f70325da7afe2ecfc58c79c9ffba4292b30",
-      "staged_tree_sha256": "2ebd07539d354bf9d5f0f135f5be5ae36e568dac71217d40635105cf6641dbf9",
+      "source_skill_sha256": "f45ba751c1a757a0830852574ae0c3445af4d9aa724dd12b0b33eff9e723ada2",
+      "staged_skill_sha256": "f45ba751c1a757a0830852574ae0c3445af4d9aa724dd12b0b33eff9e723ada2",
+      "staged_tree_sha256": "4dce1041199746240204a4e428f2a024a75631fe23abc54dc8734afb090d53bc",
       "declared_license": "",
       "license_evidence": "unverified",
       "source_remote": "",
@@ -372,7 +372,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -397,7 +397,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -422,7 +422,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -433,9 +433,9 @@
       "nested_under": "",
       "source_kind": "codex_local",
       "source_relative_path": "fpga-orcad-xdc-pipeline/SKILL.md",
-      "source_skill_sha256": "bdf5a12c5db545397915ae1a75aba553cac40da3ed99f71859bd6b84d1ac0395",
-      "staged_skill_sha256": "bdf5a12c5db545397915ae1a75aba553cac40da3ed99f71859bd6b84d1ac0395",
-      "staged_tree_sha256": "d6ba30b8ae9e9d628a8e379236f9a851d0cecfacaf20e7ca7fcd92d6874b62a1",
+      "source_skill_sha256": "c4564e91e9c210813451d829356847b0f742b8b11c1caf493a2d217d3f034b37",
+      "staged_skill_sha256": "c4564e91e9c210813451d829356847b0f742b8b11c1caf493a2d217d3f034b37",
+      "staged_tree_sha256": "f37aeb47ef5c7dec26770c9a21ee5824efe22aa45f020f0135b1fb6fd8cc956e",
       "declared_license": "",
       "license_evidence": "unverified",
       "source_remote": "",
@@ -447,7 +447,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -472,7 +472,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -495,7 +495,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -509,7 +509,7 @@
       "sync_policy": "snapshot-from-maintained-source",
       "installed_in_codex": true,
       "generated_openai_yaml": false,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "category": "FPGA/RTL/EDA 与硬件",
       "declared_license": "",
       "license_evidence": "unverified",
@@ -541,7 +541,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "project-host-skills"
     },
     {
@@ -566,7 +566,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -591,7 +591,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -614,7 +614,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -637,7 +637,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -660,7 +660,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -683,7 +683,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -706,7 +706,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -753,7 +753,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -764,9 +764,9 @@
       "nested_under": "",
       "source_kind": "codex_local",
       "source_relative_path": "hardware-dev-router/SKILL.md",
-      "source_skill_sha256": "db25e6301720465612977295612da58a77fd7251f4e1c00dcf5bf911a97ac874",
-      "staged_skill_sha256": "db25e6301720465612977295612da58a77fd7251f4e1c00dcf5bf911a97ac874",
-      "staged_tree_sha256": "ccd16a03e27df61fc75bf20b9d8038f9d19cf09a2d796de3eb8bd4f5a7a5a14e",
+      "source_skill_sha256": "8947e73e0956870f1a8a8c72212b6bf41b7c293f72c43978c6c6de2757a82974",
+      "staged_skill_sha256": "8947e73e0956870f1a8a8c72212b6bf41b7c293f72c43978c6c6de2757a82974",
+      "staged_tree_sha256": "08bc64bba4a3df8eaf353d56e896803045777126f9183cc10ee589ca5a29bd87",
       "declared_license": "",
       "license_evidence": "unverified",
       "source_remote": "",
@@ -776,7 +776,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -799,7 +799,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -824,7 +824,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -847,7 +847,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -891,7 +891,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -917,7 +917,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -943,7 +943,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -969,7 +969,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -992,7 +992,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1018,7 +1018,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1041,7 +1041,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1055,7 +1055,7 @@
       "sync_policy": "snapshot-from-maintained-source",
       "installed_in_codex": true,
       "generated_openai_yaml": false,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "category": "Laser/PDH 与精密测量",
       "declared_license": "",
       "license_evidence": "unverified",
@@ -1087,7 +1087,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1110,7 +1110,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1135,7 +1135,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1160,7 +1160,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1183,7 +1183,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1194,9 +1194,9 @@
       "nested_under": "",
       "source_kind": "codex_local",
       "source_relative_path": "laser-pdh-obsidian-md-writing/SKILL.md",
-      "source_skill_sha256": "a86a2e646f6939d937211fd2e4badbd45b770fe790bcf9fa103374ba7acaf4f3",
-      "staged_skill_sha256": "b5d1d6b7063819aeb22078014d692c9d5a3dcb4e941ea3b726b0fa30981aa618",
-      "staged_tree_sha256": "df2dbd8fea3b5ba64c0e61ec28feeb8c4f3c5c393a3da7d0c75fa5e748fcc463",
+      "source_skill_sha256": "715ff6d666329889218f9965c8fec35b006c27233eefd25a282c166e24d4b8e1",
+      "staged_skill_sha256": "82f854d8b2135a0e050aec7243b539d20abe384c05a1c1ab2ba45dfad9cf2141",
+      "staged_tree_sha256": "e268a7f9bf28d5afa5f4aa9094b37bb24b31baf929f34b4247b91d2beff56eb1",
       "declared_license": "",
       "license_evidence": "unverified",
       "source_remote": "",
@@ -1206,7 +1206,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1229,7 +1229,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1254,7 +1254,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1277,7 +1277,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1302,7 +1302,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1348,7 +1348,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1373,7 +1373,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1396,7 +1396,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1445,7 +1445,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1470,7 +1470,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1493,7 +1493,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1516,7 +1516,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1541,7 +1541,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1587,7 +1587,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1612,7 +1612,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1637,7 +1637,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1662,7 +1662,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1685,7 +1685,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1731,7 +1731,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1754,7 +1754,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1777,7 +1777,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1800,7 +1800,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1823,7 +1823,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1846,7 +1846,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1896,7 +1896,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1940,7 +1940,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -1984,7 +1984,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2226,7 +2226,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2251,7 +2251,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2278,7 +2278,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2301,7 +2301,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2328,7 +2328,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2339,9 +2339,9 @@
       "nested_under": "",
       "source_kind": "codex_local",
       "source_relative_path": "rtl-schematic-xdc-alignment/SKILL.md",
-      "source_skill_sha256": "73a6f1d0f6b45e93832461cdcadff141c6601a845053e86126614614839f7364",
-      "staged_skill_sha256": "73a6f1d0f6b45e93832461cdcadff141c6601a845053e86126614614839f7364",
-      "staged_tree_sha256": "22ae2411a5d581bcd7a26bfbdf7af9159378f042b80400e9855da8203bee8d83",
+      "source_skill_sha256": "0281aee614739ab679628b13ec7de1ab80397b28544a060fa4c9081cd9f6619a",
+      "staged_skill_sha256": "0281aee614739ab679628b13ec7de1ab80397b28544a060fa4c9081cd9f6619a",
+      "staged_tree_sha256": "eab45a6489949af35fbe53c7e5e16f57d1937c3aa4b154677e44c25b96724689",
       "declared_license": "",
       "license_evidence": "unverified",
       "source_remote": "",
@@ -2351,7 +2351,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2378,7 +2378,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2401,7 +2401,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2424,7 +2424,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "project-host-skills"
     },
     {
@@ -2536,7 +2536,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2562,8 +2562,31 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
+    },
+    {
+      "name": "telemetry-route-workbook",
+      "category": "Laser/PDH 与精密测量",
+      "canonical_path": "skills/telemetry-route-workbook",
+      "nested_under": "",
+      "source_kind": "codex_local",
+      "source_relative_path": "telemetry-route-workbook/SKILL.md",
+      "declared_license": "",
+      "license_evidence": "unverified",
+      "source_remote": "",
+      "ownership_status": "unverified",
+      "publish_policy": "private-only-until-reviewed",
+      "issues_from_audit": [],
+      "generated_openai_yaml": false,
+      "maintained_source": "codex-user-skills",
+      "description": "追踪多路开关或ADC输入到来源板原始测点，整理、复核或更新跨板遥测XLSX映射表。用于地址选路、装配分支、接口脚位、物理量换算、局部电路图和表格保真；不自动修改RTL、硬件资料或执行板测。",
+      "source_skill_sha256": "9df730d309b928458ea9b9960a726344a2f0c778d09f91107cdcb754d0d70c4c",
+      "sync_policy": "snapshot-from-maintained-source",
+      "installed_in_codex": true,
+      "snapshot_date": "2026-10-15",
+      "staged_skill_sha256": "9df730d309b928458ea9b9960a726344a2f0c778d09f91107cdcb754d0d70c4c",
+      "staged_tree_sha256": "555770b3e655d577787308d9c2f30f41a9e0cfa4fd2ee1205d4bb50fef575265"
     },
     {
       "name": "transcribe",
@@ -2585,7 +2608,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2611,7 +2634,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2636,7 +2659,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2661,7 +2684,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2686,7 +2709,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2711,7 +2734,7 @@
       ],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2758,7 +2781,7 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     },
     {
@@ -2781,9 +2804,9 @@
       "issues_from_audit": [],
       "generated_openai_yaml": false,
       "installed_in_codex": true,
-      "snapshot_date": "2026-10-13",
+      "snapshot_date": "2026-10-15",
       "maintained_source": "codex-user-skills"
     }
   ],
-  "snapshot_scope": "87 currently installed Codex user skills; retained existing legacy skills separately"
+  "snapshot_scope": "88 currently installed Codex user skills; retained existing legacy skills separately"
 }

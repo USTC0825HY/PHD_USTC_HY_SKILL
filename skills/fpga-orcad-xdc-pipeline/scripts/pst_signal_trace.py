@@ -146,13 +146,18 @@ def load_evidence(pst_dir: Path) -> tuple[list[Net], dict[str, dict[str, Any]], 
     )
 
 
-def assembly_status(part: dict[str, Any] | None, chip: dict[str, Any] | None) -> str:
+def assembly_markers(part: dict[str, Any] | None, chip: dict[str, Any] | None) -> list[str]:
     fields = [
         (part or {}).get("part_name", ""),
         (chip or {}).get("primitive", ""),
         (chip or {}).get("value", ""),
     ]
-    return "TSD*未焊" if any("TSD*" in str(field).upper() for field in fields) else "未发现TSD*标记"
+    return [marker for marker in ("TSD", "DNP") if any(marker in str(field).upper() for field in fields)]
+
+
+def assembly_status(part: dict[str, Any] | None, chip: dict[str, Any] | None) -> str:
+    markers = assembly_markers(part, chip)
+    return ("原图标记：" + "/".join(markers) if markers else "未发现TSD/DNP标记") + "；当前装配未核实"
 
 
 def enrich_net(net: Net, parts: dict[str, dict[str, Any]], chips: dict[str, dict[str, Any]], files: dict[str, Path | None], board: str) -> dict[str, Any]:
@@ -165,6 +170,9 @@ def enrich_net(net: Net, parts: dict[str, dict[str, Any]], chips: dict[str, dict
             "part_name": (part or {}).get("part_name"),
             "value": (chip or {}).get("value"),
             "assembly_status": assembly_status(part, chip),
+            "assembly_markers": assembly_markers(part, chip),
+            "fitted_state": "unknown",
+            "assembly_basis": "source_marker_only",
             "part_source": f"{files['pstxprt.dat']}:{part['source_line']}" if part and files["pstxprt.dat"] else None,
             "value_source": f"{files['pstchip.dat']}:{chip['source_line']}" if chip and files["pstchip.dat"] else None,
         })
@@ -301,6 +309,8 @@ def flatten_results(results: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
                 "board": result["board"], "network": result["network"], "refdes": node["refdes"],
                 "pin": node["pin"], "pin_name": node["pin_name"], "part_name": node["part_name"],
                 "value": node["value"], "assembly_status": node["assembly_status"],
+                "assembly_markers": node["assembly_markers"], "fitted_state": node["fitted_state"],
+                "assembly_basis": node["assembly_basis"],
                 "network_source": result["network_source"], "node_source_line": node["source_line"],
                 "evidence_level": result["evidence_level"], "pending": result["pending"],
             })

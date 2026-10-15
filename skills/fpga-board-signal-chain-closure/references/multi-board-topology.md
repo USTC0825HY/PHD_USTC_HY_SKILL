@@ -4,7 +4,7 @@
 
 A physical board is a graph node. A DSN/PDF/PST/SchDoc directory is an evidence set for that node, not automatically a separate board. Record public, internal, historical, and alternate exports separately and select at most one current set before tracing.
 
-Boards without PST remain visible as E0 nodes. PDF may support device pin/function and visual intent; SchDoc/PcbDoc may establish source availability; neither establishes exact PST net membership.
+Boards without PST remain visible. The preflight records E0/manual review until connections are actually inspected; a legible selected schematic can support explicit board-local connections with page/zone evidence. File existence alone never establishes a connection, and schematic evidence is not exported PST membership. See [shared trace method](trace-and-evidence-method.md).
 
 ## Graph construction
 
@@ -26,13 +26,13 @@ Do not require RTL/XDC for `power_rail` or `ground_return`. If FPGA or another c
 
 ## Electrical availability
 
-Physical reachability and electrical availability are separate. Mark a path unavailable when OE disables a translator, DIR opposes the required direction, a switch is open by fixed state, a fuse/link is absent, or a traversed part is DNP/TSD*/NC. Record fixed pull-up/down and assembly-option resistors explicitly.
+Physical reachability and electrical availability are separate. Mark a path unavailable when OE disables a translator, DIR opposes the required direction, a switch is fixed open, a link is known absent, or a contact is NC. TSD/DNP is the source marker; current population requires separate evidence. Without scoped fitted confirmation, do not count a marked branch as active. Record fixed pulls and assembly-option resistors explicitly.
 
 A branch such as D120 whose OE state holds the channel disabled is `硬件禁用/电气不可用`; do not downgrade it to `可选功能`, and do not claim usability from an FPGA ball or XDC LOC alone.
 
 ## Functional classification
 
-Classify each completed or candidate chain as exactly one of:
+Classify each signal chain as one of the following; power/return distribution uses `电源分配` or `地返回` instead of forcing a control classification:
 
 - `必需控制`: software/RTL must actively drive it for the required function;
 - `硬件默认`: fixed pull, strap, or power-on state supplies the required behavior without FPGA action;

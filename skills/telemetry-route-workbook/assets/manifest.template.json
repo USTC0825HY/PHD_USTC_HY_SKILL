@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "boards": {"ACQ": {"label": "采集板", "version": "", "evidence_set": ""}},
+  "evidence": {},
+  "nodes": {
+    "ACQ:U1.1": {"board": "ACQ", "ref": "U1", "pin": "1", "net": "GND"},
+    "ACQ:TP1.1": {"board": "ACQ", "ref": "TP1", "pin": "1", "net": "GND"}
+  },
+  "routes": [{
+    "address": "0x00", "kind": "ground", "mode": "MODE_TO_CONFIRM", "status": "partial",
+    "input": "U1.S1", "mux": {"U1": "S1"},
+    "segments": [{"kind": "net", "from": "ACQ:U1.1", "to": "ACQ:TP1.1", "evidence": []}],
+    "source_board": "ACQ", "source_interface": "local", "endpoint": "ACQ:TP1.1",
+    "display": {"source_board_label": "采集板", "endpoint_text": "GND（本板）", "route_text": "输入脚至GND的连接尚未核对。"}
+  }],
+  "workbook": {"sheets": [
+    {"name": "遥测简表", "header_row": 4, "first_data_row": 5, "last_data_row": 5, "address_column": "A",
+      "headers": {"A": "地址HEX", "B": "来源板卡", "C": "原始源网名／测点"},
+      "fields": {"B": "source_board_label", "C": "endpoint_text"}, "route_columns": ["C"]},
+    {"name": "地址与物理意义", "header_row": 4, "first_data_row": 5, "last_data_row": 5, "address_column": "A",
+      "headers": {"A": "地址HEX", "B": "来源板卡", "C": "完整信号链"},
+      "fields": {"B": "source_board_label", "C": "route_text"}, "route_columns": ["C"]}
+  ]}
+}

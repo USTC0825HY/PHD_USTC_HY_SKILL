@@ -7,6 +7,8 @@ description: "Generic RTL-schematic-XDC alignment and FPGA control-chain workflo
 
 ## Workflow
 
+For multi-board paths read the [shared trace/evidence method](../fpga-board-signal-chain-closure/references/trace-and-evidence-method.md). Keep endpoint identity, connector mapping, assembly and evidence dimensions in that closure record; add RTL/XDC fields here rather than maintaining a second route conclusion.
+
 1. Read `references/fpga-control-chain.md` for FPGA-to-device and cross-board control tracing.
 2. Verify the active XPR top, part, source set, constraint set, XDC membership, and `AutoDisabled` state before using RTL or XDC.
 3. Start with a table: RTL port, direction, module owner, active XDC expression, PACKAGE_PIN, IOSTANDARD, FPGA refdes/ball, PST net, conditioning device, connector chain, target device, and evidence status.

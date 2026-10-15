@@ -2,7 +2,7 @@
 
 覆盖 Laser/PDH 电测、CW 板卡、仪器协同和操作报告。
 
-本类共 **12 个逻辑 Skill**。当前装载以 `profiles/codex.json` 为准；历史保留项不代表当前仍在使用。
+本类共 **13 个逻辑 Skill**。当前装载以 `profiles/codex.json` 为准；历史保留项不代表当前仍在使用。
 
 | Skill | 主要功能 |
 |---|---|
@@ -18,3 +18,4 @@
 | [laser-cw-qualification-test-development](../../../skills/laser-cw-qualification-test-development/SKILL.md) | 依据权威工程资料开发和审查 513/CW 鉴定测试。 |
 | [laser-indicator-visio-style](../../../skills/laser-indicator-visio-style/SKILL.md) | 制作和检查符合既定样式的可编辑电测流程 Visio。 |
 | [sdg-dmm-automation](../../../skills/sdg-dmm-automation/SKILL.md) | 开发 SCPI 自动化，分别校验信号源和万用表接口，区分静态契约与实测结论。 |
+| [telemetry-route-workbook](../../../skills/telemetry-route-workbook/SKILL.md) | 追踪跨板遥测、核对ADC地址与物理量换算，保持XLSX多视图及人工格式。 |
